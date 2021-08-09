@@ -1,0 +1,303 @@
+@import '@/styles/mixins';
+@import '@/styles/variables';
+
+@import '@/styles/mixins';
+@import '@/styles/variables';
+
+.regalo {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1200px;
+  overflow: hidden;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  &_num {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    background-color: $primary;
+    margin-bottom: 1rem;
+
+    h1 {
+      color: white;
+      font-family: SunFlower;
+      transform: translateY(5px);
+    }
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: $brown-letter;
+    font-family: SunFlower;
+
+    @include break_md {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+    }
+  }
+
+  h3 {
+    text-align: center;
+    color: $brown-letter;
+    font-family: SofiaProSemi;
+  }
+
+  &_slider {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 2rem;
+    max-width: 900px;
+    margin-bottom: 3rem;
+
+    @include break_md {
+      gap: 1rem;
+    }
+
+    @include break_lg {
+      gap: 4rem;
+      align-items: center;
+      grid-template-columns: repeat(2, 1fr);
+      margin-bottom: 5rem;
+    }
+
+    &Grid {
+      margin-bottom: 2rem;
+      gap: 0.3rem;
+      display: grid;
+      max-width: 100vw;
+      justify-content: center;
+      grid-template-rows: repeat(4, 100px);
+      grid-template-columns: repeat(3, minmax(0, 145px));
+
+      @include break_md {
+        grid-template-rows: repeat(3, 100px);
+        grid-template-columns: repeat(3, minmax(150px, 200px));
+      }
+
+      @include break_lg {
+        margin-bottom: 0rem;
+      }
+
+      &Img {
+        width: 100% !important;
+        height: 100% !important;
+      }
+
+      img:nth-child(1) {
+        grid-row: 1 / 4;
+        grid-column: 1 / 4;
+
+        @include break_md {
+          // grid-row: 1 / 4;
+          grid-column: 1 / 3;
+        }
+      }
+    }
+
+    &Content {
+      display: flex;
+      max-width: 100vw;
+      flex-direction: column;
+
+      h3,
+      h4,
+      h5 {
+        text-align: center;
+
+        @include break_md {
+          text-align: left;
+        }
+      }
+
+      h3 {
+        font-size: 2rem;
+        color: $primary;
+        margin-bottom: 0;
+        font-family: SunFlower;
+      }
+
+      h4 {
+        color: #838383;
+        margin-bottom: 1.5rem;
+        font-family: SofiaProRegular;
+      }
+
+      h5 {
+        font-size: 1rem;
+        white-space: normal;
+        margin-bottom: 1.5rem;
+        font-family: SofiaProLight;
+      }
+
+      button {
+        align-self: center;
+
+        @include break_md {
+          align-self: flex-start;
+        }
+
+        &:active,
+        &:hover,
+        &:focus {
+          color: white;
+        }
+      }
+    }
+  }
+
+  &_cards {
+    width: 90%;
+    display: grid;
+    max-width: 1200px;
+    flex-direction: column;
+    grid-template-columns: minmax(0, 1fr);
+    margin-bottom: 2rem;
+
+    @include break_lg {
+      justify-content: center;
+      grid-template-columns: repeat(2, minmax(360px, 500px));
+    }
+
+    &1 {
+      padding: 2rem;
+      background-color: $primary;
+
+      @include break_md {
+        padding: 5rem 2rem;
+      }
+
+      strong,
+      h3,
+      p {
+        color: white;
+      }
+
+      h3 {
+        @include break_md {
+          font-size: 2rem;
+        }
+        @include break_lg {
+          margin-bottom: 2rem;
+          font-size: 2.5rem;
+        }
+      }
+
+      p {
+        max-width: 400px;
+        font-family: sofiaProLight;
+
+        @include break_md {
+          font-size: 1.2rem;
+        }
+      }
+    }
+    &2 {
+      padding: 2rem;
+      background-color: $brown-light;
+
+      @include break_md {
+        padding: 0 3.5rem;
+        padding-top: 4rem;
+        padding-bottom: 3rem;
+      }
+
+      small,
+      h5,
+      h3,
+      p {
+        text-align: center;
+        color: $brown-letter;
+      }
+
+      h5 {
+        font-family: SofiaProSemi;
+
+        @include break_lg {
+          font-size: 1.3rem;
+        }
+      }
+
+      h3 {
+        @include break_md {
+          font-size: 2rem;
+        }
+        @include break_lg {
+          font-size: 2.5rem;
+        }
+      }
+
+      p {
+        font-family: sofiaProRegular;
+
+        @include break_md {
+          font-size: 1.1rem;
+        }
+        @include break_lg {
+          font-size: 1.2rem;
+        }
+      }
+
+      small {
+        font-family: sofiaProRegular;
+        margin-top: 1rem;
+
+        @include break_lg {
+          margin-top: 1.5rem;
+        }
+      }
+    }
+
+    &1,
+    &2 {
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      margin: 0 auto;
+      margin-bottom: 1rem;
+      border-radius: 1rem;
+
+      img {
+        margin-bottom: 1rem;
+      }
+
+      strong {
+        margin-bottom: 1rem;
+        font-family: SofiaProLight;
+      }
+
+      p {
+        text-align: center;
+      }
+    }
+  }
+
+  &_button {
+    margin: 0 auto;
+    color: white;
+    margin-top: 2rem;
+    font-family: sofiaProSemi;
+
+    @include break_lg {
+      font-size: 30px;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: white;
+    }
+  }
+}

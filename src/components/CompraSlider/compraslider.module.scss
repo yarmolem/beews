@@ -1,0 +1,121 @@
+@import '@/styles/variables';
+
+.primary {
+  background-color: $primary;
+
+  h1 {
+    color: #fff;
+  }
+
+  h2 {
+    color: #333333;
+  }
+
+  h4 {
+    color: #fff;
+  }
+}
+.warning {
+  background-color: $yellow;
+  h1,
+  h2,
+  h4 {
+    color: #fff;
+  }
+}
+.danger {
+  background-color: $red;
+
+  h1,
+  h2,
+  h4 {
+    color: #fff;
+  }
+}
+.orange {
+  background-color: $orange;
+
+  h1,
+  h2,
+  h4 {
+    color: #fff;
+  }
+}
+.cyan {
+  background-color: $cyan;
+
+  h1,
+  h2,
+  h4 {
+    color: #fff;
+  }
+}
+.brown {
+  background-color: $brown-light;
+
+  h1,
+  h2,
+  h4 {
+    color: $brown-letter;
+  }
+}
+
+.compraslider {
+  z-index: 1902;
+  width: 90%;
+  max-width: 375px;
+
+  &_item {
+    position: relative;
+    z-index: 1902;
+    margin: 1rem;
+    padding: 2rem;
+    height: 470px;
+    box-shadow: 0px 0px 20px rgba(53, 52, 49, 0.25);
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    img {
+      position: absolute;
+      top: 1rem;
+
+      &:nth-child(1) {
+        left: 0;
+        width: 65px;
+        height: 65px;
+      }
+      &:nth-child(2) {
+        right: 1rem;
+        width: 65px;
+        height: 65px;
+      }
+    }
+
+    h1 {
+      margin-top: 4rem;
+      font-family: SunFlower;
+    }
+
+    h2 {
+      font-family: SofiaProSemi;
+      white-space: normal;
+    }
+
+    h4 {
+      font-family: SOfiaProLight;
+      font-size: 1.1rem;
+      white-space: normal;
+    }
+
+    hr {
+      width: 90%;
+      height: 3px;
+      opacity: 1;
+      background-color: #fff;
+    }
+  }
+}

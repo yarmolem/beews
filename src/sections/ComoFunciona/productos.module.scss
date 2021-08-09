@@ -1,0 +1,104 @@
+@import '@/styles/mixins';
+@import '@/styles/variables';
+
+.productos {
+  position: relative;
+  display: flex;
+  padding: 2.5rem;
+  background: $primary;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @include break_sm {
+    min-height: 25rem;
+  }
+  @include break_md {
+    min-height: 30rem;
+  }
+  @include break_lg {
+    min-height: 609px;
+  }
+
+  h1,
+  h4 {
+    color: white;
+    text-align: center;
+  }
+
+  h1 {
+    font-family: SofiaProSemi;
+    margin-bottom: 1rem;
+
+    @include break_sm {
+      font-size: 2rem;
+    }
+    @include break_md {
+      font-size: 3rem;
+    }
+    @include break_lg {
+      max-width: 513px;
+      font-size: 4rem;
+    }
+  }
+
+  h4 {
+    margin-bottom: 1.5rem;
+    font-family: SofiaProRegular;
+
+    @include break_sm {
+      width: 90%;
+    }
+    @include break_md {
+      width: 620px;
+      font-size: 1.9rem;
+      margin-bottom: 3rem;
+    }
+  }
+
+  &_btn {
+    display: grid;
+    gap: 0.5rem;
+
+    @include break_sm {
+      gap: 0.8rem;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include break_md {
+      gap: 1.5rem;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    button {
+      padding-top: 0.5rem;
+      padding-bottom: 0.8rem;
+      border-radius: 1.2rem;
+      color: $brown-letter;
+      background: $card-gray;
+      font-family: SofiaProSemi;
+
+      @include break_md {
+        font-size: 30px;
+      }
+    }
+  }
+}
+
+.cloud_1,
+.cloud_2 {
+  display: none;
+  position: absolute;
+
+  @include break_sm {
+    display: block;
+  }
+}
+
+.cloud_1 {
+  top: 10%;
+  left: 10%;
+}
+.cloud_2 {
+  bottom: 10%;
+  right: 10%;
+}

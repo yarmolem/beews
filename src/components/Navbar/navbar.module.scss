@@ -1,0 +1,93 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  width: 100%;
+  background: #fff;
+
+  &_wrap {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1400px;
+    padding: 1rem;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 40px 1fr 40px;
+
+    @include break_lg {
+      grid-template-columns: 150px 1fr 335px;
+    }
+
+    @include break_xl {
+      grid-template-columns: 200px 1fr 400px;
+    }
+
+    ul {
+      width: 100%;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+
+      @include break_lg {
+        display: flex;
+      }
+
+      @include break_xl {
+        justify-content: space-around;
+      }
+
+      li {
+        list-style: none;
+
+        a {
+          font-family: SofiaProLight;
+          text-decoration: none;
+          color: $dark-letter;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  &_bars {
+    margin: 0;
+    border: 0;
+    outline: 0;
+    padding: 5px;
+    border-radius: 5px;
+    background: transparent;
+    border: 2px solid transparent;
+
+    transition: border 200ms ease-in-out;
+
+    &:focus {
+      border: 2px solid lighten($color: $dark, $amount: 50);
+    }
+
+    @include break_lg {
+      display: none;
+    }
+  }
+
+  &_barsIcon {
+    fill: $dark;
+  }
+
+  &_logo {
+    margin: 0 auto;
+
+    @include break_lg {
+      margin: 0;
+    }
+  }
+}
+
+.linkActive {
+  color: $primary !important;
+}
+.btnActive {
+  background: $primary !important;
+}

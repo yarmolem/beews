@@ -1,0 +1,71 @@
+@import '@/styles/mixins';
+@import '@/styles/variables';
+
+.plan {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding-block: 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  &_num {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    background-color: $primary;
+    margin-bottom: 1rem;
+
+    h1 {
+      color: white;
+      font-family: SunFlower;
+      transform: translateY(5px);
+    }
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+    color: $brown-letter;
+    font-family: SunFlower;
+
+    @include break_md {
+      font-size: 2.5rem;
+      margin-bottom: 4rem;
+    }
+  }
+
+  &_grid {
+    margin-bottom: 2rem;
+    display: grid;
+    gap: 1.5rem;
+
+    @include break_md {
+      grid-template-columns: 1fr 1fr;
+    }
+    @include break_md {
+      margin-bottom: 5rem;
+    }
+  }
+
+  button {
+    margin: 0 auto;
+    color: white;
+    margin-top: 2rem;
+    font-family: sofiaProSemi;
+
+    @include break_lg {
+      font-size: 30px;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: white;
+    }
+  }
+}

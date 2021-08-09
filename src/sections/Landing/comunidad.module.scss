@@ -1,0 +1,69 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.comunidad {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-block: 2rem;
+
+  h3,
+  h4 {
+    color: $brown-dark;
+    text-align: center;
+  }
+
+  h3 {
+    font-family: SofiaProRegular;
+    margin: 0 auto;
+    font-weight: 700;
+    color: $brown-dark;
+    text-align: center;
+    max-width: 600px;
+    margin-bottom: 1.5rem;
+
+    @include break_sm {
+      font-size: 2rem;
+    }
+    @include break_md {
+      font-size: 3rem;
+    }
+    @include break_lg {
+      font-size: 3.5rem;
+      line-height: 3.5rem;
+    }
+  }
+
+  h4 {
+    font-family: SunFlower;
+    text-align: center;
+    font-size: 1.2rem;
+
+    @include break_sm {
+      font-size: 1.5rem;
+    }
+    @include break_md {
+      font-size: 1.8rem;
+    }
+    @include break_lg {
+      font-size: 2.1rem;
+    }
+  }
+}
+
+.comunidad_grid {
+  width: 100%;
+  display: grid;
+  grid-auto-rows: 250px;
+  grid-template-columns: repeat(auto-fit, 1fr);
+
+  @include break_sm {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

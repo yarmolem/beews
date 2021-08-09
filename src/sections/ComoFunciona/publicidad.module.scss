@@ -1,0 +1,121 @@
+@import '@/styles/mixins';
+@import '@/styles/variables';
+
+.publicidad {
+  overflow: hidden;
+  position: relative;
+  background: $red;
+  min-height: 15rem;
+  position: relative;
+  padding-block: 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  @include break_sm {
+    min-height: 22rem;
+  }
+
+  &_wrap {
+    h2,
+    h4 {
+      color: white;
+      text-align: center;
+    }
+
+    h2 {
+      font-family: SunFlower;
+
+      @include break_sm {
+        margin-bottom: 2rem;
+      }
+    }
+
+    h4 {
+      display: flex;
+      font-family: SofiaProRegular;
+
+      span {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}
+
+.circle_1,
+.circle_2,
+.persona_1,
+.persona_2 {
+  position: absolute;
+}
+
+.persona_1 {
+  display: none;
+  left: 0;
+
+  @media (min-width: 1028px) {
+    display: block;
+    left: 5%;
+  }
+  @include break_lg {
+    left: 8%;
+  }
+  @include break_xl {
+    left: 10rem;
+  }
+}
+.persona_2 {
+  display: none;
+  right: 0;
+
+  @media (min-width: 1028px) {
+    display: block;
+    right: 5%;
+  }
+  @include break_lg {
+    right: 8%;
+  }
+  @include break_xl {
+    right: 10rem;
+  }
+}
+
+.circle_1 {
+  display: none;
+  top: -15rem;
+  left: -18rem;
+
+  @media screen and (min-width: 856px) {
+    display: block;
+  }
+
+  @include break_lg {
+    top: -15rem;
+    left: -15rem;
+  }
+  @include break_xl {
+    top: -19rem;
+    left: -9rem;
+  }
+}
+
+.circle_2 {
+  display: none;
+  bottom: -20rem;
+  right: -15rem;
+
+  @media screen and (min-width: 856px) {
+    display: block;
+  }
+
+  @include break_lg {
+    bottom: -18rem;
+    right: -15rem;
+  }
+
+  @include break_xl {
+    bottom: -16rem;
+    right: -12rem;
+  }
+}

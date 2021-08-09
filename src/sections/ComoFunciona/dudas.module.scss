@@ -1,0 +1,92 @@
+@import '@/styles/mixins';
+@import '@/styles/variables';
+
+.dudas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-block: auto;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+  background-color: #f7f2ed;
+
+  @include break_sm {
+    padding-top: 0rem;
+    min-height: 30rem;
+  }
+  @include break_md {
+    min-height: 35rem;
+  }
+  @include break_lg {
+    min-height: 40rem;
+  }
+
+  &_wrap {
+    max-width: 850px;
+
+    @media (min-width: 425px) {
+      width: 90%;
+      border-radius: 1rem;
+    }
+  }
+
+  h1 {
+    margin-bottom: 2rem;
+    text-align: center;
+    color: $brown-letter;
+    font-family: SofiaProSemi;
+  }
+
+  &_form {
+    align-self: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // width: 90%;
+    // border-radius: 1rem;
+    margin: 0 auto;
+    max-width: 850px;
+    padding: 2rem 1rem;
+    background-color: white;
+
+    @media (min-width: 425px) {
+      width: 90%;
+      border-radius: 1rem;
+    }
+    @include break_md {
+      padding: 2rem;
+    }
+
+    &Btn {
+      font-family: SofiaProRegular;
+      right: 50%;
+      margin: 0 auto;
+      bottom: -1.5rem;
+      position: absolute;
+      transform: translateX(50%);
+      padding: 0.5rem 2rem;
+      border-radius: 1.2rem;
+    }
+  }
+
+  &_input {
+    border-radius: 0;
+    font-family: sofiaProLight;
+    border: 0px solid transparent;
+    border-bottom: 1px solid lighten($color: #686868, $amount: 30);
+
+    transition: all 0.3s ease;
+
+    &:focus {
+      outline: 0 none;
+      box-shadow: none;
+      border-color: transparent;
+      border-bottom-color: $primary;
+    }
+  }
+
+  label {
+    color: #686868;
+  }
+}

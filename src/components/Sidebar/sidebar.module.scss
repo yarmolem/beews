@@ -1,0 +1,69 @@
+@import '@/styles/variables';
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1400;
+
+  &_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  &_buttonClose {
+    position: absolute;
+    font-family: SunFlower;
+    top: 1rem;
+    right: 1rem;
+    color: white;
+    font-weight: bold;
+    background: $brown-letter;
+  }
+
+  &_content {
+    display: grid;
+    grid-template-rows: 100px 1fr 50px;
+    width: 90%;
+    height: 100vh;
+    max-width: 300px;
+    padding: 3rem 2rem;
+    background-color: $brown-light;
+    color: $brown-letter;
+
+    img {
+      margin-top: 1rem;
+      justify-self: center;
+    }
+
+    button {
+      font-family: SofiaProRegular;
+    }
+  }
+
+  &_links {
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid darken($color: $brown-light, $amount: 10);
+    }
+
+    li a {
+      text-decoration: none;
+      color: $brown-letter;
+      font-family: SofiaProSemi;
+      font-size: 1.5rem;
+    }
+  }
+}

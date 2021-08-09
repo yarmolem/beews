@@ -1,0 +1,32 @@
+@import '@/styles/mixins';
+@import '@/styles/variables';
+
+.camino {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding-block: 2rem;
+
+  display: grid;
+  gap: 1rem;
+  justify-content: center;
+  grid-template-columns: 1fr;
+
+  @include break_sm {
+    padding-block: 2.5rem;
+    grid-template-columns: repeat(2, 260px);
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 877px) {
+    padding-block: 3.5rem;
+    grid-template-columns: repeat(3, minmax(200px, 260px));
+    gap: 1.5rem;
+  }
+
+  @include break_xl {
+    padding-block: 6rem;
+    grid-template-columns: repeat(3, 260px);
+    gap: 65px;
+  }
+}

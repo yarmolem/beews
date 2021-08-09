@@ -1,0 +1,64 @@
+@import '@/styles/variables';
+
+.primary {
+  h1,
+  h2 {
+    color: $primary;
+  }
+}
+.warning {
+  h1,
+  h2 {
+    color: $yellow;
+  }
+}
+.danger {
+  h1,
+  h2 {
+    color: $red;
+  }
+}
+.cyan {
+  h1,
+  h2 {
+    color: $cyan;
+  }
+}
+
+.cardslider {
+  z-index: 1902;
+  width: 90%;
+  max-width: 371px;
+
+  &_item {
+    z-index: 1902;
+    margin: 1rem;
+    padding: 2rem;
+    height: 540px;
+    background: #f4f0ed;
+    box-shadow: 0px 0px 20px rgba(53, 52, 49, 0.25);
+    border-radius: 30px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      font-family: SofiaProRegular;
+    }
+
+    h2 {
+      font-family: SunFlower;
+      margin-bottom: 2rem;
+    }
+
+    h4 {
+      font-family: SOfiaProLight;
+      color: $brown-letter;
+      text-align: center;
+      font-size: 1.1rem;
+      white-space: normal;
+    }
+  }
+}

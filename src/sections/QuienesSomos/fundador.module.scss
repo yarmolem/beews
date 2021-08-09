@@ -1,0 +1,80 @@
+@import '@/styles/mixins';
+@import '@/styles/variables';
+
+.fundador {
+  padding-block: 2rem;
+  background-color: $orange;
+
+  @include break_md {
+    padding-block: 4rem;
+  }
+
+  @include break_lg {
+    padding-block: 6rem;
+  }
+
+  &_grid {
+    gap: 2rem;
+    display: grid;
+    color: white;
+    align-items: center;
+    grid-template-columns: 1fr;
+
+    @include break_md {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include container;
+  }
+
+  &_content {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    p,
+    h2,
+    h3 {
+      text-align: center;
+      @include break_md {
+        text-align: left;
+      }
+    }
+
+    p {
+      max-width: 500px;
+
+      @include break_sm {
+        font-size: 1.2rem;
+      }
+      @include break_md {
+        font-size: 1.3rem;
+        max-width: 700px;
+      }
+      @include break_lg {
+        font-size: 1.4rem;
+      }
+    }
+
+    h2 {
+      font-family: SunFlower;
+    }
+
+    h3,
+    p {
+      font-family: SofiaProRegular;
+    }
+  }
+
+  &_image {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 300px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
