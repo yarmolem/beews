@@ -37,8 +37,8 @@ const CaminoCompra = () => {
       </Modal>
       <div className={styles.camino}>
         <CaminoCard {...{ onClick: () => handleSlide(0) }} {...ELIGE} />
-        <CaminoCard {...{ onClick: () => handleSlide(1) }} {...REGALA} />
-        <CaminoCard {...{ onClick: () => handleSlide(2) }} {...REGISTRATE} />
+        <CaminoCard {...{ onClick: () => handleSlide(1) }} {...REGISTRATE} />
+        <CaminoCard {...{ onClick: () => handleSlide(2) }} {...REGALA} />
         <CaminoCard {...{ onClick: () => handleSlide(3) }} {...PLANIFICA} />
         <CaminoCard {...{ onClick: () => handleSlide(4) }} {...VIAJA} />
         <CaminoCard {...{ onClick: () => handleSlide(5) }} {...DISFRUTA} />

@@ -50,7 +50,7 @@
 
     @include break_xl {
       width: 100%;
-      padding: 5rem 3rem;
+      padding: 3rem 3rem;
       border-radius: 3rem;
     }
 
@@ -92,5 +92,36 @@
   &_btn {
     margin-top: 1rem;
     text-align: center;
+    font-family: SofiaProSemi;
+  }
+}
+
+.login_btn {
+  padding-inline: 2rem;
+  display: block;
+  margin: 0 auto;
+  width: fit-content;
+  color: #fff;
+  font-family: SofiaProSemi;
+  background-color: $primary;
+  border-radius: 15px;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.goregistro_btn {
+  padding-inline: 2rem;
+  display: block;
+  margin: 0 auto;
+  width: fit-content;
+  color: #fff;
+  font-family: SofiaProSemi;
+  background-color: $secondary;
+  border-radius: 15px;
+
+  &:hover {
+    color: #fff;
   }
 }

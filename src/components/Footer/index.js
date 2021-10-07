@@ -1,3 +1,5 @@
+import { translate } from '@/i18n/translate'
+import { useRouter } from 'next/dist/client/router'
 import React from 'react'
 
 // Componentsj
@@ -7,10 +9,14 @@ import Image from '../Image'
 import styles from './footer.module.scss'
 
 const Footer = () => {
+  const { locale } = useRouter()
+
+  const { footer } = translate[locale]
+
   return (
     <footer className={styles.footer}>
       <Image
-        src="/images/logo-footer.svg"
+        src="/images/logo-white.svg"
         alt="logo Beews"
         className={styles.footer_logo}
       />
@@ -18,13 +24,13 @@ const Footer = () => {
       <div className={styles.footer_item}>
         <ul className={styles.footer_links}>
           <li>
-            <a href="#">Aviso de privacidad</a>
+            <a href="#">{footer.privacidad}</a>
           </li>
           <li>
-            <a href="#">Términos y condiciones</a>
+            <a href="#">{footer.terms}</a>
           </li>
           <li>
-            <a href="#">Políticas de Cookies</a>
+            <a href="#">{footer.cookies}</a>
           </li>
           <li>
             <a href="#">FAQ’S</a>
@@ -33,32 +39,37 @@ const Footer = () => {
       </div>
 
       <div className={styles.footer_item}>
-        <p>Síguenos en nuestras redes</p>
+        <p>{footer.redes}</p>
         <div className={styles.footer_social}>
           <div className={styles.footer_socialIcon}>
             <Image src="/images/facebook.svg" alt="Logo Facebook" />
           </div>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.footer_socialIcon}
+            href="https://www.youtube.com/channel/UCY0sfAoKS7xWTfL2-GhEWFA"
+          >
+            <Image src="/images/youtube.svg" alt="Logo Youtube" />
+          </a>
           <div className={styles.footer_socialIcon}>
-            <Image src="/images/youtube.svg" alt="Logo Facebook" />
+            <Image src="/images/instagram.svg" alt="Logo Instagram" />
           </div>
           <div className={styles.footer_socialIcon}>
-            <Image src="/images/instagram.svg" alt="Logo Facebook" />
-          </div>
-          <div className={styles.footer_socialIcon}>
-            <Image src="/images/linkedin.svg" alt="Logo Facebook" />
+            <Image src="/images/linkedin.svg" alt="Logo linkedin" />
           </div>
         </div>
       </div>
 
       <div className={styles.footer_item}>
-        <label className="mb-2">Suscríbete a nuestro newsletter</label>
+        <label className="mb-2">{footer.newsletter}</label>
         <div className={styles.footer_newsletter}>
           <input
             type="text"
             className="form-control"
-            placeholder="Escribe tu mail"
+            placeholder={footer.email}
           />
-          <button className="btn">Suscríbete</button>
+          <button className="btn">{footer.suscribete}</button>
         </div>
       </div>
 
@@ -68,6 +79,11 @@ const Footer = () => {
           src="/images/whatsapp.svg"
           className={styles.footer_wsp}
         />
+      </div>
+
+      <div className={styles.footer_derechos}>
+        <span>Beews 2021</span>
+        <p>{footer.derechos}</p>
       </div>
     </footer>
   )

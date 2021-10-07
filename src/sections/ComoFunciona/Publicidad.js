@@ -1,16 +1,21 @@
 import React from 'react'
+import { useRouter } from 'next/dist/client/router'
 
 // Components
 import Image from '@/components/Image'
+import { translate } from '@/i18n/translate'
 
 // styles
 import styles from './publicidad.module.scss'
 
 const Publicidad = () => {
+  const { locale } = useRouter()
+  const {
+    comoFunciona: { publicidad }
+  } = translate[locale]
+
   return (
     <div className={styles.publicidad}>
-      <Image className={styles.circle_1} src="/images/circle-red.svg" alt="" />
-      <Image className={styles.circle_2} src="/images/circle-red.svg" alt="" />
       <Image
         alt=""
         className={styles.persona_1}
@@ -22,14 +27,21 @@ const Publicidad = () => {
         src="/images/person-yellow2.svg"
       />
       <div className={styles.publicidad_wrap}>
-        <h2>
-          No hay distancia <br /> que nos separe
-        </h2>
+        <h1>{publicidad.title}</h1>
+
+        <h3>{publicidad.subtitle}</h3>
+
         <h4>
-          <span>
-            <Image src="/images/instagram-white.svg" alt="Logo Instagram" />
+          <span className={styles.publicidad_icon}>
+            <img src="/images/youtube.svg" alt="Logo Youtube" />
           </span>
-          ¡Siguenos en Instagram!
+          <a
+            href="https://www.youtube.com/channel/UCY0sfAoKS7xWTfL2-GhEWFA"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {publicidad.social}
+          </a>
         </h4>
       </div>
     </div>

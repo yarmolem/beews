@@ -1,3 +1,5 @@
+import { translate } from '@/i18n/translate'
+import { useRouter } from 'next/dist/client/router'
 import React from 'react'
 
 // terceros
@@ -7,6 +9,11 @@ import Slider from 'react-slidy'
 import styles from './cardslider.module.scss'
 
 const CardSlider = ({ onToggle, initialSlide = 0 }) => {
+  const { locale } = useRouter()
+  const {
+    index: { QueHacemos }
+  } = translate[locale]
+
   return (
     <div className={styles.cardslider}>
       <Slider {...{ initialSlide }}>
@@ -39,13 +46,7 @@ const CardSlider = ({ onToggle, initialSlide = 0 }) => {
           <h1>Planeamos</h1>
           <h2>We plan</h2>
 
-          <h4>
-            <strong>
-              Nos convertimos en tu contacto en Lima para preparar la sorpresa,
-            </strong>{' '}
-            somos cómplices para planificar la experiencia.
-          </h4>
-          <h4>Definimos juntos dónde, cómo y cuándo realizar la entrega.</h4>
+          {QueHacemos.card1.Paragraph}
 
           <button onClick={onToggle} className="btn">
             <svg
@@ -100,13 +101,7 @@ const CardSlider = ({ onToggle, initialSlide = 0 }) => {
           <h1>Entregamos</h1>
           <h2>We deliver</h2>
 
-          <h4>
-            <strong>
-              Te presentamos a nuestros socios artistas que prepararán el regalo
-              perfecto
-            </strong>
-          </h4>
-          <h4>Coordinamos el recojo del mismo para luego entregarlo.</h4>
+          {QueHacemos.card2.Paragraph}
 
           <button onClick={onToggle} className="btn">
             <svg
@@ -165,16 +160,7 @@ const CardSlider = ({ onToggle, initialSlide = 0 }) => {
           <h1>Conectamos</h1>
           <h2>We connect</h2>
 
-          <h4>
-            <strong>
-              Preparamos la conexión en línea contigo desde el lugar elegido,
-            </strong>{' '}
-            somos cómplices para planificar la experiencia.
-          </h4>
-          <h4>
-            contamos con tu apoyo para dar el empujón final para que la sorpresa
-            sea memorable e inolvidable.
-          </h4>
+          {QueHacemos.card3.Paragraph}
 
           <button onClick={onToggle} className="btn">
             <svg
@@ -229,13 +215,7 @@ const CardSlider = ({ onToggle, initialSlide = 0 }) => {
           <h1>Grabamos</h1>
           <h2>We tape & edit</h2>
 
-          <h4>
-            <strong>
-              Preparamos la conexión en línea contigo desde el lugar elegido,
-            </strong>{' '}
-            contamos con tu apoyo para dar el empujón final para que la sorpresa
-            sea memorable e inolvidable.
-          </h4>
+          {QueHacemos.card4.Paragraph}
 
           <button onClick={onToggle} className="btn">
             <svg

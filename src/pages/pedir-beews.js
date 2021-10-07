@@ -5,7 +5,7 @@ import PedirBeews from '@/sections/PedirBeews'
 
 const PedirBeewsPage = () => {
   return (
-    <div className="bg-primary">
+    <div>
       <Head>
         <title>Beews | Pedir Beews</title>
       </Head>

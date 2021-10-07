@@ -40,9 +40,10 @@
   }
 
   &_grid {
-    margin-bottom: 2rem;
-    display: grid;
     gap: 1.5rem;
+    display: grid;
+    margin-bottom: 2rem;
+    justify-content: center;
 
     @include break_md {
       grid-template-columns: 1fr 1fr;
@@ -51,21 +52,23 @@
       margin-bottom: 5rem;
     }
   }
+}
 
-  button {
-    margin: 0 auto;
+.submit {
+  margin: 0 auto;
+  color: white;
+  margin-top: 2rem;
+  padding-inline: 3rem;
+  border-radius: 15px;
+  font-family: sofiaProSemi;
+
+  @include break_lg {
+    font-size: 30px;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
     color: white;
-    margin-top: 2rem;
-    font-family: sofiaProSemi;
-
-    @include break_lg {
-      font-size: 30px;
-    }
-
-    &:hover,
-    &:focus,
-    &:active {
-      color: white;
-    }
   }
 }

@@ -1,0 +1,20 @@
+@import '@/styles/mixins';
+@import '@/styles/variables';
+
+.toast {
+  p,
+  h4 {
+    margin: 0;
+  }
+  
+  h4 {
+    font-size: 20px;
+    color: $brown-letter;
+    font-family: SunFlower;
+  }
+
+  p {
+    color: #b4b4b4;
+    font-family: SofiaProSemi;
+  }
+}

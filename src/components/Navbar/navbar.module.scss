@@ -43,10 +43,10 @@
         list-style: none;
 
         a {
-          font-family: SofiaProLight;
-          text-decoration: none;
-          color: $dark-letter;
           font-weight: 700;
+          color: $dark-letter;
+          text-decoration: none;
+          font-family: SofiaProLight;
         }
       }
     }
@@ -86,7 +86,7 @@
 }
 
 .linkActive {
-  color: $primary !important;
+  border-bottom: 2px solid currentColor;
 }
 .btnActive {
   background: $primary !important;

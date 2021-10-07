@@ -1,20 +1,26 @@
 import React from 'react'
+import { useRouter } from 'next/dist/client/router'
 
 // Styles
 import styles from './fundador.module.scss'
 
-const Fundador = ({ src, content, name, position, bg }) => {
+const Fundador = ({ src, content, name, position, nick }) => {
+  const { locale } = useRouter()
+
   return (
-    <section className={`bg-${bg} ${styles.fundador}`}>
+    <section className={styles.fundador}>
       <div className={styles.fundador_grid}>
         <div className={styles.fundador_image}>
           <img src={src} alt={name} />
+          <div className={styles.fundador_image_name}>
+            <h2>{nick}</h2>
+          </div>
         </div>
         <div className={styles.fundador_content}>
-          <p>&quot; {content} &quot;</p>
+          <p>&quot; {content[locale]} &quot;</p>
 
           <h2> {name} </h2>
-          <h3> {position} </h3>
+          <h3> {position[locale]} </h3>
         </div>
       </div>
     </section>

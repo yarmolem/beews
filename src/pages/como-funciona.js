@@ -3,10 +3,10 @@ import Head from 'next/head'
 
 // sections
 import Hero from '@/sections/ComoFunciona/Hero'
+import Dudas from '@/sections/ComoFunciona/Dudas'
 import Productos from '@/sections/ComoFunciona/Productos'
 import Publicidad from '@/sections/ComoFunciona/Publicidad'
 import CaminoCompra from '@/sections/ComoFunciona/CaminoCompra'
-import Dudas from '@/sections/ComoFunciona/Dudas'
 
 const ComoFunciona = () => {
   return (
@@ -17,9 +17,9 @@ const ComoFunciona = () => {
 
       <Hero />
       <CaminoCompra />
-      <Publicidad />
       <Productos />
       <Dudas />
+      <Publicidad />
     </div>
   )
 }

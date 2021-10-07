@@ -1,13 +1,20 @@
 import React from 'react'
+import { useRouter } from 'next/dist/client/router'
 
 // styles
 import styles from './dudas.module.scss'
+import { translate } from '@/i18n/translate'
 
 const Dudas = () => {
+  const { locale } = useRouter()
+  const {
+    comoFunciona: { form }
+  } = translate[locale]
+
   return (
     <div className={styles.dudas}>
       <div className={styles.dudas_wrap}>
-        <h1>¿Tienes alguna duda?</h1>
+        <h1>{form.title}</h1>
         <form
           className={styles.dudas_form}
           onSubmit={(e) => e.preventDefault()}
@@ -20,7 +27,7 @@ const Dudas = () => {
               placeholder="Nombre"
               className={`form-control ${styles.dudas_input}`}
             />
-            <label htmlFor="nameFloat">Nombre</label>
+            <label htmlFor="nameFloat">{form.placeholder.name}</label>
           </div>
           <div className="form-floating mb-1">
             <input
@@ -30,7 +37,7 @@ const Dudas = () => {
               placeholder="Email"
               className={`form-control ${styles.dudas_input}`}
             />
-            <label htmlFor="emailFloat">Email</label>
+            <label htmlFor="emailFloat">{form.placeholder.email}</label>
           </div>
 
           <div className="form-floating mb-4">
@@ -40,15 +47,15 @@ const Dudas = () => {
               placeholder="¿Cómo de podemos ayudar?"
               className={`form-control ${styles.dudas_input}`}
             />
-            <label htmlFor="commentFloat">¿Cómo de podemos ayudar?</label>
+            <label htmlFor="commentFloat">{form.placeholder.textarea}</label>
           </div>
 
-          <button
-            className={`btn btn-primary text-white btn-lg ${styles.dudas_formBtn}`}
-          >
-            Enviar consulta
+          <button className={`btn text-white btn-lg ${styles.dudas_formBtn}`}>
+            {form.submit}
           </button>
         </form>
+        <img src="/images/brown_wave.svg" alt="" className={styles.wave1} />
+        <img src="/images/brown_wave.svg" alt="" className={styles.wave2} />
       </div>
     </div>
   )

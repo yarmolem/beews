@@ -1,7 +1,12 @@
+@import 'mixins';
 @import 'variables';
 
 @import '~bootstrap/scss/bootstrap.scss';
 @import '~react-slidy/lib/index';
+@import '~swiper/swiper.min.css';
+@import '~swiper/components/navigation/navigation.scss';
+@import '~swiper/components/pagination/pagination.scss';
+@import '~react-toastify/scss/main.scss';
 
 @import 'custom';
 @import 'fonts';

@@ -7,9 +7,11 @@ import { BarsIcon } from '@/components/SVGS'
 
 // Styles
 import styles from './navbar.module.scss'
+import { translate } from '@/i18n/translate'
 
 const Navbar = ({ onOpen }) => {
-  const { pathname, push } = useRouter()
+  const { pathname, push, locale } = useRouter()
+  const { navbar } = translate[locale]
 
   return (
     <nav className={styles.navbar}>
@@ -36,7 +38,7 @@ const Navbar = ({ onOpen }) => {
                   pathname === '/quienes-somos' ? styles.linkActive : ''
                 }
               >
-                Quiénes somos
+                {navbar.aboutUs}
               </a>
             </Link>
           </li>
@@ -47,12 +49,12 @@ const Navbar = ({ onOpen }) => {
                   pathname === '/como-funciona' ? styles.linkActive : ''
                 }
               >
-                Como funciona
+                {navbar.howWorks}
               </a>
             </Link>
           </li>
           <li>
-            <a href="#">Nuestra feria </a>
+            <a href="#">{navbar.fair} </a>
           </li>
         </ul>
 
@@ -60,7 +62,9 @@ const Navbar = ({ onOpen }) => {
           <li>
             <Link href="/registro">
               <a className={pathname === '/registro' ? styles.linkActive : ''}>
-                Regístrate
+                <p style={{ lineHeight: '16px', margin: 0, width: '100px' }}>
+                  {navbar.auth}
+                </p>
               </a>
             </Link>
           </li>
@@ -73,11 +77,21 @@ const Navbar = ({ onOpen }) => {
                   : 'btn btn-dark'
               }
             >
-              Pide un Beews
+              {navbar.order}
             </button>
           </li>
           <li>
-            <a href="#">ESP / ENG</a>
+            <Link href={pathname} locale="es-ES">
+              <a style={{ fontWeight: locale === 'es-ES' ? 'bold' : 'unset' }}>
+                ESP
+              </a>
+            </Link>
+            <span>{' / '}</span>
+            <Link href={pathname} locale="en-US">
+              <a style={{ fontWeight: locale === 'en-US' ? 'bold' : 'unset' }}>
+                ENG
+              </a>
+            </Link>
           </li>
         </ul>
       </div>

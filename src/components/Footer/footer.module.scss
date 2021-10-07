@@ -11,14 +11,14 @@
   justify-content: center;
   grid-template-columns: 1fr;
 
-  @include break_sm {
+  @include break_md {
     grid-template-columns: repeat(2, 1fr);
   }
   @include break_xl {
-    grid-template-columns: repeat(3, 250px) 400px;
+    grid-template-columns: 150px 250px 250px 400px 150px;
   }
   @include break_xxl {
-    padding-block: 5rem;
+    padding-block: 4rem;
     grid-template-columns: repeat(3, 250px) 500px 100px;
   }
 
@@ -30,11 +30,30 @@
     width: 150px;
     height: 50px;
     justify-self: center;
+    
+    @include break_xl {
+      justify-self: flex-start;
+
+    }
   }
 
   &_item {
     color: white;
     justify-self: center;
+  }
+
+  &_derechos {
+    color: white;
+    text-align: center;
+    
+    @include break_xl {
+      text-align: left;
+      grid-column: span 2 / span 2;
+    }
+
+    p {
+      margin: 0;
+    }
   }
 
   &_social {

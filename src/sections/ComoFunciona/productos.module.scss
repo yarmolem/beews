@@ -2,22 +2,31 @@
 @import '@/styles/variables';
 
 .productos {
+  z-index: 2;
   position: relative;
   display: flex;
-  padding: 2.5rem;
-  background: $primary;
-  flex-direction: column;
-  justify-content: center;
+  padding-inline: 1rem;
+  padding-bottom: 2.5rem;
   align-items: center;
+  background: $primary;
+  overflow: hidden;
+  flex-direction: column;
+  background-size: cover;
+  justify-content: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('/images/bg-paquetes.png');
 
   @include break_sm {
     min-height: 25rem;
   }
   @include break_md {
     min-height: 30rem;
+    padding-bottom: 3.5rem;
   }
   @include break_lg {
     min-height: 609px;
+    padding-bottom: 4.5rem;
   }
 
   h1,
@@ -56,6 +65,21 @@
     }
   }
 
+  &_letter {
+    z-index: -1;
+    width: 300px;
+    height: 300px;
+    margin-top: -5.5rem;
+    padding-bottom: 1rem;
+    object-fit: cover;
+
+    @include break_md {
+      margin-top: -4rem;
+      width: 120%;
+      height: 120%;
+    }
+  }
+
   &_btn {
     display: grid;
     gap: 0.5rem;
@@ -86,19 +110,30 @@
 
 .cloud_1,
 .cloud_2 {
+  width: 100px;
   display: none;
   position: absolute;
-
+  
   @include break_sm {
     display: block;
+  }
+  @include break_md {
+    width: 150px;
+  }
+  @include break_lg {
+    width: 180px;
   }
 }
 
 .cloud_1 {
-  top: 10%;
-  left: 10%;
+  top: 25%;
+  right: 10%;
 }
 .cloud_2 {
-  bottom: 10%;
-  right: 10%;
+  top: 40%;
+  left: 10%;
+
+  @include break_md {
+    width: 150px;
+  }
 }

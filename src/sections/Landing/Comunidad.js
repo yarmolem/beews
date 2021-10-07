@@ -1,15 +1,22 @@
+import { useRouter } from 'next/dist/client/router'
 import React from 'react'
 
 // styles
 import Image from '@/components/Image'
 import styles from './comunidad.module.scss'
+import { translate } from '@/i18n/translate'
 
-const Comunidad = () => {
+const ComunidadPage = () => {
+  const { locale } = useRouter()
+  const {
+    index: { Comunidad }
+  } = translate[locale]
+
   return (
     <div>
       <div className={styles.comunidad}>
-        <h3>Sé parte de la comunidad Beews</h3>
-        <h4>Instagram News</h4>
+        <h3>{Comunidad.title}</h3>
+        <h4>{Comunidad.subtitle}</h4>
       </div>
 
       <div className={styles.comunidad_grid}>
@@ -24,4 +31,4 @@ const Comunidad = () => {
   )
 }
 
-export default Comunidad
+export default ComunidadPage

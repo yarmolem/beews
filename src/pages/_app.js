@@ -1,29 +1,35 @@
 import '@fontsource/dm-sans'
 import React from 'react'
+import { ToastContainer } from 'react-toastify'
 
 // Components
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Sidebar from '@/components/Sidebar'
-// import Preloader from '@/components/Preloader'
 
-// hooks
-import useDisclosure from 'src/hooks/useDisclosure'
+// utils
+import AuthState from '@/context/auth/AuthState'
+import useDisclosure from '@/hooks/useDisclosure'
+import CheckoutState from '@/context/checkout/CheckoutState'
 
 // Styles
 import '@/styles/index.scss'
-import 'react-slidy/lib/styles.css'
 
 const App = ({ Component, pageProps }) => {
   const { isOpen, onClose, onOpen } = useDisclosure()
 
   return (
     <main>
-      {/* <Preloader /> */}
-      <Navbar {...{ onOpen }} />
-      <Sidebar {...{ isOpen, onClose }} />
-      <Component {...pageProps} />
-      <Footer />
+      <AuthState>
+        <CheckoutState>
+          {/* <Preloader /> */}
+          <Navbar {...{ onOpen }} />
+          <Sidebar {...{ isOpen, onClose }} />
+          <Component {...pageProps} />
+          <Footer />
+        </CheckoutState>
+      </AuthState>
+      <ToastContainer />
     </main>
   )
 }

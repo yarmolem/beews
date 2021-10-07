@@ -2,9 +2,19 @@
 
 .iconButton {
   color: white;
+  font-size: 17px;
+  font-family: SofiaProSemi;
+  padding: 1rem 1.5rem;
+  border-radius: 20px;
 
   & span {
     margin-right: 0.5rem;
+    font-weight: bold;
+  }
+
+  svg {
+    width: 25px;
+    height: 25px;
   }
 
   &:focus {

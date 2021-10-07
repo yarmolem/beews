@@ -4,21 +4,34 @@
 .light {
   background: $bg-gray;
 
-  h2,
+  h2 {
+    color: $primary;
+  }
+
   h3,
   p {
     color: $brown-letter;
+  }
+
+  button {
+    &:hover {
+      color: #fff;
+    }
   }
 }
 
 .dark {
   background: $brown-dark;
 
+  h3 {
+    color: #F7F0E7;
+  }
+
   h2,
-  h3,
   p {
     color: $gray-200;
   }
+
 }
 
 .commonSection {
@@ -76,8 +89,8 @@
     }
 
     h2 {
-      font-weight: bold;
-      font-family: SofiaProBlack;
+      // font-weight: bold;
+      font-family: SunFlower;
 
       @include break_sm {
         font-size: 2.5rem;
@@ -108,6 +121,7 @@
     }
 
     p {
+      font-family: SofiaProSemi;
       @include break_md {
         font-size: 1.2rem;
       }
@@ -118,14 +132,100 @@
     }
   }
 
-  &_img {
+  &_btn {
+    display: flex;
+    align-items: center;
+    font-size: 17px;
+    border-radius: 20px;
+    padding: 1rem 1.5rem;
+    font-family: SofiaProSemi;
+
+    span {
+      margin-right: 1rem;
+    }
+  }
+
+  &_wrap {
     overflow: hidden;
-    border-radius: 1.5rem;
+    max-height: 469px;
+  }
+
+  &_img {
+    position: relative;
+    overflow: hidden;
+    max-height: 469px;
+    border-radius: 25px;
 
     img {
+      z-index: 1;
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: fill;
     }
+
+    button {
+      position: absolute;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &_examples {
+    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    & > div {
+      position: relative;
+      
+      &:first-child img {
+        border-radius: 1.5rem;
+        margin-bottom: 1.5rem
+      }
+
+      img {
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 5px;
+      }
+
+      button {
+        outline: 0;
+        border: 0;
+        cursor: pointer;
+        background: transparent;
+
+        svg {
+          z-index: 2;
+          top: 50%;
+          left: 50%;
+          position: absolute;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+  }
+}
+
+.brown {
+  color: #fff;
+  background-color: #6A5545;
+
+  svg path {
+    stroke: #fff;
+  }
+}
+.gray {
+  color: #000;
+  background-color: $card-gray;
+
+  svg path {
+    stroke: $dark;
   }
 }

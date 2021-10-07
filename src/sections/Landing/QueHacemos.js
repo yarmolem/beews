@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useRouter } from 'next/dist/client/router'
 
 // components
 import Card from '@/components/Card'
@@ -14,10 +15,17 @@ import { PlusCircleIcon } from '@/components/SVGS'
 
 // styles
 import styles from './queHacemos.module.scss'
+import { translate } from '@/i18n/translate'
 
-const QueHacemos = () => {
+const QueHacemosPage = () => {
+  const { locale } = useRouter()
   const { isOpen, onToggle } = useDisclosure()
   const [initialSlide, setInitialSlide] = useState(0)
+
+  // translate
+  const {
+    index: { QueHacemos }
+  } = translate[locale]
 
   return (
     <>
@@ -25,8 +33,8 @@ const QueHacemos = () => {
         <CardSlider {...{ onToggle, initialSlide }} />
       </Modal>
       <section className={styles.queHacemos}>
-        <h2>¿Qué hacemos en Beews?</h2>
-        <h3>Déscubrelo en estos 4 pasos</h3>
+        <h2>{QueHacemos.title}</h2>
+        <h3>{QueHacemos.subtitle}</h3>
 
         <Image
           alt=""
@@ -43,7 +51,7 @@ const QueHacemos = () => {
           <Card color="primary">
             <div className={styles.queHacemos_card}>
               <Image alt="" src="/images/beews-calendar.svg" />
-              <h4>Planeamos</h4>
+              <h4>{QueHacemos.card1.title}</h4>
               <button
                 onClick={() => {
                   onToggle()
@@ -58,7 +66,7 @@ const QueHacemos = () => {
           <Card color="warning">
             <div className={styles.queHacemos_card}>
               <Image alt="" src="/images/beews-letter.svg" />
-              <h4>Entregamos</h4>
+              <h4>{QueHacemos.card2.title}</h4>
               <button
                 onClick={() => {
                   onToggle()
@@ -73,7 +81,7 @@ const QueHacemos = () => {
           <Card color="danger">
             <div className={styles.queHacemos_card}>
               <Image alt="" src="/images/beews-hart.svg" />
-              <h4>Conectamos</h4>
+              <h4>{QueHacemos.card3.title}</h4>
               <button
                 onClick={() => {
                   onToggle()
@@ -88,7 +96,7 @@ const QueHacemos = () => {
           <Card color="info">
             <div className={styles.queHacemos_card}>
               <Image alt="" src="/images/beews-camera.svg" />
-              <h4>Grabamos</h4>
+              <h4>{QueHacemos.card4.title}</h4>
               <button
                 onClick={() => {
                   onToggle()
@@ -106,4 +114,4 @@ const QueHacemos = () => {
   )
 }
 
-export default QueHacemos
+export default QueHacemosPage

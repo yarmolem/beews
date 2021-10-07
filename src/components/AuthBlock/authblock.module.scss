@@ -1,0 +1,63 @@
+@import '@/styles/mixins';
+@import '@/styles/variables';
+
+.authblock {
+  z-index: 4;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  background-color: white;
+
+  &_content {
+    padding: 2rem;
+    width: 90%;
+    max-width: 450px;
+    border-radius: 15px;
+    background-color: white;
+
+    h2,
+    h3 {
+      text-align: center;
+      color: $brown-dark;
+    }
+  
+    h2 {
+      margin-bottom: 1rem;
+      font-size: 3rem;
+      font-family: SunFlower;
+    }
+  
+    h3 {
+      font-size: 3rem;
+      font-size: 20px;
+      font-family: SofiaProSemi;
+    }
+
+    form {
+      button {
+        border-radius: 15px;
+        display: block;
+        margin: 0 auto;
+        font-family: SofiaProSemi;
+      }
+    }
+  }
+
+}
+
+.registro {
+  padding-inline: 2rem;
+  display: block;
+  margin: 0 auto;
+  width: fit-content;
+  color: #fff;
+  font-family: SofiaProSemi;
+  background-color: $secondary;
+  border-radius: 15px;
+
+  &:hover {
+    color: #fff;
+  }
+}

@@ -24,20 +24,20 @@
     font-family: SunFlower;
     top: 1rem;
     right: 1rem;
-    color: white;
     font-weight: bold;
-    background: $brown-letter;
+    color: white !important;
+    background-color: $brown-letter !important;
   }
 
   &_content {
     display: grid;
-    grid-template-rows: 100px 1fr 50px;
     width: 90%;
     height: 100vh;
     max-width: 300px;
     padding: 3rem 2rem;
-    background-color: $brown-light;
     color: $brown-letter;
+    background-color: $brown-light;
+    grid-template-rows: 100px 0.5fr 50px;
 
     img {
       margin-top: 1rem;

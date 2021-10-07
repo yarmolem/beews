@@ -1,26 +1,48 @@
+import { translate } from '@/i18n/translate'
+import { useRouter } from 'next/dist/client/router'
 import React from 'react'
-import Link from 'next/link'
 
 // styles
 import styles from './compra-finalizada.module.scss'
 
 const CompraFinalizada = () => {
+  const { locale } = useRouter()
+  const { checkout } = translate[locale]
+
   return (
     <div className={styles.compraFinalizada}>
       <div>
-        <h1 className="display-1">
-          ¡Tu Beews <br /> está en camino!
-        </h1>
-        <h4>
-          Pronto estaremos en contacto contigo para proporcionarte la
-          información que necesitas
-        </h4>
+        <div className={styles.title}>
+          <h1 className="display-1">{checkout.despego.title}</h1>
+        </div>
 
-        <Link href="/">
-          <a className="btn btn-outline-light btn-lg">Ir al home</a>
-        </Link>
+        <div className={styles.grid}>
+          <img
+            src={
+              locale === 'es-ES'
+                ? '/images/compra-finalizada.png'
+                : '/images/compra-finalizada-en.png'
+            }
+            alt=""
+          />
+          <div>
+            <h2 className="display-2">{checkout.despego.subtitle}</h2>
+            <p className="display-6">{checkout.despego.content}</p>
+
+            <a
+              target="_blank"
+              className={styles.link}
+              rel="noopener noreferrer"
+              href="https://api.whatsapp.com/send?phone=+51999999999&text=Quiero%20mas%20informacion"
+            >
+              <span>
+                <img alt="Logo WhatsApp" src="/images/whatsapp.svg" />
+              </span>
+              {checkout.despego.button}
+            </a>
+          </div>
+        </div>
       </div>
-      <img className={styles.mountain} src="/images/mountain.svg" alt="" />
     </div>
   )
 }

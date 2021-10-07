@@ -3,7 +3,7 @@
 
 .fundador {
   padding-block: 2rem;
-  background-color: $orange;
+  background-color: #fff;
 
   @include break_md {
     padding-block: 4rem;
@@ -43,7 +43,9 @@
     }
 
     p {
+      font-family: SofiaProSemi;
       max-width: 500px;
+      color: $brown-letter;
 
       @include break_sm {
         font-size: 1.2rem;
@@ -55,26 +57,63 @@
       @include break_lg {
         font-size: 1.4rem;
       }
+      @include break_xl {
+        font-size: 1.5rem;
+      }
     }
 
     h2 {
+      color: $red;
       font-family: SunFlower;
+
+      @include break_xl {
+        font-size: 40px;
+      }
     }
 
-    h3,
-    p {
-      font-family: SofiaProRegular;
+    h3 {
+      color: $brown-letter;
+      font-family: SunFlower;
+
+      @include break_xl {
+        font-size: 34px;
+      }
     }
   }
 
   &_image {
+    position: relative;
     width: 80%;
     margin: 0 auto;
-    max-width: 300px;
+    max-width: 682px;
 
     img {
       width: 100%;
       height: 100%;
+      border-radius: 2rem;
+    }
+
+    &_name {
+      width: 100%;
+      position:absolute;
+      top: 0;
+
+      h2 {
+        font-size: 40px;
+        margin-top: 16px;
+        text-align: center;
+        font-family: SunFlower;
+
+        @include break_md {
+          font-size: 56px;
+          margin-top: 20px;
+        }
+
+        @include break_xl {
+          font-size: 96px;
+          margin-top: 46px;
+        }
+      }
     }
   }
 }

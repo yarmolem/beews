@@ -3,8 +3,12 @@
     "baseUrl": ".",
     "paths": {
       "@/data/*": ["src/data/*"],
+      "@/i18n/*": ["src/i18n/*"],
+      "@/hooks/*": ["src/hooks/*"],
       "@/styles/*": ["src/styles/*"],
+      "@/context/*": ["src/context/*"],
       "@/sections/*": ["src/sections/*"],
+      "@/animations/*": ["src/animations/*"],
       "@/components/*": ["src/components/*"]
     }
   }

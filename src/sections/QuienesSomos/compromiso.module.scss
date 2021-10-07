@@ -2,38 +2,47 @@
 @import '@/styles/mixins';
 
 .compromiso {
+  overflow: hidden;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  background-color: $yellow;
+  background-color: #F8B045;
+
+  padding-block: 2rem;
+
+  @include break_sm {
+    padding-block: 3.5rem;
+  }
+  @include break_md {
+    padding-block: 4.5rem;
+  }
+  @include break_lg {
+    padding-block: 5.5rem;
+  }
+  @include break_xl {
+    padding-block: 8rem;
+  }
+
+  h2,
+  p {
+    text-align: center;
+  }
 
   &_wrap {
-    padding-block: 2rem;
-
-    @include break_sm {
-      padding-block: 3.5rem;
-    }
-    @include break_md {
-      padding-block: 4.5rem;
-    }
-    @include break_lg {
-      padding-block: 5.5rem;
-    }
-    @include break_xl {
-      padding-block: 8rem;
-    }
-
+    display: flex;
+    justify-content: center;
     @include container;
+  }
 
-    h2,
-    p {
-      text-align: center;
-    }
+  &_title {
+    color: #fff;
+    margin: 0 auto;
+    margin-bottom: 1em;
 
     h2 {
       font-family: SunFlower;
-
+  
       @include break_sm {
         font-size: 2rem;
         line-height: 2rem;
@@ -42,49 +51,122 @@
         font-size: 2.5rem;
         line-height: 2.5rem;
       }
-    }
-
-    p {
-      font-family: SofiaProRegular;
-
-      @include break_sm {
-        width: 500px;
-        margin: 0 auto;
-        font-size: 1rem;
-      }
-      @include break_md {
-        width: 700px;
-        font-size: 1.2rem;
-      }
       @include break_lg {
-        font-size: 1.8rem;
+        font-size: 3rem;
+        line-height: 2.5rem;
+      }
+      @include break_xl {
+        font-size: 72px;
+        line-height: 2.5rem;
+        margin-bottom: 1.5em;
       }
     }
   }
 
-  &_title {
-    width: 200px;
-    margin: 0 auto;
-    margin-bottom: 1rem;
-
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
+  &_content {
+    display: grid;
+    place-items: center;
+    width: 100vw;
+    max-width: 350px;
+    padding: 1rem;
+    height: 200px;
+    position: relative;
 
     @include break_sm {
-      width: 250px;
-      margin-bottom: 2rem;
+      padding: 0rem;
+      width: 400px;
+      max-width: unset;
+      height: 300px;
     }
+
     @include break_md {
-      width: 300px;
-      margin-bottom: 3rem;
+      width: 500px;
+      height: 400px;
+    }
+
+    @include break_xl {
+      width: 600px;
+      height: 500px;
+    }
+
+    &_frame {
+      z-index: 1;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    p {
+      z-index: 2;
+      width: 80%;
+      font-size: 0.8rem;
+      line-height:1.2em;
+      font-family: SofiaProSemi;
+
+      @include break_xs {
+        font-size: 1rem;
+      }
+      @include break_sm {
+        width: 80%;
+        margin: 0 auto;
+      }
+      @include break_md {
+        font-size: 1.2rem;
+      }
+      @include break_lg {
+        font-size: 1.5rem;
+      }
+      @include break_xl {
+        font-size: 1.9rem;
+      }
     }
   }
 }
 
-.separador {
-  width: 100%;
-  height: 0.8rem;
-  object-fit: contain;
-  background-image: url(/images/separador.svg);
+.wave1,
+.wave2 {
+  position: absolute;
+  width: 106px;
+  height: 47;
+  
+  @include break_md {
+    width: 206px;
+    height: 87;
+  }
+}
+
+.wave1 {
+  bottom: -10px;
+  right: -100px;
+}
+
+.wave2 {
+  top: 10px;
+  left: -100px;
+}
+
+.globe1 {
+  display: none;
+  position: absolute;
+  width: 140px;
+  height: 240px;
+  right: -50%;
+  top: 0;
+
+  @include break_md {
+    display: block;
+  }
+}
+
+.globe2 {
+  display: none;
+  position: absolute;
+  width: 97px;
+  height: 164px;
+  left: -50%;
+  bottom: 0;
+
+  @include break_md {
+    display: block;
+  }
 }

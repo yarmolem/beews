@@ -2,12 +2,9 @@
 @import '@/styles/variables';
 
 .publicidad {
-  overflow: hidden;
   position: relative;
   background: $red;
   min-height: 15rem;
-  position: relative;
-  padding-block: 2rem;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -17,34 +14,79 @@
     min-height: 22rem;
   }
 
+  &_icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: #faf7f4;
+    border-radius: 50%;
+  }
+
   &_wrap {
-    h2,
+    padding-block: 2rem;
+
+    @include break_xl {
+      padding-block: 5rem;
+    }
+
+    h1,
+    h3,
     h4 {
       color: white;
       text-align: center;
     }
 
-    h2 {
+    h1 {
+      max-width: 650px;
+      line-height: 1em;
       font-family: SunFlower;
+      margin-bottom: 2rem;
 
       @include break_sm {
         margin-bottom: 2rem;
       }
+      @include break_lg {
+        font-size: 60px;
+        margin-bottom: 2rem;
+      }
+    }
+
+    h3 {
+      margin: 0 auto;
+      max-width: 400px;
+      margin-bottom: 1.5rem;
+      font-family: SofiaProLight;
     }
 
     h4 {
       display: flex;
+      margin: 0 auto;
+      align-items: center;
+      justify-content: center;
+      max-width: 400px;
+      font-size: 1rem;
       font-family: SofiaProRegular;
+      text-decoration: underline;
+
+      @include break_sm {
+        font-size: 1.2rem;
+      }
+      @include break_md {
+        font-size: 1.5rem;
+      }
 
       span {
         margin-right: 0.5rem;
+      }
+
+      a {
+        color: white;
       }
     }
   }
 }
 
-.circle_1,
-.circle_2,
 .persona_1,
 .persona_2 {
   position: absolute;
@@ -53,69 +95,20 @@
 .persona_1 {
   display: none;
   left: 0;
+  bottom: -1rem;
 
   @media (min-width: 1028px) {
     display: block;
-    left: 5%;
-  }
-  @include break_lg {
-    left: 8%;
-  }
-  @include break_xl {
-    left: 10rem;
+    left: 4%;
   }
 }
 .persona_2 {
   display: none;
   right: 0;
+  top: 1rem;
 
   @media (min-width: 1028px) {
     display: block;
-    right: 5%;
-  }
-  @include break_lg {
-    right: 8%;
-  }
-  @include break_xl {
-    right: 10rem;
-  }
-}
-
-.circle_1 {
-  display: none;
-  top: -15rem;
-  left: -18rem;
-
-  @media screen and (min-width: 856px) {
-    display: block;
-  }
-
-  @include break_lg {
-    top: -15rem;
-    left: -15rem;
-  }
-  @include break_xl {
-    top: -19rem;
-    left: -9rem;
-  }
-}
-
-.circle_2 {
-  display: none;
-  bottom: -20rem;
-  right: -15rem;
-
-  @media screen and (min-width: 856px) {
-    display: block;
-  }
-
-  @include break_lg {
-    bottom: -18rem;
-    right: -15rem;
-  }
-
-  @include break_xl {
-    bottom: -16rem;
-    right: -12rem;
+    right: 4%;
   }
 }

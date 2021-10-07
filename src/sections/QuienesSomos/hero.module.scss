@@ -7,6 +7,7 @@
   background: #f4f0ed;
 
   &_wrap {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -31,53 +32,84 @@
     }
 
     @include break_xl {
-      padding-block: 4.5rem;
-      height: 100vh;
+      // padding-block: 4.5rem;
+      // height: 100vh;
       margin-top: -79px;
       min-height: 663px;
+      transform: translateY(-50px);
     }
 
     h1,
-    h3 {
+    p {
       margin: 0 auto;
-      text-align: center;
       max-width: 600px;
+      text-align: center;
     }
 
     h1 {
+      max-width: 450px;
+      line-height: 1em;
+      margin-bottom: 0.8em;
       font-family: SunFlower;
-      margin-bottom: 1rem;
 
       @include break_sm {
         font-size: 3rem;
-        line-height: 2rem;
-        margin-bottom: 2rem;
       }
 
       @include break_md {
         font-size: 3rem;
-        line-height: 3.5rem;
-        margin-bottom: 3rem;
       }
 
       @include break_xl {
         font-size: 4rem;
-        line-height: 4.5rem;
-        margin-bottom: 5rem;
+        max-width: 540px;
       }
     }
 
-    h3 {
-      font-family: SofiaProRegular;
+    p {
+      z-index: 10;
       font-size: 1rem;
+      line-height:1em;
+      margin-bottom: 1rem;
+      font-family: SofiaProRegular;
 
       @include break_sm {
         font-size: 1.2rem;
       }
 
       @include break_md {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
       }
     }
+  }
+
+  &_image {
+    z-index: 10;
+    display: none;
+
+    @include break_md {
+      display: block;
+    }
+    @include break_lg {
+      transform: translateY(100px) translateX(-20px);
+    }
+    @include break_xl {
+      transform: translateY(150px) translateX(-30px);
+    }
+  }
+
+  &_cloud1,
+  &_cloud2 {
+    position: absolute;
+    z-index: 1;
+  }
+
+  &_cloud1 {
+    top: 20%;
+    left: 0;
+  }
+  &_cloud2 {
+    right: 0;
+    bottom: 20%;
   }
 }
