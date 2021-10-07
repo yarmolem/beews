@@ -1,5 +1,6 @@
 import { translate } from '@/i18n/translate'
 import { useRouter } from 'next/dist/client/router'
+
 import React from 'react'
 
 // Componentsj
@@ -10,7 +11,7 @@ import styles from './footer.module.scss'
 
 const Footer = () => {
   const { locale } = useRouter()
-
+  const router = useRouter()
   const { footer } = translate[locale]
 
   return (
@@ -23,13 +24,13 @@ const Footer = () => {
 
       <div className={styles.footer_item}>
         <ul className={styles.footer_links}>
-          <li>
+          <li onClick={() => router.push('/politica-de-privacidad')}>
             <a href="#">{footer.privacidad}</a>
           </li>
-          <li>
+          <li onClick={() => router.push('/terminos-condiciones')}>
             <a href="#">{footer.terms}</a>
           </li>
-          <li>
+          <li onClick={() => router.push('/politica-de-cookies')}>
             <a href="#">{footer.cookies}</a>
           </li>
           <li>
