@@ -42,9 +42,14 @@ const Footer = () => {
       <div className={styles.footer_item}>
         <p>{footer.redes}</p>
         <div className={styles.footer_social}>
-          <div className={styles.footer_socialIcon}>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.footer_socialIcon}
+            href="https://www.facebook.com/Beews.site"
+          >
             <Image src="/images/facebook.svg" alt="Logo Facebook" />
-          </div>
+          </a>
           <a
             target="_blank"
             rel="noopener noreferrer"
@@ -53,9 +58,14 @@ const Footer = () => {
           >
             <Image src="/images/youtube.svg" alt="Logo Youtube" />
           </a>
-          <div className={styles.footer_socialIcon}>
+          <a
+            className={styles.footer_socialIcon}
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.instagram.com/beews.site"
+          >
             <Image src="/images/instagram.svg" alt="Logo Instagram" />
-          </div>
+          </a>
           <div className={styles.footer_socialIcon}>
             <Image src="/images/linkedin.svg" alt="Logo linkedin" />
           </div>
