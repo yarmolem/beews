@@ -10,17 +10,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@apollo/client": "^3.4.16",
     "@fontsource/dm-sans": "^4.5.0",
+    "apollo-upload-client": "^16.0.0",
     "bootstrap": "^5.0.2",
     "formik": "^2.2.9",
     "framer-motion": "^4.1.17",
-    "next": "11.0.1",
+    "graphql": "^15.6.1",
+    "next": "^11.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-intersection-observer": "^8.32.0",
     "react-slidy": "^4.3.2",
     "react-toastify": "^8.0.2",
-    "swiper": "^6.8.1"
+    "swiper": "^6.8.1",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "eslint": "^7.31.0",

@@ -1,10 +1,14 @@
+import useToast from '@/hooks/useToast'
 import { translate } from '@/i18n/translate'
+import { useMutation } from '@apollo/client'
 import { useRouter } from 'next/dist/client/router'
 
-import React from 'react'
+import React, { useState } from 'react'
+import { CREAR_SUSCRIPCION_MUTATION } from 'src/graphql/mutation/crearSuscripcion_mutation'
 
 // Componentsj
 import Image from '../Image'
+import Loader from '../Loader/Loader'
 
 // styles
 import styles from './footer.module.scss'
@@ -12,7 +16,59 @@ import styles from './footer.module.scss'
 const Footer = () => {
   const { locale } = useRouter()
   const router = useRouter()
+  const { toast } = useToast()
   const { footer } = translate[locale]
+
+  const [mensajeError, setMensajeError] = useState(null)
+  const [inputSuscribete, setInputSuscribete] = useState('')
+  const handleChangeInputSuscribete = (e) => {
+    setInputSuscribete(e.target.value)
+  }
+
+  const validarEmail = (email) => {
+    const regex = /\S+@\S+\.\S+/
+    return regex.test(email)
+  }
+
+  const [crearSuscripcionMutation, { loading }] = useMutation(
+    CREAR_SUSCRIPCION_MUTATION,
+    {
+      onError: (err) => {
+        const error = err?.graphQLErrors[0]?.debugMessage
+        if (error === 'CORREO_EXISTE') {
+          console.log('error ', error)
+          setMensajeError('Este correo ya fue registrado')
+        } else {
+          console.log('Error desconocido: ', error)
+        }
+      },
+      onCompleted: (data) => {
+        setMensajeError(null)
+        setInputSuscribete('')
+        toast({
+          title: 'Éxito',
+          msg: 'Suscripción exitosa',
+          hideProgressBar: true
+        })
+      }
+    }
+  )
+
+  const crearSuscripcion = async () => {
+    setMensajeError(null)
+    if (validarEmail(inputSuscribete)) {
+      const request = await crearSuscripcionMutation({
+        variables: {
+          input: {
+            email: inputSuscribete
+          }
+        }
+      })
+      console.log('request : ', request)
+    } else {
+      setMensajeError('Correo inválido')
+    }
+  }
 
   return (
     <footer className={styles.footer}>
@@ -62,7 +118,7 @@ const Footer = () => {
             className={styles.footer_socialIcon}
             target="_blank"
             rel="noopener noreferrer"
-            href="https://www.instagram.com/beews.site"
+            href="https://www.instagram.com/beews.sitenp "
           >
             <Image src="/images/instagram.svg" alt="Logo Instagram" />
           </a>
@@ -76,12 +132,20 @@ const Footer = () => {
         <label className="mb-2">{footer.newsletter}</label>
         <div className={styles.footer_newsletter}>
           <input
-            type="text"
+            type="email"
             className="form-control"
+            value={inputSuscribete}
+            onChange={handleChangeInputSuscribete}
             placeholder={footer.email}
           />
-          <button className="btn">{footer.suscribete}</button>
+          {loading ? <Loader size="sm" /> : null}
+          {!loading && (
+            <button onClick={crearSuscripcion} className="btn">
+              {footer.suscribete}
+            </button>
+          )}
         </div>
+        <p>{mensajeError}</p>
       </div>
 
       <div className={styles.footer_item}>

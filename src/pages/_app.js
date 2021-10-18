@@ -14,22 +14,26 @@ import CheckoutState from '@/context/checkout/CheckoutState'
 
 // Styles
 import '@/styles/index.scss'
+import { ApolloProvider } from '@apollo/client'
+import client from 'src/apollo'
 
 const App = ({ Component, pageProps }) => {
   const { isOpen, onClose, onOpen } = useDisclosure()
 
   return (
     <main>
-      <AuthState>
-        <CheckoutState>
-          {/* <Preloader /> */}
-          <Navbar {...{ onOpen }} />
-          <Sidebar {...{ isOpen, onClose }} />
-          <Component {...pageProps} />
-          <Footer />
-        </CheckoutState>
-      </AuthState>
-      <ToastContainer />
+      <ApolloProvider client={client}>
+        <AuthState>
+          <CheckoutState>
+            {/* <Preloader /> */}
+            <Navbar {...{ onOpen }} />
+            <Sidebar {...{ isOpen, onClose }} />
+            <Component {...pageProps} />
+            <Footer />
+          </CheckoutState>
+        </AuthState>
+        <ToastContainer />
+      </ApolloProvider>
     </main>
   )
 }
