@@ -1,4 +1,5 @@
 import ErrorMessage from '@/components/ErrorMessage'
+import useCheckout from '@/hooks/useCheckout'
 import { translate } from '@/i18n/translate'
 import { useFormik } from 'formik'
 import React, { useState } from 'react'
@@ -13,6 +14,7 @@ const DatosDestinatario = ({ next, locale }) => {
     checkout: { form }
   } = translate[locale]
   const [errors, setErrors] = useState({})
+  const { loadDestinationData } = useCheckout()
 
   const horarios = [
     { id: 1, text: '8:00am - 9:00am' },
@@ -42,30 +44,32 @@ const DatosDestinatario = ({ next, locale }) => {
     deliveryTime: 'default'
   }
 
-  const validarSelects = (values) => {
-    setErrors({})
-    if (values.relationship === 'default') {
-      setErrors({
-        relationship: 'Seleccione una opcion'
-      })
-    }
-    if (values.deliveryTime === 'default') {
-      setErrors({
-        deliveryTime: 'Seleccione una opcion'
-      })
-    }
-  }
+  // const validarSelects = (values) => {
+  //   setErrors({})
+  //   if (values.relationship === 'default') {
+  //     console.log('default relationship')
+  //     setErrors({
+  //       relationship: 'Seleccione una opcion'
+  //     })
+  //     return
+  //   }
+  //   if (values.deliveryTime === 'default') {
+  //     setErrors({
+  //       deliveryTime: 'Seleccione una opcion'
+  //     })
+  //   }
+  // }
 
   const formik = useFormik({
-    initialValues: initialValues,
+    enableReinitialize: true,
+    initialValues,
     validationSchema: formDestinatarioSchema,
-    handleSubmit: (values) => {
-      alert('guardar')
-      validarSelects(values)
+    onSubmit: async (values) => {
+      console.log('submit')
+      loadDestinationData(values)
+      next()
     }
   })
-
-  console.log('datos destinatario ', formik.values)
 
   return (
     <form className={styles.formulario_form} onSubmit={formik.handleSubmit}>
@@ -229,13 +233,11 @@ const DatosDestinatario = ({ next, locale }) => {
             </option>
           ))}
         </select>
-        <ErrorMessage
-          {...{
-            errors: errors,
-            touched: { relationship: '' },
-            name: 'relationship'
-          }}
-        />
+        {errors?.relationship && (
+          <span className="text-xs w-full text-red-600 text-left alert alert-danger">
+            {errors.relationship}
+          </span>
+        )}
       </div>
       <div className="row mb-1">
         <div className="col-12 col-md-6 mb-1">
@@ -257,7 +259,10 @@ const DatosDestinatario = ({ next, locale }) => {
             name="deliveryTime"
             onBlur={formik.handleBlur}
             value={formik.values.deliveryTime}
-            onChange={formik.handleChange}
+            onChange={(e) => {
+              formik.handleChange(e)
+              setErrors({})
+            }}
             aria-label="Username"
             className="form-control"
           >
@@ -266,21 +271,22 @@ const DatosDestinatario = ({ next, locale }) => {
             </option>
             {horarios.map((horario) => (
               <option key={horario.id} value={horario.id}>
-                8:00am - 9:00am
+                {horario.text}
               </option>
             ))}
           </select>
-          <ErrorMessage
-            {...{
-              errors: errors,
-              touched: { deliveryTime: '' },
-              name: 'deliveryTime'
-            }}
-          />
+          {errors?.deliveryTime && (
+            <span className="text-xs w-full text-red-600 text-left alert alert-danger">
+              {errors.deliveryTime}
+            </span>
+          )}
         </div>
       </div>
-
-      <button onClick={next} className="btn btn-danger btn-lg mb-5">
+      <button
+        // type="submit"
+        // onClick={next}
+        className="btn btn-danger btn-lg mb-5"
+      >
         {form.destinationForm.submit}
       </button>
     </form>

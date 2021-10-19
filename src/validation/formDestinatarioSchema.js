@@ -7,7 +7,5 @@ export const formDestinatarioSchema = yup.object().shape({
   city: yup.string().required('Este campo es obligatorio'),
   district: yup.string().required('Este campo es obligatorio'),
   address: yup.string().required('Este campo es obligatorio'),
-  reference: yup.string().required('Este campo es obligatorio'),
-  relationship: yup.string().required('Este campo es obligatorio'),
-  deliveryDate: yup.string().required('Este campo es obligatorio')
+  reference: yup.string().required('Este campo es obligatorio')
 })

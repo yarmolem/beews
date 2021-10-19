@@ -48,7 +48,10 @@ const Plan = ({ next }) => {
             {...item}
             key={`plan-${item.id}`}
             isChosen={plan.id === item.id}
-            onChoose={(values) => handleChosenPlan(values)}
+            onChoose={(values) => {
+              handleChosenPlan(values)
+              next()
+            }}
           />
         ))}
       </div>

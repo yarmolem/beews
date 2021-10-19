@@ -9,32 +9,99 @@ import { translate } from '@/i18n/translate'
 // styles
 import styles from './formulario.module.scss'
 import useCheckout from '@/hooks/useCheckout'
+import { useMutation } from '@apollo/client'
+import { UPDATE_USUARIO_MUTATION } from 'src/graphql/mutation/updateUsuario_mutation'
+import Loader from '@/components/Loader/Loader'
+import useToast from '@/hooks/useToast'
 
 const DatosPersonales = ({ nextStep, locale }) => {
   const router = useRouter()
-  const { isAuth, ...rest } = useAuth()
+  const {
+    isAuth,
+    user: { userId }
+  } = useAuth()
   const { personalData, loadPersonalData } = useCheckout()
+  const { toast } = useToast()
+
+  const [updateUsuarioMutation, { loading }] = useMutation(
+    UPDATE_USUARIO_MUTATION,
+    {
+      onError: (err) => {
+        const error = err?.graphQLErrors[0].debugMessage
+        if (error) {
+          console.log(error)
+        } else {
+          console.log('Error desconocido ', err)
+        }
+      }
+    }
+  )
 
   console.log('personalData ', personalData)
-  console.log('usAuth ', rest)
+  console.log('usAuth id ', userId)
 
   const {
     checkout: { form }
   } = translate[locale]
 
+  const isEdit = (values) => {
+    if (
+      personalData.phone !== values.phone ||
+      personalData.country !== values.country ||
+      personalData.city !== values.city
+    ) {
+      return true
+    }
+    return false
+  }
+
   return (
     <Formik
       enableReinitialize
       initialValues={personalData}
-      onSubmit={(values) => {
-        loadPersonalData(values)
-        router.push({
-          query: {
-            ...router.query,
-            user: values.name
+      onSubmit={async (values) => {
+        if (isEdit(values)) {
+          const response = await updateUsuarioMutation({
+            variables: {
+              input: {
+                nombre: values.name,
+                apellidos: values.lastname,
+                celular: values.phone,
+                pais: values.country,
+                ciudad: values.city,
+                userId: userId
+              }
+            }
+          })
+          const token = response?.data?.UpdateUsuario.apiToken
+          if (token) {
+            toast({
+              title: 'Usuario creado con éxito',
+              msg: 'Registro exitoso',
+              hideProgressBar: true
+            })
+            router.push({
+              query: {
+                ...router.query,
+                user: values.name
+              }
+            })
+            nextStep()
+            loadPersonalData(values)
+          } else {
+            alert('error al actualizar')
           }
-        })
-        nextStep()
+          console.log('update user ', response)
+        } else {
+          router.push({
+            query: {
+              ...router.query,
+              user: values.name
+            }
+          })
+          nextStep()
+          loadPersonalData(values)
+        }
       }}
     >
       {({ values, handleChange, handleBlur, handleSubmit }) => {
@@ -121,10 +188,12 @@ const DatosPersonales = ({ nextStep, locale }) => {
                 </select>
               </div>
             </div>
-
-            <button className="btn btn-danger btn-lg">
-              {form.personalForm.submit}
-            </button>
+            {loading ? <Loader /> : null}
+            {!loading && (
+              <button className="btn btn-danger btn-lg">
+                {form.personalForm.submit}
+              </button>
+            )}
           </form>
         )
       }}
