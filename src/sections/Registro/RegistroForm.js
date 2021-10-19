@@ -13,7 +13,7 @@ import Loader from '@/components/Loader/Loader'
 import useToast from '@/hooks/useToast'
 
 const RegistroForm = ({ onToggleAuth = () => {} }) => {
-  const { locale, ...router } = useRouter()
+  const { locale } = useRouter()
   const { registerSchema } = useYupSchema()
   const { registro } = translate[locale]
   const [mensajeError, setMensajeError] = useState(null)
@@ -68,7 +68,7 @@ const RegistroForm = ({ onToggleAuth = () => {} }) => {
       if (token) {
         toast({
           title: 'Usuario creado con éxito',
-          msg: 'Inicie sesión',
+          msg: 'Registro exitoso',
           hideProgressBar: true
         })
         onToggleAuth()
@@ -95,7 +95,7 @@ const RegistroForm = ({ onToggleAuth = () => {} }) => {
             id="nameFloat"
             name="nombre"
             onBlur={formik.handleBlur}
-            value={formik.values.name}
+            value={formik.values.nombre}
             onChange={formik.handleChange}
             autoComplete="off"
             placeholder="Nombre"
@@ -116,7 +116,7 @@ const RegistroForm = ({ onToggleAuth = () => {} }) => {
             id="lastNameFloat"
             name="apellidos"
             onBlur={formik.handleBlur}
-            value={formik.values.lastName}
+            value={formik.values.apellidos}
             onChange={formik.handleChange}
             autoComplete="off"
             placeholder="Apellidos"

@@ -1,4 +1,5 @@
 export const authTypes = {
   LOGIN: 'LOGIN',
-  LOGOUT: 'LOGOUT'
+  LOGOUT: 'LOGOUT',
+  SET_STATE_FROM_STORAGE: 'SET_STATE_FROM_STORAGE'
 }

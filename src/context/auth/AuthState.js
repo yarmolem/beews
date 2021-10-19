@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useReducer } from 'react'
 import AuthReducer from './AuthReducer'
 import { authActions } from './AuthActions'
+import { authTypes as types } from './types'
 
 export const initialState = {
   user: {
@@ -21,17 +22,21 @@ export const initialState = {
 export const AuthContext = createContext()
 
 const AuthState = ({ children }) => {
-  const [state, dispatch] = useReducer(AuthReducer, initialState, () => {
+  const [state, dispatch] = useReducer(AuthReducer, initialState)
+
+  useEffect(() => {
     const valueInStorage = localStorage.getItem('state')
     if (valueInStorage) {
-      return JSON.parse(valueInStorage)
-    } else {
-      return initialState
+      dispatch({
+        type: types.SET_STATE_FROM_STORAGE,
+        payload: JSON.parse(valueInStorage)
+      })
     }
-  })
+  }, [])
 
   useEffect(() => {
     localStorage.setItem('state', JSON.stringify(state))
+    localStorage.setItem('token', JSON.stringify(state.user.apiToken))
   }, [state])
 
   const props = {

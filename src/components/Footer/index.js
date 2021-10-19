@@ -46,7 +46,7 @@ const Footer = () => {
         setMensajeError(null)
         setInputSuscribete('')
         toast({
-          title: 'Éxito',
+          title: 'Exitoso',
           msg: 'Suscripción exitosa',
           hideProgressBar: true
         })

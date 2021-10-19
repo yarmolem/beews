@@ -14,6 +14,9 @@ const AuthReducer = (state = initialState, { payload, type }) => {
     case types.LOGOUT:
       return { ...initialState }
 
+    case types.SET_STATE_FROM_STORAGE:
+      return { ...state, ...payload }
+
     default:
       return state
   }
