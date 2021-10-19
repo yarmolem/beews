@@ -7,6 +7,10 @@ const TextInput = ({
   autoComplete,
   classInput = '',
   classContainer = '',
+  name = '',
+  onBlur = '',
+  value = '',
+  onChange = '',
   props
 }) => {
   return (
@@ -17,6 +21,10 @@ const TextInput = ({
         placeholder=" "
         autoComplete={autoComplete}
         className={`form-control ${classInput}`}
+        name={name}
+        onBlur={onBlur}
+        value={value}
+        onChange={onChange}
         {...props}
       />
       <label htmlFor={id}>{placeholder}</label>

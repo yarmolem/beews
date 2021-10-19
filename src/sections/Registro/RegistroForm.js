@@ -13,7 +13,7 @@ import Loader from '@/components/Loader/Loader'
 import useToast from '@/hooks/useToast'
 
 const RegistroForm = ({ onToggleAuth = () => {} }) => {
-  const { locale } = useRouter()
+  const { locale, ...router } = useRouter()
   const { registerSchema } = useYupSchema()
   const { registro } = translate[locale]
   const [mensajeError, setMensajeError] = useState(null)
@@ -68,9 +68,10 @@ const RegistroForm = ({ onToggleAuth = () => {} }) => {
       if (token) {
         toast({
           title: 'Usuario creado con éxito',
-          msg: 'Registro exitoso',
+          msg: 'Inicie sesión',
           hideProgressBar: true
         })
+        onToggleAuth()
       }
     }
   })

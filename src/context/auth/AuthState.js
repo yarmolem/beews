@@ -1,16 +1,38 @@
-import React, { createContext, useReducer } from 'react'
+import React, { createContext, useEffect, useReducer } from 'react'
 import AuthReducer from './AuthReducer'
 import { authActions } from './AuthActions'
 
 export const initialState = {
-  user: {},
-  isLoading: false
+  user: {
+    userId: '',
+    tipoUsuario: '',
+    nombre: '',
+    apellidos: '',
+    email: '',
+    celular: '',
+    pais: '',
+    ciudad: '',
+    apiToken: ''
+  },
+  isLoading: false,
+  isAuth: false
 }
 
 export const AuthContext = createContext()
 
 const AuthState = ({ children }) => {
-  const [state, dispatch] = useReducer(AuthReducer, initialState)
+  const [state, dispatch] = useReducer(AuthReducer, initialState, () => {
+    const valueInStorage = localStorage.getItem('state')
+    if (valueInStorage) {
+      return JSON.parse(valueInStorage)
+    } else {
+      return initialState
+    }
+  })
+
+  useEffect(() => {
+    localStorage.setItem('state', JSON.stringify(state))
+  }, [state])
 
   const props = {
     ...state,
