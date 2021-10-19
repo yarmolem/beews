@@ -9,6 +9,10 @@ const CheckOutPage = () => {
     <div>
       <Head>
         <title>Beews | Check out</title>
+        <script
+          defer
+          src="https://www.paypal.com/sdk/js?client-id=AR0BfvB5xq6nrRyhNnXE_uFchBZ6WwqYT1BicgfkkYLwxKvvDB5C46o1gKgtmGPhom4LuAUla6mrjk0L"
+        />
       </Head>
 
       <CheckOut />
