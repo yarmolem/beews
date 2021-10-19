@@ -1,12 +1,12 @@
 export const REGALOS = {
   1: {
     id: 1,
-    img: '/images/co-regalo-2.png',
-    title: 'Retrato craneo',
     cod: '0021569',
+    title: 'Retrato craneo',
+    img: '/images/co-regalo-2.png',
+    size: 'Medidas: 40 cm. alto x 20 cm. ancho',
     desc: `Retrato al oleo de pareja ( 2 rostros), sobre lienzo, enmarcado
     sobre bastidor de madera. Se entrega copia en digital.`,
-    size: 'Medidas: 40 cm. alto x 20 cm. ancho',
     price: 60
   },
   2: {
