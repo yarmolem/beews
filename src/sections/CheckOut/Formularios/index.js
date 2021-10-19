@@ -20,8 +20,8 @@ const Formulario = ({ next, prev, locale }) => {
   const [isRegister, setIsRegister] = useState(false)
 
   // Custom hooks
-  const { isAuth, login } = useAuth()
-  const { loadPersonalData } = useCheckout()
+  const { isAuth } = useAuth()
+  // const { loadPersonalData } = useCheckout()
 
   useEffect(() => {
     window.scroll({ top: 0 })
@@ -33,11 +33,6 @@ const Formulario = ({ next, prev, locale }) => {
 
   const nextStep = () => setStep(1)
   const prevStep = () => setStep(0)
-
-  const handleLogin = () => {
-    login({ ...fakeLogin })
-    loadPersonalData({ ...fakeLogin })
-  }
 
   console.log(isRegister)
 
@@ -53,9 +48,7 @@ const Formulario = ({ next, prev, locale }) => {
 
   const renderPersonalData = () => <DatosPersonales {...props} />
   const renderDestinationData = () => <DatosDestinatario {...props} />
-  const renderAuthBlock = () => (
-    <AuthBlock onLogin={handleLogin} onRegister={handleRegister} />
-  )
+  const renderAuthBlock = () => <AuthBlock onRegister={handleRegister} />
 
   return (
     <>

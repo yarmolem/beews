@@ -46,9 +46,9 @@ const DatosPersonales = ({ nextStep, locale }) => {
 
   const isEdit = (values) => {
     if (
-      personalData.phone !== values.phone ||
-      personalData.country !== values.country ||
-      personalData.city !== values.city
+      personalData.celular !== values.celular ||
+      personalData.pais !== values.pais ||
+      personalData.ciudad !== values.ciudad
     ) {
       return true
     }
@@ -64,12 +64,11 @@ const DatosPersonales = ({ nextStep, locale }) => {
           const response = await updateUsuarioMutation({
             variables: {
               input: {
-                nombre: values.name,
-                apellidos: values.lastname,
-                celular: values.phone,
-                pais: values.country,
-                ciudad: values.city,
-                userId: userId
+                nombre: values.nombre,
+                apellidos: values.apellidos,
+                celular: values.celular,
+                pais: values.pais,
+                ciudad: values.ciudad
               }
             }
           })
@@ -112,9 +111,9 @@ const DatosPersonales = ({ nextStep, locale }) => {
                 <label htmlFor="">{form.personalForm.name}</label>
                 <input
                   type="text"
-                  name="name"
+                  name="nombre"
                   disabled={isAuth}
-                  value={values.name}
+                  value={values.nombre}
                   onBlur={handleBlur}
                   onChange={handleChange}
                   aria-label="Username"
@@ -125,9 +124,9 @@ const DatosPersonales = ({ nextStep, locale }) => {
                 <label htmlFor="">{form.personalForm.lastname}</label>
                 <input
                   type="text"
-                  name="lastname"
+                  name="apellidos"
                   disabled={isAuth}
-                  value={values.lastname}
+                  value={values.apellidos}
                   onBlur={handleBlur}
                   onChange={handleChange}
                   aria-label="Username"
@@ -153,8 +152,8 @@ const DatosPersonales = ({ nextStep, locale }) => {
                 <label htmlFor="">{form.personalForm.phone}</label>
                 <input
                   type="text"
-                  name="phone"
-                  value={values.phone}
+                  name="celular"
+                  value={values.celular}
                   onBlur={handleBlur}
                   onChange={handleChange}
                   aria-label="Username"
@@ -164,8 +163,8 @@ const DatosPersonales = ({ nextStep, locale }) => {
               <div className="col-12 col-md-4 mb-1">
                 <label htmlFor="">{form.personalForm.country}</label>
                 <select
-                  name="country"
-                  value={values.country}
+                  name="pais"
+                  value={values.pais}
                   onBlur={handleBlur}
                   onChange={handleChange}
                   aria-label="Username"
@@ -177,8 +176,8 @@ const DatosPersonales = ({ nextStep, locale }) => {
               <div className="col-12 col-md-4 mb-1">
                 <label htmlFor="">{form.personalForm.city}</label>
                 <select
-                  name="city"
-                  value={values.city}
+                  name="ciudad"
+                  value={values.ciudad}
                   onBlur={handleBlur}
                   aria-label="Username"
                   onChange={handleChange}

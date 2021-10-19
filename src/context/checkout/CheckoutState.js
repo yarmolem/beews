@@ -39,12 +39,13 @@ const CheckoutState = ({ children }) => {
   const [state, dispatch] = useReducer(CheckoutReducer, initialState)
 
   useEffect(() => {
-    const authStateInStorage = JSON.parse(localStorage.getItem('state'))
+    const authStateInStorage = localStorage.getItem('state')
     if (authStateInStorage) {
       console.log('authstate ', authStateInStorage.user)
+      const state = JSON.parse(authStateInStorage)
       dispatch({
         type: types.SET_PERSONAL_DATA_FROM_STORAGE,
-        payload: authStateInStorage.user
+        payload: state
       })
     }
   }, [])

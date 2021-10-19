@@ -34,11 +34,6 @@ const AuthState = ({ children }) => {
     }
   }, [])
 
-  useEffect(() => {
-    localStorage.setItem('state', JSON.stringify(state))
-    localStorage.setItem('token', JSON.stringify(state.user.apiToken))
-  }, [state])
-
   const props = {
     ...state,
     ...authActions(state, dispatch)
