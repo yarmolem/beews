@@ -91,19 +91,8 @@ const Pagar = ({ next, locale }) => {
     ))
   }
 
-  const renderPayPalButton = () => {
-    return (
-      <PaypalButton
-        value={total}
-        onError={handleErrorOperation}
-        onCancel={handleCancelOperation}
-        onApprove={handleApproveOperation}
-      />
-    )
-  }
-
   const renderPagoExitoso = (params) => {
-    return <h2>Pago exitoso con ID: {paypalID}</h2>
+    return <h2>ID: {paypalID}</h2>
   }
 
   const {
@@ -148,7 +137,7 @@ const Pagar = ({ next, locale }) => {
         <h3>{pay.payWith}:</h3>
 
         <div className={styles.metodos_flex}>
-          {paypalID ? <PaypalButton {...paypalProps} /> : renderPagoExitoso()}
+          {!paypalID ? <PaypalButton {...paypalProps} /> : renderPagoExitoso()}
           {/* <motion.button variants={animationTap} whileTap="tap">
             <PaypalIcon />
           </motion.button> */}
