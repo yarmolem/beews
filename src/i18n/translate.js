@@ -308,20 +308,62 @@ export const translate = {
       order: 'Pide un Beews'
     },
     parents: [
-      'Padre',
-      'Madre',
-      'Hermano/na',
-      'Abuelo/la',
-      'Hijo/a',
-      'Nieto/a',
-      'Esposo/a',
-      'Amigo/a',
-      'Primo/a',
-      'Tio/a',
-      'Suegro/a',
-      'Yerno',
-      'Nuera',
-      'Sobrino'
+      {
+        id: 1,
+        name: 'Padre'
+      },
+      {
+        id: 2,
+        name: 'Madre'
+      },
+      {
+        id: 3,
+        name: 'Hermano/na'
+      },
+      {
+        id: 4,
+        name: 'Abuelo/la'
+      },
+      {
+        id: 5,
+        name: 'Hijo/a'
+      },
+      {
+        id: 6,
+        name: 'Nieto/a'
+      },
+      {
+        id: 7,
+        name: 'Esposo/a'
+      },
+      {
+        id: 8,
+        name: 'Amigo/a'
+      },
+      {
+        id: 9,
+        name: 'Primo/a'
+      },
+      {
+        id: 10,
+        name: 'Tio/a'
+      },
+      {
+        id: 11,
+        name: 'Suegro/a'
+      },
+      {
+        id: 12,
+        name: 'Yerno'
+      },
+      {
+        id: 13,
+        name: 'Nuera'
+      },
+      {
+        id: 14,
+        name: 'Sobrino'
+      }
     ]
   },
   'en-US': {
@@ -613,20 +655,62 @@ export const translate = {
       order: 'Order a Beews'
     },
     parents: [
-      'Father',
-      'Mother',
-      'Brother/sister',
-      'Grandfather/mother',
-      'Son/daugther',
-      'Grandson/daugther',
-      'Husband/wife',
-      'Friend',
-      'Cousin',
-      'Uncle/aunt',
-      'Father/mother-in-law',
-      'Son-in-law',
-      'Daugther-in-law',
-      'Nephew/niece'
+      {
+        id: 1,
+        name: 'Father'
+      },
+      {
+        id: 2,
+        name: 'Mother'
+      },
+      {
+        id: 3,
+        name: 'Brother/sister'
+      },
+      {
+        id: 4,
+        name: 'Grandfather/mother'
+      },
+      {
+        id: 5,
+        name: 'Son/daugther'
+      },
+      {
+        id: 6,
+        name: 'Grandson/daugther'
+      },
+      {
+        id: 7,
+        name: 'Husband/wife'
+      },
+      {
+        id: 8,
+        name: 'Friend'
+      },
+      {
+        id: 9,
+        name: 'Cousin'
+      },
+      {
+        id: 10,
+        name: 'Uncle/aunt'
+      },
+      {
+        id: 11,
+        name: 'Father/mother-in-law'
+      },
+      {
+        id: 12,
+        name: 'Son-in-law'
+      },
+      {
+        id: 13,
+        name: 'Daugther-in-law'
+      },
+      {
+        id: 14,
+        name: 'Nephew/niece'
+      }
     ]
   }
 }

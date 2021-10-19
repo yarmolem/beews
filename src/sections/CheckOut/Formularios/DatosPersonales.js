@@ -10,19 +10,13 @@ import { translate } from '@/i18n/translate'
 import styles from './formulario.module.scss'
 import useCheckout from '@/hooks/useCheckout'
 
-// const initialState = {
-//   name: '',
-//   lastname: '',
-//   email: '',
-//   phone: '',
-//   country: '',
-//   city: ''
-// }
-
 const DatosPersonales = ({ nextStep, locale }) => {
   const router = useRouter()
-  const { isAuth } = useAuth()
+  const { isAuth, ...rest } = useAuth()
   const { personalData, loadPersonalData } = useCheckout()
+
+  console.log('personalData ', personalData)
+  console.log('usAuth ', rest)
 
   const {
     checkout: { form }

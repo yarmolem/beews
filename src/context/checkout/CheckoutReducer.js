@@ -64,6 +64,19 @@ const CheckoutReducer = (state = initialState, { payload, type }) => {
     case types.RESET_STATE:
       return { ...initialState }
 
+    case types.SET_PERSONAL_DATA_FROM_STORAGE:
+      return {
+        ...state,
+        personalData: {
+          name: payload.nombre,
+          lastname: payload.apellidos,
+          email: payload.email,
+          phone: payload.celular,
+          country: payload.pais,
+          city: payload.ciudad
+        }
+      }
+
     default:
       return state
   }
