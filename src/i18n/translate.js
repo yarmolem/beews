@@ -99,13 +99,24 @@ export const translate = {
       subtitle: 'Completa el siguiente formulario para registrarte',
       placeholder: {
         name: 'Nombre',
+        lastName: 'Apellidos',
         email: 'Correo electrónico',
+        phoneNumber: 'Celular',
         password: 'Contraseña',
         confirmPassword: 'Confirmar contraseña'
       },
+      errors: {
+        name: 'Ingrese un nombre válido',
+        lastName: 'Ingrese un apellido válido',
+        email: 'Ingrese un email válido',
+        phoneNumber: 'Ingrese un celular',
+        password: 'Ingrese una contraseña válida',
+        confirmPassword: 'Las constraseñas deben coincidir'
+      },
       terms: () => renderTerminos('es-ES'),
       newsletter: 'Acepto recibir información comercial de Beews',
-      submitBtn: 'REGÍSTRATE'
+      submitBtn: 'REGÍSTRATE',
+      loginBtn: 'Ingresar'
     },
     quienesSomos: {
       hero: {
@@ -398,6 +409,14 @@ export const translate = {
         email: 'Mail',
         password: 'Password',
         confirmPassword: 'Confirm Password'
+      },
+      errors: {
+        name: 'Ingrese un nombre válido',
+        lastName: 'Ingrese un apellido válido',
+        email: 'Ingrese un email válido',
+        phoneNumber: 'Ingrese un celular',
+        password: 'Ingrese una contraseña válida',
+        confirmPassword: 'Las constraseñas deben coincidir'
       },
       terms: () => renderTerminos('en-US'),
       newsletter: 'I agree to receive commercial information from Beews.',

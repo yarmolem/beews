@@ -6,7 +6,8 @@ const TextInput = ({
   placeholder,
   autoComplete,
   classInput = '',
-  classContainer = ''
+  classContainer = '',
+  props
 }) => {
   return (
     <div className={`form-floating ${classContainer}`}>
@@ -16,6 +17,7 @@ const TextInput = ({
         placeholder=" "
         autoComplete={autoComplete}
         className={`form-control ${classInput}`}
+        {...props}
       />
       <label htmlFor={id}>{placeholder}</label>
     </div>

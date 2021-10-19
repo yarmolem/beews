@@ -10,6 +10,11 @@ const LoginForm = ({ onLogin = () => {}, onToggleAuth = () => {} }) => {
   const { locale } = useRouter()
   const { login } = translate[locale]
 
+  // const initialValues = {
+  //   email: 'aron3@gmail.com',
+  //   password: '123456'
+  // }
+
   return (
     <div className="d-flex flex-column items-center justify-content-center h-100">
       <h1>{login.title}</h1>
