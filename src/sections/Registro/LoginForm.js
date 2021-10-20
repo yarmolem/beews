@@ -59,7 +59,7 @@ const LoginForm = ({ onLogin = () => {}, onToggleAuth = () => {} }) => {
         loginAction(response.data.login)
         toast({
           title: 'Exitoso',
-          msg: 'Login exitoso',
+          msg: `Bienvenid@ ${response.data.login.nombre}`,
           hideProgressBar: true
         })
         router.push('/')

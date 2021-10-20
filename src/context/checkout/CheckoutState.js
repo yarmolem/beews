@@ -5,6 +5,7 @@ import { checkoutTypes as types } from './types'
 
 export const initialState = {
   car: [],
+  idPaypal: '',
   total: 0,
   plan: {
     id: '',

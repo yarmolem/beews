@@ -9,11 +9,33 @@ import CarritoItem from './CarritoItem'
 // Styles
 import styles from './pagar.module.scss'
 import useToast from '@/hooks/useToast'
+import { useMutation } from '@apollo/client'
+import { CREAR_PEDIDO_MUTATION } from 'src/graphql/mutation/crearPedido_mutation'
 
 const Pagar = ({ next, locale }) => {
   const { toast } = useToast()
+  const { setPaypalIdAction } = useCheckout()
   const [paypalID, setPaypalID] = useState(null)
   const { car, plan, total, ...actions } = useCheckout()
+  const checkoutState = useCheckout()
+  const [crearPedidoMutation] = useMutation(CREAR_PEDIDO_MUTATION, {
+    onError: (err) => {
+      const error = err?.graphQLErrors[0].debugMessage
+      if (error) {
+        console.log('error ', error)
+      } else {
+        console.log('error desconocido', error)
+      }
+    },
+    onCompleted: () => {
+      toast({
+        title: 'Exitoso',
+        msg: 'Compra finalizada',
+        hideProgressBar: true
+      })
+      next()
+    }
+  })
 
   const handleCarItemDelete = ({ cod, title }) => {
     actions.deleteCarItem(cod)
@@ -61,9 +83,52 @@ const Pagar = ({ next, locale }) => {
       })
     }
   }
+  const handleCrearPedido = (idPaypal) => {
+    // CREAR PEDIDO
+    const payload = {
+      variables: {
+        input: {
+          plan: checkoutState.plan.id,
+          estado: 'REALIZADO',
+          visto: 'visto',
+          idPaypal: idPaypal,
+          DetallePedidosInput: checkoutState.car.map((regalo) => ({
+            precio: regalo.price,
+            cantidad: regalo.count,
+            productoId: regalo.id
+          })),
+          FichaDestinoInput: {
+            nombres: checkoutState.destinationData.name,
+            apellidos: checkoutState.destinationData.lastname,
+            pais: checkoutState.destinationData.country,
+            ciudad: checkoutState.destinationData.city,
+            distrito: checkoutState.destinationData.district,
+            direccion: checkoutState.destinationData.address,
+            referencia: checkoutState.destinationData.reference,
+            vinculo: checkoutState.destinationData.relationship,
+            fechaSugerida: checkoutState.destinationData.deliveryDate,
+            horarioSugerido: checkoutState.destinationData.deliveryTime
+          }
+        }
+      }
+    }
+    console.log('payload ', payload)
+    crearPedidoMutation(payload)
+  }
 
   const handleApproveOperation = ({ id }) => {
+    if (id === null || id === '') {
+      toast({
+        title: 'Error',
+        msg: 'Operacion sin éxito',
+        hideProgressBar: true
+      })
+      return
+    }
+    handleCrearPedido(id)
     setPaypalID(id)
+    // subir paypal Id al checkout state
+    setPaypalIdAction(id)
     toast({
       title: 'Éxito',
       msg: `Operacion exitosa con ID: ${id}`,
@@ -103,6 +168,17 @@ const Pagar = ({ next, locale }) => {
     const premium = '/images/icono-premiun.svg'
     const xperience = '/images/icono-xperience.svg'
     return plan.id === 'Xperience' ? xperience : premium
+  }
+
+  const validarPago = () => {
+    if (paypalID === '' || paypalID === null) {
+      toast({
+        type: 'info',
+        title: 'Info',
+        msg: 'Primero debe realizar el pago',
+        hideProgressBar: true
+      })
+    }
   }
 
   const paypalProps = {
@@ -151,7 +227,7 @@ const Pagar = ({ next, locale }) => {
       </div>
 
       <button
-        onClick={next}
+        onClick={validarPago}
         className={`btn btn-danger text-white btn-lg ${styles.nextButton}`}
       >
         {pay.submit}

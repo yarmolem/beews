@@ -29,7 +29,7 @@ export const CMO = {
   nick: 'Dani',
   content: {
     'es-ES': `
-    Simpre he tenido un especial interés en encontrar soluciones creativas para
+    Siempre he tenido un especial interés en encontrar soluciones creativas para
     problemas latentes y en gran parte desatendidos. Trabajar con y para las personas
     usando mi capacidad de comunicar, haciendo los problemas y soluciones mas visibles.
     Este proyecto es una oportunidad para llevar bienestar a personas en muchos frentes,

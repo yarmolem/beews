@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Formik } from 'formik'
 import { useRouter } from 'next/dist/client/router'
 
@@ -14,15 +14,14 @@ import { UPDATE_USUARIO_MUTATION } from 'src/graphql/mutation/updateUsuario_muta
 import Loader from '@/components/Loader/Loader'
 import useToast from '@/hooks/useToast'
 
-const DatosPersonales = ({ nextStep, locale }) => {
+const DatosPersonales = ({ nextStep, locale, onSuccess }) => {
   const router = useRouter()
-  const {
-    isAuth,
-    user: { userId }
-  } = useAuth()
-  const { personalData, loadPersonalData } = useCheckout()
+  const { isAuth } = useAuth()
+  const { loadPersonalData } = useCheckout()
   const { toast } = useToast()
+  const authStateData = useAuth()
 
+  console.log('authStateData ', authStateData)
   const [updateUsuarioMutation, { loading }] = useMutation(
     UPDATE_USUARIO_MUTATION,
     {
@@ -37,28 +36,45 @@ const DatosPersonales = ({ nextStep, locale }) => {
     }
   )
 
-  console.log('personalData ', personalData)
-  console.log('usAuth id ', userId)
-
   const {
     checkout: { form }
   } = translate[locale]
 
   const isEdit = (values) => {
     if (
-      personalData.celular !== values.celular ||
-      personalData.pais !== values.pais ||
-      personalData.ciudad !== values.ciudad
+      authStateData.user.celular !== values.celular ||
+      authStateData.user.pais !== values.pais ||
+      authStateData.user.ciudad !== values.ciudad
     ) {
       return true
     }
     return false
   }
 
+  let initialValues = {
+    nombre: authStateData.user.nombre,
+    apellidos: authStateData.user.apellidos,
+    email: authStateData.user.email,
+    celular: authStateData.user.celular,
+    pais: authStateData.user.pais,
+    ciudad: authStateData.user.ciudad
+  }
+
+  useEffect(() => {
+    initialValues = {
+      nombre: authStateData.user.nombre,
+      apellidos: authStateData.user.apellidos,
+      email: authStateData.user.email,
+      celular: authStateData.user.celular,
+      pais: authStateData.user.pais,
+      ciudad: authStateData.user.ciudad
+    }
+  }, [])
+
   return (
     <Formik
       enableReinitialize
-      initialValues={personalData}
+      initialValues={initialValues}
       onSubmit={async (values) => {
         if (isEdit(values)) {
           const response = await updateUsuarioMutation({
@@ -75,8 +91,8 @@ const DatosPersonales = ({ nextStep, locale }) => {
           const token = response?.data?.UpdateUsuario.apiToken
           if (token) {
             toast({
-              title: 'Usuario creado con éxito',
-              msg: 'Registro exitoso',
+              title: 'Exitoso',
+              msg: 'Datos actualizados exitosamente',
               hideProgressBar: true
             })
             router.push({
@@ -85,7 +101,8 @@ const DatosPersonales = ({ nextStep, locale }) => {
                 user: values.name
               }
             })
-            nextStep()
+            // nextStep()
+            onSuccess()
             loadPersonalData(values)
           } else {
             alert('error al actualizar')
@@ -98,7 +115,8 @@ const DatosPersonales = ({ nextStep, locale }) => {
               user: values.name
             }
           })
-          nextStep()
+          // nextStep()
+          onSuccess()
           loadPersonalData(values)
         }
       }}

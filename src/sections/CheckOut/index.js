@@ -10,6 +10,7 @@ import CompraFinalizada from './CompraFinalizada'
 
 // Styles
 import styles from './index.module.scss'
+import useCheckout from '@/hooks/useCheckout'
 
 const FigureTimeline = ({
   title,
@@ -51,10 +52,17 @@ const CheckOut = () => {
     if (query.step) return parseInt(query.step)
     return 0
   })
+  const { resetState } = useCheckout()
 
   useEffect(() => {
     window.scroll({ top: 0 })
   }, [stepper])
+
+  useEffect(() => {
+    return () => {
+      resetState()
+    }
+  }, [])
 
   const next = () => {
     if (stepper === steps.length) return

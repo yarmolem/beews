@@ -25,5 +25,11 @@ export const checkoutActions = (state, dispatch) => ({
   loadDestinationData: (payload) => {
     dispatch({ type: types.LOAD_DESTINATION_DATA, payload })
   },
-  getPersonalData: () => state.personalData
+  getPersonalData: () => state.personalData,
+
+  setPaypalIdAction: (payload) => {
+    dispatch({ type: types.SET_PAYPAL_ID, payload })
+  }
+
+  // resetState: () => dispatch({type: })
 })

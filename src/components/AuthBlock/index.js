@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useRouter } from 'next/dist/client/router'
 import TextInput from '../TextInput'
 
@@ -13,8 +13,9 @@ import useAuth from '@/hooks/useAuth'
 import { useMutation } from '@apollo/client'
 import { LOGIN_MUTATION } from 'src/graphql/mutation/login_mutation'
 import useCheckout from '@/hooks/useCheckout'
+import Loader from '../Loader/Loader'
 
-const AuthBlock = ({ onLogin = () => {}, onRegister = () => {} }) => {
+const AuthBlock = ({ onSuccess = () => {}, onRegister = () => {} }) => {
   const { locale } = useRouter()
   const { toast } = useToast()
   const { login: loginAction } = useAuth()
@@ -27,15 +28,16 @@ const AuthBlock = ({ onLogin = () => {}, onRegister = () => {} }) => {
     email: '',
     password: ''
   }
+  const [mensajeError, setMensajeError] = useState(null)
 
-  const [loginUserMutation] = useMutation(LOGIN_MUTATION, {
+  const [loginUserMutation, { loading }] = useMutation(LOGIN_MUTATION, {
     onError: (err) => {
       const error = err?.graphQLErrors[0].debugMessage
       if (error === 'CUENTA_DESACTIVADA') {
         console.log('error ', error)
-        // setMensajeError('Cuenta desactivada o inexistente')
+        setMensajeError('Cuenta desactivada o inexistente')
       } else if (error === 'CONTRASEÑA_INCORRECTA') {
-        // setMensajeError('Contraseña incorrecta')
+        setMensajeError('Contraseña incorrecta')
       } else {
         console.log('Error desconocido ', error)
       }
@@ -47,6 +49,7 @@ const AuthBlock = ({ onLogin = () => {}, onRegister = () => {} }) => {
     initialValues,
     validationSchema: loginSchema,
     onSubmit: async (values) => {
+      setMensajeError(null)
       console.log('login function ', loginAction)
       // setMensajeError(null)
       const response = await loginUserMutation({
@@ -64,9 +67,10 @@ const AuthBlock = ({ onLogin = () => {}, onRegister = () => {} }) => {
       loginAction(response.data.login)
       toast({
         title: 'Exitoso',
-        msg: 'Login exitoso',
+        msg: `Bienvenid@ ${response.data.login.nombre}`,
         hideProgressBar: true
       })
+      onSuccess()
     }
   })
 
@@ -109,9 +113,18 @@ const AuthBlock = ({ onLogin = () => {}, onRegister = () => {} }) => {
             value={formik.values.password}
             onChange={formik.handleChange}
           />
-          <button className="btn btn-primary text-white btn-lg">
-            {login.submit}
-          </button>
+
+          <div className="d-flex flex-column justify-content-center">
+            {mensajeError && (
+              <p className="alert alert-primary">{mensajeError}</p>
+            )}
+            {loading && <Loader />}
+            {!loading && (
+              <button className="btn btn-primary text-white btn-lg">
+                {login.submit}
+              </button>
+            )}
+          </div>
         </form>
         {/* {mensajeError && <p className="alert alert-primary">{mensajeError}</p>} */}
 

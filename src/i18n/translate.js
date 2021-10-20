@@ -4,7 +4,11 @@ const renderTerminos = (locale = 'es-ES') => {
   if (locale === 'es-ES') {
     return (
       <span>
-        Ya leí y acepto los <a href="#">términos y condiciones</a> de Beews
+        Ya leí y acepto los{' '}
+        <a href="/terminos-condiciones" target="_blank">
+          términos y condiciones
+        </a>{' '}
+        de Beews
       </span>
     )
   }

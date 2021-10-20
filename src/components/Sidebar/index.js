@@ -7,6 +7,7 @@ import { motion } from 'framer-motion'
 
 // styles
 import styles from './sidebar.module.scss'
+import useAuth from '@/hooks/useAuth'
 
 const variants = {
   open: {
@@ -28,6 +29,7 @@ const fade = {
 
 const Sidebar = ({ isOpen = false, onClose }) => {
   const { push } = useRouter()
+  const { logout, isAuth } = useAuth()
 
   return (
     <aside
@@ -77,9 +79,24 @@ const Sidebar = ({ isOpen = false, onClose }) => {
             </a>
           </li>
           <li>
-            <Link href="/registro">
-              <a onClick={onClose}>Regístrate</a>
-            </Link>
+            {/* eslint-disable */}
+            {isAuth ? (
+              <button
+                onClick={() => {
+                  logout()
+                  push('/')
+                }}
+                className="btn text-danger"
+              >
+                Cerrar sesión
+              </button>
+            ) : null}
+            {/* eslint-disable */}
+            {!isAuth ? (
+              <Link href="/registro">
+                <a onClick={onClose}>Regístrate</a>
+              </Link>
+            ) : null}
           </li>
         </ul>
 

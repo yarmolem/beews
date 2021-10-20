@@ -123,7 +123,13 @@ const Footer = () => {
             <Image src="/images/instagram.svg" alt="Logo Instagram" />
           </a>
           <div className={styles.footer_socialIcon}>
-            <Image src="/images/linkedin.svg" alt="Logo linkedin" />
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.linkedin.com/company/beews/"
+            >
+              <Image src="/images/linkedin.svg" alt="Logo linkedin" />
+            </a>
           </div>
         </div>
       </div>
@@ -149,11 +155,17 @@ const Footer = () => {
       </div>
 
       <div className={styles.footer_item}>
-        <Image
-          alt="Logo WhatsApp"
-          src="/images/whatsapp.svg"
-          className={styles.footer_wsp}
-        />
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://wa.link/aozmg9"
+        >
+          <Image
+            alt="Logo WhatsApp"
+            src="/images/whatsapp.svg"
+            className={styles.footer_wsp}
+          />
+        </a>
       </div>
 
       <div className={styles.footer_derechos}>

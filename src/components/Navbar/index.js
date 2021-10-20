@@ -8,10 +8,12 @@ import { BarsIcon } from '@/components/SVGS'
 // Styles
 import styles from './navbar.module.scss'
 import { translate } from '@/i18n/translate'
+import useAuth from '@/hooks/useAuth'
 
 const Navbar = ({ onOpen }) => {
   const { pathname, push, locale } = useRouter()
   const { navbar } = translate[locale]
+  const { isAuth, logout } = useAuth()
 
   return (
     <nav className={styles.navbar}>
@@ -60,13 +62,31 @@ const Navbar = ({ onOpen }) => {
 
         <ul>
           <li>
-            <Link href="/registro">
-              <a className={pathname === '/registro' ? styles.linkActive : ''}>
-                <p style={{ lineHeight: '16px', margin: 0, width: '100px' }}>
-                  {navbar.auth}
-                </p>
-              </a>
-            </Link>
+            {/* eslint-disable */}
+            {isAuth ? (
+              <button
+                onClick={() => {
+                  logout()
+                  push('/')
+                }}
+                className="btn text-danger"
+              >
+                Cerrar sesión
+              </button>
+            ) : null}
+            {/* eslint-disable */}
+
+            {!isAuth ? (
+              <Link href="/registro">
+                <a
+                  className={pathname === '/registro' ? styles.linkActive : ''}
+                >
+                  <p style={{ lineHeight: '16px', margin: 0, width: '100px' }}>
+                    {navbar.auth}
+                  </p>
+                </a>
+              </Link>
+            ) : null}
           </li>
           <li>
             <button
