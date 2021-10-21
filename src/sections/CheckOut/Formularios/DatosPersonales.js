@@ -13,6 +13,7 @@ import { useMutation } from '@apollo/client'
 import { UPDATE_USUARIO_MUTATION } from 'src/graphql/mutation/updateUsuario_mutation'
 import Loader from '@/components/Loader/Loader'
 import useToast from '@/hooks/useToast'
+import { PAISES } from '@/data/paises'
 
 const DatosPersonales = ({ nextStep, locale, onSuccess }) => {
   const router = useRouter()
@@ -186,21 +187,28 @@ const DatosPersonales = ({ nextStep, locale, onSuccess }) => {
                   aria-label="Username"
                   className="form-control"
                 >
-                  <option value="">option 1</option>
+                  <option value="default" disabled>
+                    Selecciona un país
+                  </option>
+                  {PAISES.map((pais) => (
+                    <option key={pais.id} value={pais.id}>
+                      {pais.nombre}
+                    </option>
+                  ))}
                 </select>
               </div>
               <div className="col-12 col-md-4 mb-1">
                 <label htmlFor="">{form.personalForm.city}</label>
-                <select
+
+                <input
+                  type="text"
                   name="ciudad"
                   value={values.ciudad}
                   onBlur={handleBlur}
-                  aria-label="Username"
                   onChange={handleChange}
+                  aria-label="Username"
                   className="form-control"
-                >
-                  <option value="">option 1</option>
-                </select>
+                />
               </div>
             </div>
             {loading ? <Loader /> : null}

@@ -1,5 +1,6 @@
 import ErrorMessage from '@/components/ErrorMessage'
 import Loader from '@/components/Loader/Loader'
+import { PAISES } from '@/data/paises'
 import useAuth from '@/hooks/useAuth'
 import useCheckout from '@/hooks/useCheckout'
 import useToast from '@/hooks/useToast'
@@ -50,6 +51,8 @@ const RegistrarDatosPersonales = ({
     celular: '',
     password: '',
     confirmPassword: '',
+    pais: 'default',
+    ciudad: '',
     terminos: false
   }
 
@@ -68,8 +71,8 @@ const RegistrarDatosPersonales = ({
             email: values.email,
             celular: values.celular,
             password: values.password,
-            pais: 'Peru',
-            ciudad: 'Lima'
+            pais: values.pais,
+            ciudad: values.ciudad
           }
         }
       })
@@ -191,13 +194,20 @@ const RegistrarDatosPersonales = ({
             <label htmlFor="">{form.personalForm.country}</label>
             <select
               name="pais"
-              onBlur={formik.handleBlur}
               value={formik.values.pais}
+              onBlur={formik.handleBlur}
               onChange={formik.handleChange}
               aria-label="Username"
               className="form-control"
             >
-              <option value="">option 1</option>
+              <option value="default" disabled>
+                Selecciona un país
+              </option>
+              {PAISES.map((pais) => (
+                <option key={pais.id} value={pais.id}>
+                  {pais.nombre}
+                </option>
+              ))}
             </select>
           </div>
           <div className="col-12 col-md-4 mb-1">

@@ -107,7 +107,9 @@ export const translate = {
         email: 'Correo electrónico',
         phoneNumber: 'Celular',
         password: 'Contraseña',
-        confirmPassword: 'Confirmar contraseña'
+        confirmPassword: 'Confirmar contraseña',
+        country: 'Selecciona un pais',
+        city: 'Ciudad'
       },
       errors: {
         name: 'Ingrese un nombre válido',

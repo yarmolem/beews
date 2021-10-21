@@ -1,4 +1,5 @@
 import ErrorMessage from '@/components/ErrorMessage'
+import { PAISES } from '@/data/paises'
 import useCheckout from '@/hooks/useCheckout'
 import { translate } from '@/i18n/translate'
 import { useFormik } from 'formik'
@@ -34,7 +35,7 @@ const DatosDestinatario = ({ next, locale }) => {
   const initialValues = {
     name: '',
     lastname: '',
-    country: '',
+    country: 'default',
     city: '',
     district: '',
     address: '',
@@ -43,22 +44,6 @@ const DatosDestinatario = ({ next, locale }) => {
     deliveryDate: '',
     deliveryTime: 'default'
   }
-
-  // const validarSelects = (values) => {
-  //   setErrors({})
-  //   if (values.relationship === 'default') {
-  //     console.log('default relationship')
-  //     setErrors({
-  //       relationship: 'Seleccione una opcion'
-  //     })
-  //     return
-  //   }
-  //   if (values.deliveryTime === 'default') {
-  //     setErrors({
-  //       deliveryTime: 'Seleccione una opcion'
-  //     })
-  //   }
-  // }
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -118,16 +103,24 @@ const DatosDestinatario = ({ next, locale }) => {
       </div>
       <div className="row">
         <div className="col-12 col-md-4 mb-1">
-          <label htmlFor="">{form.destinationForm.country}</label>
-          <input
-            type="text"
+          <label htmlFor="">{form.personalForm.country}</label>
+          <select
             name="country"
-            onBlur={formik.handleBlur}
             value={formik.values.country}
+            onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             aria-label="Username"
             className="form-control"
-          />
+          >
+            <option value="default" disabled>
+              Selecciona un país
+            </option>
+            {PAISES.map((pais) => (
+              <option key={pais.id} value={pais.id}>
+                {pais.nombre}
+              </option>
+            ))}
+          </select>
           <ErrorMessage
             {...{
               errors: formik?.errors,

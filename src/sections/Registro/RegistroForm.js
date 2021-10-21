@@ -11,6 +11,7 @@ import ErrorMessage from '@/components/ErrorMessage'
 import useYupSchema from '@/hooks/useYupSchema'
 import Loader from '@/components/Loader/Loader'
 import useToast from '@/hooks/useToast'
+import { PAISES } from '@/data/paises'
 
 const RegistroForm = ({ onToggleAuth = () => {} }) => {
   const { locale } = useRouter()
@@ -39,6 +40,8 @@ const RegistroForm = ({ onToggleAuth = () => {} }) => {
     apellidos: '',
     email: '',
     celular: '',
+    pais: 'default',
+    ciudad: '',
     password: '',
     confirmPassword: '',
     terminos: false
@@ -59,8 +62,8 @@ const RegistroForm = ({ onToggleAuth = () => {} }) => {
             email: values.email,
             celular: values.celular,
             password: values.password,
-            pais: 'Peru',
-            ciudad: 'Lima'
+            pais: values.pais,
+            ciudad: values.ciudad
           }
         }
       })
@@ -173,6 +176,40 @@ const RegistroForm = ({ onToggleAuth = () => {} }) => {
             name: 'password'
           }}
         />
+        <div className="form-floating">
+          <select
+            name="pais"
+            value={formik.values.pais}
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            aria-label="Username"
+            className={`form-control ${styles.registro_input}`}
+          >
+            <option value="default" disabled>
+              Selecciona un país
+            </option>
+            {PAISES.map((pais) => (
+              <option key={pais.id} value={pais.id}>
+                {pais.nombre}
+              </option>
+            ))}
+          </select>
+          <label htmlFor="">{registro.placeholder.country}</label>
+        </div>
+        <div className="form-floating">
+          <input
+            type="text"
+            id="emailFloat"
+            name="ciudad"
+            onBlur={formik.handleBlur}
+            value={formik.values.ciudad}
+            onChange={formik.handleChange}
+            autoComplete="off"
+            placeholder="Correo electrónico"
+            className={`form-control ${styles.registro_input}`}
+          />
+          <label htmlFor="emailFloat">{registro.placeholder.city}</label>
+        </div>
         <div className="form-floating">
           <input
             id="passFloat"
