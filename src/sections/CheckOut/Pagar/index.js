@@ -12,9 +12,9 @@ import useToast from '@/hooks/useToast'
 import { useMutation } from '@apollo/client'
 import { CREAR_PEDIDO_MUTATION } from 'src/graphql/mutation/crearPedido_mutation'
 
-const Pagar = ({ next, locale }) => {
+const Pagar = ({ next, locale }) =>  {
   const { toast } = useToast()
-  const { setPaypalIdAction } = useCheckout()
+  const { setPaypalIdAction, setDataPedidoCreadoAction } = useCheckout()
   const [paypalID, setPaypalID] = useState(null)
   const { car, plan, total, ...actions } = useCheckout()
   const checkoutState = useCheckout()
@@ -27,12 +27,14 @@ const Pagar = ({ next, locale }) => {
         console.log('error desconocido', error)
       }
     },
-    onCompleted: () => {
+    onCompleted: (values) => {
       toast({
         title: 'Exitoso',
         msg: 'Compra finalizada',
         hideProgressBar: true
       })
+      console.log('*** data pedido creado ', values)
+      setDataPedidoCreadoAction(values.CrearPedido)
       next()
     }
   })

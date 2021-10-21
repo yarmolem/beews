@@ -83,6 +83,12 @@ const CheckoutReducer = (state = initialState, { payload, type }) => {
         idPaypal: payload
       }
 
+    case types.SET_ID_PEDIDO_CREADO:
+      return {
+        ...state,
+        dataPedidoCreado: payload
+      }
+
     default:
       return state
   }

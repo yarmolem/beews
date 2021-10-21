@@ -129,3 +129,18 @@
     }
   }
 }
+
+.goregistro_btn {
+  padding-inline: 2rem;
+  display: block;
+  margin: 0 auto;
+  width: fit-content;
+  color: #fff;
+  font-family: SofiaProSemi;
+  background-color: $secondary;
+  border-radius: 15px;
+
+  &:hover {
+    color: #fff;
+  }
+}

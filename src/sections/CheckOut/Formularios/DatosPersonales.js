@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Formik } from 'formik'
 import { useRouter } from 'next/dist/client/router'
 
@@ -95,13 +95,12 @@ const DatosPersonales = ({ nextStep, locale, onSuccess }) => {
               msg: 'Datos actualizados exitosamente',
               hideProgressBar: true
             })
-            router.push({
-              query: {
-                ...router.query,
-                user: values.name
-              }
-            })
-            // nextStep()
+            // router.push({
+            //   query: {
+            //     ...router.query,
+            //     user: values.name
+            //   }
+            // })
             onSuccess()
             loadPersonalData(values)
           } else {
@@ -109,13 +108,12 @@ const DatosPersonales = ({ nextStep, locale, onSuccess }) => {
           }
           console.log('update user ', response)
         } else {
-          router.push({
-            query: {
-              ...router.query,
-              user: values.name
-            }
-          })
-          // nextStep()
+          // router.push({
+          //   query: {
+          //     ...router.query,
+          //     user: values.name
+          //   }
+          // })
           onSuccess()
           loadPersonalData(values)
         }

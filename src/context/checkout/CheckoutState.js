@@ -4,6 +4,7 @@ import { checkoutActions } from './checkoutActions'
 import { checkoutTypes as types } from './types'
 
 export const initialState = {
+  dataPedidoCreado: '',
   car: [],
   idPaypal: '',
   total: 0,

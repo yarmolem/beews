@@ -60,17 +60,17 @@ const AuthBlock = ({ onSuccess = () => {}, onRegister = () => {} }) => {
           }
         }
       })
-      // const token = response?.data?.login?.apiToken
-      console.log('response data ', response)
-      loadPersonalData(response.data.login)
-
-      loginAction(response.data.login)
-      toast({
-        title: 'Exitoso',
-        msg: `Bienvenid@ ${response.data.login.nombre}`,
-        hideProgressBar: true
-      })
-      onSuccess()
+      const token = response?.data?.login?.apiToken
+      if (token) {
+        loadPersonalData(response.data.login)
+        loginAction(response.data.login)
+        toast({
+          title: 'Exitoso',
+          msg: `Bienvenid@ ${response.data.login.nombre}`,
+          hideProgressBar: true
+        })
+        onSuccess()
+      }
     }
   })
 

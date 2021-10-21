@@ -29,6 +29,9 @@ export const checkoutActions = (state, dispatch) => ({
 
   setPaypalIdAction: (payload) => {
     dispatch({ type: types.SET_PAYPAL_ID, payload })
+  },
+  setDataPedidoCreadoAction: (payload) => {
+    dispatch({ type: types.SET_ID_PEDIDO_CREADO, payload })
   }
 
   // resetState: () => dispatch({type: })

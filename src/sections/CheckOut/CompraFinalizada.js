@@ -1,3 +1,4 @@
+import useCheckout from '@/hooks/useCheckout'
 import { translate } from '@/i18n/translate'
 import { useRouter } from 'next/dist/client/router'
 import React from 'react'
@@ -6,9 +7,17 @@ import React from 'react'
 import styles from './compra-finalizada.module.scss'
 
 const CompraFinalizada = () => {
+  const { dataPedidoCreado } = useCheckout()
   const { locale } = useRouter()
   const { checkout } = translate[locale]
+  const urlBase = 'https://api.whatsapp.com/send?phone=931681036&text='
+  let linkWhatsapp = ''
 
+  if (dataPedidoCreado !== '') {
+    linkWhatsapp = encodeURI(
+      `${urlBase}Hola soy ${dataPedidoCreado.User.nombre} ${dataPedidoCreado.User.apellidos},\nAdquirí una experiencia Beews!\nEste mi número de pedido: ${dataPedidoCreado.pedidoId}`
+    )
+  }
   return (
     <div className={styles.compraFinalizada}>
       <div>
@@ -33,7 +42,7 @@ const CompraFinalizada = () => {
               target="_blank"
               className={styles.link}
               rel="noopener noreferrer"
-              href="https://api.whatsapp.com/send?phone=+51999999999&text=Quiero%20mas%20informacion"
+              href={linkWhatsapp}
             >
               <span>
                 <img alt="Logo WhatsApp" src="/images/whatsapp.svg" />

@@ -18,10 +18,6 @@ const Formulario = ({ next, prev, locale }) => {
   const { isAuth } = useAuth()
   // States
   const [step, setStep] = useState(0)
-  const [isRegister, setIsRegister] = useState(false)
-  const [isPersonalData, setIsPersonalData] = useState(false)
-  const [isDestinationData, setIsDestinationData] = useState(false)
-  const [isLogin, setIsLogin] = useState(!isAuth)
 
   // Custom hooks
   // const { loadPersonalData } = useCheckout()
@@ -37,8 +33,6 @@ const Formulario = ({ next, prev, locale }) => {
   const nextStep = () => setStep(1)
   const prevStep = () => setStep(0)
 
-  console.log(isRegister)
-
   const props = {
     next,
     prev,
@@ -47,30 +41,52 @@ const Formulario = ({ next, prev, locale }) => {
     prevStep
   }
 
-  const handleRegister = () => {
-    setIsLogin(false)
-    setIsRegister(true)
-    setIsPersonalData(false)
-    setIsDestinationData(false)
+  // MANEJAR MOSTRAR FORMULARIOS - LOGIN, REGISTER, PERSONAL DATA, DESTINATION DATA
+  const initialIsShowForm = {
+    Register: false,
+    Login: true,
+    PersonalData: false,
+    DestinationData: false
   }
-  const handleLogin = () => {
-    setIsLogin(true)
-    setIsRegister(false)
-    setIsPersonalData(false)
-    setIsDestinationData(false)
+
+  const [isShowForm, setIsShowForm] = useState(initialIsShowForm)
+
+  const showRegisterForm = () => {
+    setIsShowForm({
+      ...initialIsShowForm,
+      Register: true,
+      Login: false
+    })
   }
-  const handleDestination = () => {
-    setIsLogin(false)
-    setIsRegister(false)
-    setIsPersonalData(false)
-    setIsDestinationData(true)
+
+  const showLoginForm = () => {
+    setIsShowForm({
+      ...initialIsShowForm,
+      Login: true
+    })
   }
-  const handlePersonalData = () => {
-    setIsLogin(false)
-    setIsRegister(false)
-    setIsPersonalData(true)
-    setIsDestinationData(false)
+  const showPersonalDataForm = () => {
+    console.log('mostrando personal data form')
+    setIsShowForm({
+      ...initialIsShowForm,
+      PersonalData: true,
+      Login: false
+    })
   }
+  const showDestinationDataForm = () => {
+    setIsShowForm({
+      ...initialIsShowForm,
+      DestinationData: true,
+      Login: false,
+      PersonalData: false
+    })
+  }
+
+  useEffect(() => {
+    if (isAuth) {
+      showPersonalDataForm()
+    }
+  }, [])
 
   return (
     <>
@@ -82,19 +98,22 @@ const Formulario = ({ next, prev, locale }) => {
         <h2>{step === 0 ? form.title1 : form.title2}</h2>
         <h3>{step === 0 ? form.subtitle1 : form.subtitle2}</h3>
         {/* eslint-disable */}
-        {isLogin ? (
+        {isShowForm.Login && !isAuth ? (
           <AuthBlock
-            onSuccess={handlePersonalData}
-            onRegister={handleRegister}
+            onSuccess={showPersonalDataForm}
+            onRegister={showRegisterForm}
           />
         ) : null}
-        {isRegister ? (
-          <RegistrarDatos onSuccess={handleDestination} goLogin={handleLogin} />
+        {isShowForm.Register ? (
+          <RegistrarDatos
+            onSuccess={showDestinationDataForm}
+            goLogin={showLoginForm}
+          />
         ) : null}
-        {isPersonalData ? (
-          <DatosPersonales {...props} onSuccess={handleDestination} />
+        {isShowForm.PersonalData ? (
+          <DatosPersonales {...props} onSuccess={showDestinationDataForm} />
         ) : null}
-        {isDestinationData ? <DatosDestinatario {...props} /> : null}
+        {isShowForm.DestinationData ? <DatosDestinatario {...props} /> : null}
       </div>
     </>
   )
