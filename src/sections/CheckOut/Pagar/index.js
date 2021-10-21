@@ -11,8 +11,9 @@ import styles from './pagar.module.scss'
 import useToast from '@/hooks/useToast'
 import { useMutation } from '@apollo/client'
 import { CREAR_PEDIDO_MUTATION } from 'src/graphql/mutation/crearPedido_mutation'
+import { PLANES } from '@/data/planes'
 
-const Pagar = ({ next, locale }) =>  {
+const Pagar = ({ next, locale }) => {
   const { toast } = useToast()
   const { setPaypalIdAction, setDataPedidoCreadoAction } = useCheckout()
   const [paypalID, setPaypalID] = useState(null)
@@ -90,7 +91,10 @@ const Pagar = ({ next, locale }) =>  {
     const payload = {
       variables: {
         input: {
-          plan: checkoutState.plan.id,
+          plan: PLANES.find(
+            (plan) =>
+              plan.title.toUpperCase() === checkoutState.plan.id.toUpperCase()
+          )?.id,
           estado: 'REALIZADO',
           visto: 'visto',
           idPaypal: idPaypal,

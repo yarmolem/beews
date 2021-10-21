@@ -10,7 +10,7 @@ const CompraFinalizada = () => {
   const { dataPedidoCreado } = useCheckout()
   const { locale } = useRouter()
   const { checkout } = translate[locale]
-  const urlBase = 'https://api.whatsapp.com/send?phone=931681036&text='
+  const urlBase = 'https://api.whatsapp.com/send?phone=51920504820&text='
   let linkWhatsapp = ''
 
   if (dataPedidoCreado !== '') {
