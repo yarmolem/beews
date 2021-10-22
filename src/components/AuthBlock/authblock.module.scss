@@ -3,7 +3,7 @@
 
 .authblock {
   z-index: 4;
-  position: absolute;
+  // position: absolute;
   width: 100%;
   height: auto;
   display: grid;
@@ -22,13 +22,13 @@
       text-align: center;
       color: $brown-dark;
     }
-  
+
     h2 {
       margin-bottom: 1rem;
       font-size: 3rem;
       font-family: SunFlower;
     }
-  
+
     h3 {
       font-size: 3rem;
       font-size: 20px;
@@ -44,7 +44,6 @@
       }
     }
   }
-
 }
 
 .registro {

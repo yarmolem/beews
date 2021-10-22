@@ -18,7 +18,7 @@
     grid-template-columns: 40px 1fr 40px;
 
     @include break_lg {
-      grid-template-columns: 150px 1fr 335px;
+      grid-template-columns: 150px 1fr 400px;
     }
 
     @include break_xl {

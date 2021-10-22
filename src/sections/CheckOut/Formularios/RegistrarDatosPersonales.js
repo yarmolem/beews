@@ -57,8 +57,8 @@ const RegistrarDatosPersonales = ({
   }
 
   const formik = useFormik({
-    enableReinitialize: true,
     initialValues,
+    enableReinitialize: true,
     validate: registerSchema,
     onSubmit: async (values) => {
       setMensajeError(null)
@@ -212,16 +212,16 @@ const RegistrarDatosPersonales = ({
           </div>
           <div className="col-12 col-md-4 mb-1">
             <label htmlFor="">{form.personalForm.city}</label>
-            <select
+            <input
+              type="text"
               name="ciudad"
+              autoComplete="off"
+              placeholder="Ciudad"
               onBlur={formik.handleBlur}
               value={formik.values.ciudad}
               onChange={formik.handleChange}
-              aria-label="Username"
-              className="form-control"
-            >
-              <option value="">option 1</option>
-            </select>
+              className={`form-control ${styles.registro_input}`}
+            />
           </div>
         </div>
         <div className="row mb-3">

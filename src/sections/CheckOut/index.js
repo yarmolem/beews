@@ -20,9 +20,9 @@ const FigureTimeline = ({
   position,
   onChangePosition = () => {}
 }) => {
-  const renderButton = () => {
-    const { locale } = useRouter()
+  const { locale } = useRouter()
 
+  const renderButton = () => {
     return (
       <button onClick={onChangePosition} className={`btn ${styles.figure_btn}`}>
         {locale === 'es-ES' ? 'cambiar' : 'change'}
@@ -37,11 +37,16 @@ const FigureTimeline = ({
   const success = '/images/logo-steps-success.svg'
   const active = isActive ? 'figure_active' : 'figure_inactive'
 
+  const show = position < stepper && stepper !== 4
+
   return (
-    <div className={`${styles.figure} ${styles[active]}`}>
+    <div
+      onClick={show ? onChangePosition : () => {}}
+      className={`${styles.figure} ${styles[active]}`}
+    >
       <img src={complete ? success : IMG} alt="Logo Beews" />
       <span>{title}</span>
-      {position < stepper && stepper !== 4 ? renderButton() : null}
+      {show ? renderButton() : null}
     </div>
   )
 }

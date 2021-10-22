@@ -199,7 +199,7 @@ const RegistroForm = ({ onToggleAuth = () => {} }) => {
         <div className="form-floating">
           <input
             type="text"
-            id="emailFloat"
+            id="ciudadFloating"
             name="ciudad"
             onBlur={formik.handleBlur}
             value={formik.values.ciudad}
@@ -208,7 +208,7 @@ const RegistroForm = ({ onToggleAuth = () => {} }) => {
             placeholder="Correo electrónico"
             className={`form-control ${styles.registro_input}`}
           />
-          <label htmlFor="emailFloat">{registro.placeholder.city}</label>
+          <label htmlFor="ciudadFloating">{registro.placeholder.city}</label>
         </div>
         <div className="form-floating">
           <input

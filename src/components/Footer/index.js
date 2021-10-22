@@ -1,9 +1,10 @@
+import React, { useState } from 'react'
+import Link from 'next/link'
 import useToast from '@/hooks/useToast'
 import { translate } from '@/i18n/translate'
 import { useMutation } from '@apollo/client'
 import { useRouter } from 'next/dist/client/router'
 
-import React, { useState } from 'react'
 import { CREAR_SUSCRIPCION_MUTATION } from 'src/graphql/mutation/crearSuscripcion_mutation'
 
 // Componentsj
@@ -14,9 +15,8 @@ import Loader from '../Loader/Loader'
 import styles from './footer.module.scss'
 
 const Footer = () => {
-  const { locale } = useRouter()
-  const router = useRouter()
   const { toast } = useToast()
+  const { locale, ...router } = useRouter()
   const { footer } = translate[locale]
 
   const [mensajeError, setMensajeError] = useState(null)
@@ -80,14 +80,20 @@ const Footer = () => {
 
       <div className={styles.footer_item}>
         <ul className={styles.footer_links}>
-          <li onClick={() => router.push('/politica-de-privacidad')}>
-            <a href="#">{footer.privacidad}</a>
+          <li>
+            <Link href="/politica-de-privacidad">
+              <a>{footer.privacidad}</a>
+            </Link>
           </li>
-          <li onClick={() => router.push('/terminos-condiciones')}>
-            <a href="#">{footer.terms}</a>
+          <li>
+            <Link href="/terminos-condiciones">
+              <a>{footer.terms}</a>
+            </Link>
           </li>
-          <li onClick={() => router.push('/politica-de-cookies')}>
-            <a href="#">{footer.cookies}</a>
+          <li>
+            <Link href="/politica-de-cookies">
+              <a>{footer.cookies}</a>
+            </Link>
           </li>
           <li>
             <a href="#">FAQ’S</a>

@@ -8,6 +8,7 @@ import { motion } from 'framer-motion'
 // styles
 import styles from './sidebar.module.scss'
 import useAuth from '@/hooks/useAuth'
+import { translate } from '@/i18n/translate'
 
 const variants = {
   open: {
@@ -28,8 +29,10 @@ const fade = {
 }
 
 const Sidebar = ({ isOpen = false, onClose }) => {
-  const { push } = useRouter()
+  const { push, locale } = useRouter()
   const { logout, isAuth } = useAuth()
+
+  const { navbar } = translate[locale]
 
   return (
     <aside
@@ -60,22 +63,22 @@ const Sidebar = ({ isOpen = false, onClose }) => {
         <ul className={styles.sidebar_links}>
           <li>
             <Link href="/">
-              <a onClick={onClose}>Inicio</a>
+              <a onClick={onClose}>{locale === 'es-ES' ? 'Inicio' : 'Home'}</a>
             </Link>
           </li>
           <li>
             <Link href="/quienes-somos">
-              <a onClick={onClose}>Quiénes somos</a>
+              <a onClick={onClose}>{navbar.aboutUs}</a>
             </Link>
           </li>
           <li>
             <Link href="/como-funciona">
-              <a onClick={onClose}>Como funciona</a>
+              <a onClick={onClose}>{navbar.howWorks}</a>
             </Link>
           </li>
           <li>
             <a onClick={onClose} href="#">
-              Nuestra feria
+              {navbar.fair}
             </a>
           </li>
           <li>
@@ -88,13 +91,13 @@ const Sidebar = ({ isOpen = false, onClose }) => {
                 }}
                 className="btn text-danger"
               >
-                Cerrar sesión
+                {locale === 'es-ES' ? 'Cerrar sesión' : 'Logout'}
               </button>
             ) : null}
             {/* eslint-disable */}
             {!isAuth ? (
               <Link href="/registro">
-                <a onClick={onClose}>Regístrate</a>
+                <a onClick={onClose}>{navbar.auth}</a>
               </Link>
             ) : null}
           </li>
@@ -107,7 +110,7 @@ const Sidebar = ({ isOpen = false, onClose }) => {
           }}
           className="btn btn-dark btn-lg"
         >
-          Pide un Beews
+          {navbar.order}
         </button>
       </motion.div>
     </aside>
