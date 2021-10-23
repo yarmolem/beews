@@ -374,15 +374,9 @@ const TerminosCondiciones = () => {
                   Bloquear, sobrescribir, modificar o copiar, a no ser que ello
                   sea necesario para la correcta utilización de los servicios
                   del Sitio Web. Por ejemplo, el copiado mediante tecnologías de
-<<<<<<< HEAD
-                  buscador tipo "Robot/Crawler" no es necesario para la correcta
-                  utilización de los servicios del Sitio Web, por lo que está
-                  prohibido expresamente.
-=======
                   buscador tipo &quot;Robot/Crawler&quot; no es necesario para
                   la correcta utilización de los servicios del Sitio Web, por lo
                   que está prohibido expresamente.
->>>>>>> main
                 </li>
                 <li>
                   Difundir y reproducir públicamente contenidos del Sitio Web,
@@ -402,15 +396,6 @@ const TerminosCondiciones = () => {
                   intereses del Sitio Web, sus miembros y/o terceros. El Usuario
                   deberá responder frente a los perjudicados en caso de que al
                   contravenir o incumplir dichas obligaciones, de cualquier modo
-<<<<<<< HEAD
-                  (incluida la introducción o difusión de "virus informáticos"),
-                  dañe, inutilice, sobrecargue, deteriore o impida la normal
-                  utilización de los materiales e informaciones contenidos en el
-                  Sitio Web, los sistemas de información o los documentos,
-                  archivos y toda clase de contenidos almacenados en cualquier
-                  equipo informático (hacking) del Sitio Web, de sus miembros o
-                  de cualquier usuario.
-=======
                   (incluida la introducción o difusión de &quot;virus
                   informáticos&quot;), dañe, inutilice, sobrecargue, deteriore o
                   impida la normal utilización de los materiales e informaciones
@@ -418,7 +403,6 @@ const TerminosCondiciones = () => {
                   documentos, archivos y toda clase de contenidos almacenados en
                   cualquier equipo informático (hacking) del Sitio Web, de sus
                   miembros o de cualquier usuario.
->>>>>>> main
                 </li>
                 <li>
                   Inserción de comentarios o Contenidos ajenos al objeto y
