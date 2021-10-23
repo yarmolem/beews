@@ -3,7 +3,7 @@ import React, { useCallback, useEffect } from 'react'
 const MessengerButton = () => {
   const messengerInit = useCallback(() => {
     window.fbAsyncInit = function () {
-      FB.init({ xfbml: true, version: 'v11.0' })
+      window.FB.init({ xfbml: true, version: 'v11.0' })
     }
   }, [])
 

@@ -45,13 +45,11 @@ const AuthBlock = ({ onSuccess = () => {}, onRegister = () => {} }) => {
   })
 
   const formik = useFormik({
-    enableReinitialize: true,
     initialValues,
+    enableReinitialize: true,
     validationSchema: loginSchema,
     onSubmit: async (values) => {
       setMensajeError(null)
-      console.log('login function ', loginAction)
-      // setMensajeError(null)
       const response = await loginUserMutation({
         variables: {
           input: {
@@ -60,17 +58,16 @@ const AuthBlock = ({ onSuccess = () => {}, onRegister = () => {} }) => {
           }
         }
       })
-      const token = response?.data?.login?.apiToken
-      if (token) {
-        loadPersonalData(response.data.login)
-        loginAction(response.data.login)
-        toast({
-          title: 'Exitoso',
-          msg: `Bienvenid@ ${response.data.login.nombre}`,
-          hideProgressBar: true
-        })
-        onSuccess()
-      }
+      const data = response?.data?.login
+      toast({
+        title: 'Exitoso',
+        msg: `Bienvenid@ ${data.nombre}`
+      })
+
+      loginAction(data)
+      loadPersonalData(data)
+
+      onSuccess()
     }
   })
 

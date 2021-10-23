@@ -1,7 +1,7 @@
 const { join } = require('path')
-const withOptimizedImages = require('next-optimized-images')
+// const withOptimizedImages = require('next-optimized-images')
 
-module.exports = withOptimizedImages({
+module.exports = {
   sassOptions: {
     includePaths: [join(__dirname, 'src/styles')]
   },
@@ -9,4 +9,4 @@ module.exports = withOptimizedImages({
     locales: ['es-ES', 'en-US'],
     defaultLocale: 'es-ES'
   }
-})
+}

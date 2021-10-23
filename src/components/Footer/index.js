@@ -16,7 +16,7 @@ import styles from './footer.module.scss'
 
 const Footer = () => {
   const { toast } = useToast()
-  const { locale, ...router } = useRouter()
+  const { locale } = useRouter()
   const { footer } = translate[locale]
 
   const [mensajeError, setMensajeError] = useState(null)

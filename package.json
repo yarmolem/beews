@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 8080",
+    "dev": "next dev -p 8081",
     "build": "next build",
     "start": "next start",
     "export": "next export",
@@ -38,7 +38,10 @@
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
     "imagemin-svgo": "^9.0.0",
+<<<<<<< HEAD
     "next-optimized-images": "^2.6.2",
+=======
+>>>>>>> main
     "node-sass": "^5.0.0",
     "webp-loader": "^0.6.0"
   }
