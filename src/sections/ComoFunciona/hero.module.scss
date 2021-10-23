@@ -1,0 +1,85 @@
+@import '@/styles/mixins';
+@import '@/styles/variables';
+
+.hero {
+  position: relative;
+  display: flex;
+  min-height: 10rem;
+  align-items: center;
+  justify-content: center;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(/images/banner-funciona.png);
+
+  @include break_sm {
+    min-height: 15rem;
+  }
+  @include break_md {
+    min-height: 20rem;
+  }
+  @include break_lg {
+    min-height: 600px;
+  }
+
+  &_wrap {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+    width: 90%;
+    max-width: 450px;
+    padding-block: 5rem;
+  }
+
+  h1,
+  h4 {
+    color: $brown-letter;
+    text-align: center;
+  }
+
+  h1 {
+    font-family: sofiaProBlack;
+    margin-bottom: 1rem;
+
+    @include break_xl {
+      margin-bottom: 1.5rem;
+      font-size: 3rem;
+    }
+  }
+
+  h4 {
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 1em;
+    font-family: sofiaProRegular;
+
+    @include break_xl {
+      font-size: 1.4rem;
+    }
+  }
+
+  button {
+    font-family: sofiaProSemi;
+  }
+}
+
+.cloud_1,
+.cloud_2 {
+  display: none;
+  position: absolute;
+  
+  @include break_md {
+    display: block;
+  }
+}
+
+.cloud_1 {
+  top: 25%;
+  right: 5%;
+}
+.cloud_2 {
+  top: 65%;
+  left: 5%;
+}

@@ -1,0 +1,100 @@
+@import '@/styles/mixins';
+@import '@/styles/variables';
+
+.dropdown {
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: $bg-gray;
+  border-radius: 0 0 1rem 1rem;
+
+  &_label {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-radius: 15px;
+    background-color: $brown-dark;
+    
+    h4 {
+      margin: 0;
+      color: #fff;
+      font-size: 1.1rem;
+      font-family: SofiaProSemi;
+      transform: translateY(-3px);
+
+      @include break_md {
+        font-size: 1.2rem;
+      }
+      @include break_md {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  &_icon {
+    margin-right: 1rem; 
+  }
+
+  &_chevron {
+    display: block;
+    cursor: pointer;
+    margin-left: auto;
+    background: transparent;
+    border: none;
+    outline: none;
+
+    transition: transform 0.3s linear;
+  }
+
+  &_content {
+    max-height: 0;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 0 0 1rem 1rem;
+    transition: max-height 0.3s linear;
+
+    h4 {
+      font-family: SofiaProSemi;
+
+      @include break_lg {
+        font-size: 36px;
+      }
+    }
+
+    p {
+      line-height: 1em;
+      color: $brown-letter;
+      font-family: SofiaProSemi;
+
+      @include break_lg {
+        font-size: 22px;
+      }
+    }
+
+    small {
+      line-height: 1em;
+      font-family: SofiaProLight;
+    }
+  }
+
+  &_wrap {
+    padding: 1rem 1rem;
+
+    @include break_lg {
+      padding: 1rem 3rem;
+    }
+  }
+}
+
+.open {
+  opacity: 1;
+  max-height: 250px;
+}
+
+.close {
+  pointer-events: none;
+}
+
+.chevron_open {
+  transform: rotate(180deg);
+}

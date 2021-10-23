@@ -1,0 +1,126 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.footer {
+  z-index: 2;
+  padding: 2rem;
+  background: $bg-footer;
+
+  gap: 2rem 0;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr;
+
+  @include break_md {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include break_xl {
+    grid-template-columns: 150px 250px 250px 400px 150px;
+  }
+  @include break_xxl {
+    padding-block: 4rem;
+    grid-template-columns: repeat(3, 250px) 500px 100px;
+  }
+
+  img {
+    justify-self: center;
+  }
+
+  &_logo {
+    width: 150px;
+    height: 50px;
+    justify-self: center;
+    
+    @include break_xl {
+      justify-self: flex-start;
+
+    }
+  }
+
+  &_item {
+    color: white;
+    justify-self: center;
+  }
+
+  &_derechos {
+    color: white;
+    text-align: center;
+    
+    @include break_xl {
+      text-align: left;
+      grid-column: span 2 / span 2;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &_social {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    &Icon {
+      display: grid;
+      padding: 0.7rem;
+      justify-self: center;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      background-color: #faf7f4;
+      border-radius: 50%;
+
+      img {
+        transform: translateY(-4px);
+      }
+    }
+  }
+
+  &_links {
+    padding: 0;
+    list-style: none;
+    text-align: center;
+
+    @include break_xl {
+      text-align: left;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    li:last-child {
+      margin-bottom: 0;
+    }
+
+    li a {
+      color: white;
+      text-decoration: none;
+    }
+  }
+
+  &_newsletter {
+    display: flex;
+
+    input[type='text'] {
+      color: white;
+      border-radius: 20px;
+      background: transparent;
+
+      @include break_xl {
+        width: 250px;
+      }
+    }
+
+    button {
+      border-radius: 7px;
+      margin-left: 0.5rem;
+      background: #cdc5b9;
+    }
+  }
+
+  &_wsp {
+    width: 68px;
+    height: 68px;
+  }
+}

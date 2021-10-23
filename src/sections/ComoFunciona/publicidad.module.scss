@@ -1,0 +1,114 @@
+@import '@/styles/mixins';
+@import '@/styles/variables';
+
+.publicidad {
+  position: relative;
+  background: $red;
+  min-height: 15rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  @include break_sm {
+    min-height: 22rem;
+  }
+
+  &_icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: #faf7f4;
+    border-radius: 50%;
+  }
+
+  &_wrap {
+    padding-block: 2rem;
+
+    @include break_xl {
+      padding-block: 5rem;
+    }
+
+    h1,
+    h3,
+    h4 {
+      color: white;
+      text-align: center;
+    }
+
+    h1 {
+      max-width: 650px;
+      line-height: 1em;
+      font-family: SunFlower;
+      margin-bottom: 2rem;
+
+      @include break_sm {
+        margin-bottom: 2rem;
+      }
+      @include break_lg {
+        font-size: 60px;
+        margin-bottom: 2rem;
+      }
+    }
+
+    h3 {
+      margin: 0 auto;
+      max-width: 400px;
+      margin-bottom: 1.5rem;
+      font-family: SofiaProLight;
+    }
+
+    h4 {
+      display: flex;
+      margin: 0 auto;
+      align-items: center;
+      justify-content: center;
+      max-width: 400px;
+      font-size: 1rem;
+      font-family: SofiaProRegular;
+      text-decoration: underline;
+
+      @include break_sm {
+        font-size: 1.2rem;
+      }
+      @include break_md {
+        font-size: 1.5rem;
+      }
+
+      span {
+        margin-right: 0.5rem;
+      }
+
+      a {
+        color: white;
+      }
+    }
+  }
+}
+
+.persona_1,
+.persona_2 {
+  position: absolute;
+}
+
+.persona_1 {
+  display: none;
+  left: 0;
+  bottom: -1rem;
+
+  @media (min-width: 1028px) {
+    display: block;
+    left: 4%;
+  }
+}
+.persona_2 {
+  display: none;
+  right: 0;
+  top: 1rem;
+
+  @media (min-width: 1028px) {
+    display: block;
+    right: 4%;
+  }
+}

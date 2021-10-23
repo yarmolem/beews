@@ -1,0 +1,83 @@
+@import '@/styles/mixins';
+@import '@/styles/variables';
+
+@import '@/styles/mixins';
+@import '@/styles/variables';
+
+.regalo {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 900px;
+  overflow: hidden;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  &_swiper {
+    width: 90%;
+    
+    @include break_lg {
+      width: 100%;
+      max-width: 900px;
+    }
+  }
+
+  &_num {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    background-color: $primary;
+    margin-bottom: 1rem;
+
+    h1 {
+      color: white;
+      font-family: SunFlower;
+      transform: translateY(5px);
+    }
+  }
+
+  h2 {
+    max-width: 320px;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: $brown-letter;
+    font-family: SunFlower;
+
+    @include break_md {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+    }
+  }
+
+  h3 {
+    max-width: 460px;
+    text-align: center;
+    color: $brown-letter;
+    font-family: SofiaProSemi;
+  }
+
+  &_button {
+    margin: 0 auto;
+    color: white;
+    margin-top: 2rem;
+    border-radius: 15px;
+    padding-inline: 3rem;
+    font-family: sofiaProSemi;
+
+    @include break_lg {
+      font-size: 30px;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: white;
+    }
+  }
+}

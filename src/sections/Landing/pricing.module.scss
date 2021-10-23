@@ -1,0 +1,77 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.pricing {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 900px;
+  padding-block: 2rem;
+
+  @include break_md {
+    padding-block: 3.8rem;
+  }
+  @include break_lg {
+    padding-block: 4rem;
+  }
+  @include break_xl {
+    padding-block: 5rem;
+  }
+  @include break_xxl {
+    padding-block: 8rem;
+  }
+
+  h3,
+  h4 {
+    color: $brown-dark;
+    text-align: center;
+  }
+
+  h3 {
+    margin: 0 auto;
+    font-weight: 700;
+    max-width: 600px;
+    color: $brown-dark;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-family: SofiaProRegular;
+
+    @include break_sm {
+      font-size: 2rem;
+    }
+    @include break_md {
+      font-size: 3rem;
+    }
+    @include break_lg {
+      font-size: 3.5rem;
+      line-height: 3.5rem;
+    }
+  }
+
+  h4 {
+    font-family: SunFlower;
+    text-align: center;
+    font-size: 1.2rem;
+
+    @include break_sm {
+      font-size: 1.5rem;
+    }
+    @include break_md {
+      font-size: 1.8rem;
+    }
+    @include break_lg {
+      font-size: 2.1rem;
+    }
+  }
+
+  &_grid {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    @include break_md {
+      grid-template-columns: 1fr 1fr;
+      margin-block: 4rem;
+    }
+  }
+}

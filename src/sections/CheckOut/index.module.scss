@@ -1,0 +1,110 @@
+@import '@/styles/mixins';
+@import '@/styles/variables';
+
+.checkout {
+  @include break_md {
+    padding-top: 2rem;
+  }
+
+  &_navegation {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
+    position: relative;
+    margin-bottom: 2rem;
+
+    ul {
+      padding: 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-around;
+
+      li {
+        z-index: 2;
+        list-style: none;
+
+        span {
+          font-family: sofiaProRegular;
+
+          @include break_xl {
+            font-family: sofiaProSemi;
+          }
+        }
+      }
+    }
+  }
+
+  &_timeline {
+    z-index: 1;
+    width: 80%;
+    height: 2px;
+    left: 10%;
+    top: 2.2rem;
+    position: absolute;
+    background-color: #e9e1dc;
+  }
+
+  section {
+    position: relative;
+  }
+}
+
+.figure {
+  max-width: 100px;
+  text-align: center;
+
+  &_inactive {
+    img {
+      width: 30px;
+      height: 30px;
+      transform: translateY(1.25rem);
+
+      @include break_md {
+        width: 50px;
+        height: 50px;
+        transform: translateY(0.7rem);
+      }
+      @include break_lg {
+        width: 67px;
+        height: 67px;
+        transform: translateY(0rem);
+      }
+    }
+
+    span {
+      display: none;
+
+      @include break_md {
+        display: block;
+        min-height: 50px;
+        margin-top: 1rem;
+        font-size: 0.7rem;
+        color: lighten($color: $dark-letter, $amount: 20);
+      }
+      @include break_lg {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  &_active {
+    span {
+      display: block;
+      margin-top: 1rem;
+    }
+  }
+
+  &_btn {
+    display: none;
+    padding: 0;
+    margin: 0 auto;
+    border-radius: 0;
+    // margin-top: 0.5rem;
+    font-family: SofiaProSemi;
+    border-bottom: 1px solid #000;
+
+    @include break_md {
+      display: block;
+    }
+  }
+}

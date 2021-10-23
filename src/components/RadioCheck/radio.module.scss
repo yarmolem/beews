@@ -1,0 +1,45 @@
+@import '@/styles/mixins';
+@import '@/styles/variables';
+
+.radiocheck {
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 1040px) {
+    flex-direction: row;
+  }
+
+  & > div {
+    display: flex;
+    margin-right: 2rem;
+    align-items: center;
+    flex-direction: row;
+
+    @media screen and (min-width: 1040px) {
+      flex-direction: column;
+    }
+
+    input {
+      width: 30px;
+      height: 30px;
+      margin-right: 1rem;
+    }
+
+    label {
+      height: 50px;
+      width: 133px;
+      display: flex;
+      background: #fff;
+      margin-top: 0.5rem;
+      align-items: center;
+      border-radius: 0.5rem;
+      justify-content: center;
+      border: 1px solid #9c9c9c;
+
+      img {
+        width: 80%;
+        height: 80%;
+      }
+    }
+  }
+}

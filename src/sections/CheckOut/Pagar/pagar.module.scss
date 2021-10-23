@@ -1,0 +1,326 @@
+@import '@/styles/mixins';
+@import '@/styles/variables';
+
+.pagar {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 877px;
+  padding-top: 2rem;
+  padding-bottom: 80px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  &_num {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    background-color: $primary;
+    margin-bottom: 1rem;
+
+    h1 {
+      color: white;
+      font-family: SunFlower;
+      transform: translateY(5px);
+    }
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+    color: $brown-letter;
+    font-family: SunFlower;
+
+    @include break_md {
+      font-size: 2.5rem;
+      margin-bottom: 4rem;
+    }
+  }
+}
+
+.producto {
+  width: 100%;
+  display: grid;
+  flex-direction: column;
+  padding-block: 20px;
+  padding-inline: 20px;
+  height: max-content;
+  border-radius: 15px;
+  background: #f7f2ed;
+  margin-bottom: 11px;
+  align-items: center;
+
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 100px 80px;
+
+  @include break_md {
+    display: flex;
+    height: 160px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 0px;
+  }
+  @include break_lg {
+    padding-inline: 40px;
+  }
+
+  &_image {
+    width: 110px;
+    height: 100%;
+    border-radius: 10px;
+
+    @include break_md {
+      width: 110px;
+      height: 110px;
+    }
+  }
+
+  &_detail {
+    width: 100%;
+    max-width: 180px;
+
+    @include break_lg {
+      max-width: 220px;
+    }
+
+    p,
+    h3,
+    button {
+      color: $brown-letter;
+      font-family: SofiaProSemi;
+    }
+
+    p {
+      margin: 0;
+      margin-bottom: 7px;
+      font-size: 14px;
+      line-height: 14px;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 18px;
+      margin-bottom: 5px;
+
+      @include break_lg {
+        font-size: 24px;
+        line-height: 24px;
+      }
+    }
+
+    button {
+      padding: 0;
+      font-size: 12px;
+      line-height: 18px;
+      display: flex;
+      align-items: center;
+      border: none;
+      outline: none;
+      background: transparent;
+      cursor: pointer;
+      text-decoration: underline;
+
+      svg {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  &_price,
+  &_subtotal {
+    width: 123px;
+    align-self: flex-end;
+
+    @include break_md {
+      align-self: center;
+    }
+
+    p,
+    h3 {
+      color: $brown-letter;
+      font-family: SofiaProSemi;
+    }
+
+    p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 14px;
+      margin-bottom: 0.5rem;
+
+      @include break_md {
+        margin-bottom: 1rem;
+      }
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 26px;
+      line-height: 24px;
+
+      @include break_md {
+        margin-bottom: 8px;
+      }
+    }
+  }
+}
+
+.separador {
+  display: none;
+
+  @include break_md {
+    display: block;
+    height: 88px;
+    width: 2px;
+    background: $brown-letter;
+  }
+}
+
+.totalBar {
+  width: 100%;
+  height: 51px;
+  display: flex;
+  align-items: center;
+  padding-inline: 44px;
+  justify-content: space-between;
+  background: $brown-dark;
+  border-radius: 15px;
+  margin-bottom: 47px;
+
+  h3 {
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-size: 24px;
+    font-family: SofiaProSemi;
+  }
+}
+
+.metodos {
+  width: 100%;
+  margin-bottom: 1rem;
+
+  @include break_md {
+    margin-bottom: 100px;
+  }
+
+  h3 {
+    font-size: 36px;
+    text-align: center;
+    color: $brown-letter;
+    font-family: SunFlower;
+    margin-bottom: 32px;
+  }
+
+  &_flex {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    justify-content: center;
+
+    @include break_md {
+      flex-direction: row;
+    }
+
+    & > div {
+      max-width: 202px;
+    }
+
+    button {
+      outline: none;
+      width: 202px;
+      height: 74px;
+      border-radius: 7px;
+      background: #ffffff;
+      border: 1.5px solid #555555;
+      margin-bottom: 1rem;
+
+      @include break_md {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.cantidad {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+
+  &_input {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    input {
+      outline: none;
+      width: 43px;
+      height: 43px;
+      padding: 0;
+      text-align: center;
+      border: 1px solid #6b6b6b;
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 24px;
+      line-height: 24px;
+      color: #6b6b6b;
+    }
+
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    input[type='number'] {
+      -moz-appearance: textfield;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      outline: none;
+      margin: 0;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      background: transparent;
+      color: $primary;
+
+      &:disabled {
+        color: $gray-500;
+      }
+
+      svg {
+        vertical-align: top;
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+}
+
+.nextButton {
+  margin: 0 auto;
+  color: white;
+  padding-inline: 3rem;
+  border-radius: 15px;
+  font-family: sofiaProSemi;
+
+  @include break_lg {
+    font-size: 30px;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: white;
+  }
+}

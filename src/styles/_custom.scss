@@ -1,0 +1,119 @@
+@import './variables';
+
+body {
+  margin: 0 auto;
+  max-width: 1920px;
+}
+
+// Delete margin from list
+ol,
+ul,
+dl {
+  margin-top: 0;
+  margin-bottom: 0rem;
+}
+
+strong {
+  font-weight: 600;
+  font-family: SofiaProSemi;
+}
+
+// updates to react-toastify
+.Toastify__toast {
+  border-radius: 8px;
+
+  &-body {
+    align-items: flex-start;
+  }
+
+  &-theme--light {
+    background-color: #fff;
+  }
+
+  &--info &-icon {
+    color: $cyan;
+  }
+  &--error &-icon {
+    color: $red;
+  }
+  &--warning &-icon {
+    color: $yellow;
+  }
+  &--success &-icon {
+    color: #07bc0c;
+  }
+
+  &--error {
+    border-left: 5px solid $red;
+  }
+  &--info {
+    border-left: 5px solid $cyan;
+  }
+  &--success {
+    border-left: 5px solid #07bc0c;
+  }
+  &--warning {
+    border-left: 5px solid $yellow;
+  }
+}
+
+#video_slider .react-Slidy > div {
+  overflow: unset;
+}
+#video_slider .react-Slidy-arrow {
+  display: flex;
+}
+
+#landing_slider .swiper-wrapper {
+  max-height: calc(100vh - 80px);
+}
+
+.swiper-pagination-bullet {
+  width: 13px;
+  height: 13px;
+  margin: 0 8px;
+  background: #fff;
+}
+
+.swiper-container-horizontal > .swiper-pagination-bullets {
+  bottom: 5%;
+}
+
+#regalo_modal .swiper-button-next {
+  right: 0;
+  border-radius: 15px 0 0 15px;
+  
+  @include break_lg {
+    right: 10px;
+    left: auto;
+    border-radius: 0;
+  }
+}
+
+#regalo_modal .swiper-button-prev {
+  left: 0;
+  border-radius: 0 15px 15px 0;
+
+  @include break_lg {
+    left: 10px;
+    right: auto;
+    border-radius: 0;
+  }
+}
+
+#regalo_modal .swiper-button-next,
+#regalo_modal .swiper-button-prev {
+  top: 20%;
+  color: #59504F;
+  width: 40px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.8);
+
+ 
+  @include break_lg {
+    top: 50%;
+    width: max-content;
+    height: max-content;
+    background: transparent;
+  }
+}

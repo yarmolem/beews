@@ -1,0 +1,36 @@
+@mixin break_xs {
+  @media screen and (min-width: 360px) {
+    @content;
+  }
+}
+@mixin break_sm {
+  @media screen and (min-width: 576px) {
+    @content;
+  }
+}
+@mixin break_md {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+@mixin break_lg {
+  @media screen and (min-width: 992px) {
+    @content;
+  }
+}
+@mixin break_xl {
+  @media screen and (min-width: 1200px) {
+    @content;
+  }
+}
+@mixin break_xxl {
+  @media screen and (min-width: 1400px) {
+    @content;
+  }
+}
+
+@mixin container($maxW: 1200px) {
+  width: 90%;
+  margin: 0 auto;
+  max-width: $maxW;
+}

@@ -1,0 +1,31 @@
+.politicaCookies {
+  //   background-color: red;
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+  color: #212529;
+
+  h3 {
+    font-family: SunFlower;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  p {
+    font-family: SofiaProRegular;
+    margin-bottom: 1.5rem;
+  }
+
+  li {
+    margin-bottom: 1rem;
+  }
+
+  ul ol {
+    margin-bottom: 1.5rem;
+    b {
+      font-family: SofiaProSemi;
+    }
+  }
+}

@@ -1,0 +1,105 @@
+@import '@/styles/mixins';
+@import '@/styles/variables';
+
+.pedirBeews {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // width: 90%;
+  // margin: 0 auto;
+  // max-width: 1200px;
+  padding-block: 2rem;
+  text-align: center;
+  color: white;
+  background-image: url(/images/bg-pidebeews.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+
+  @include break_sm {
+    min-height: 20rem;
+  }
+
+  @include break_md {
+    min-height: 30rem;
+  }
+
+  @include break_lg {
+    min-height: 40rem;
+  }
+
+  @include break_lg {
+    min-height: calc(100vh - 79px);
+  }
+
+  h1 {
+    width: 90%;
+    max-width: 700px;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-family: SofiaProSemi;
+
+    @include break_sm {
+      font-size: 3rem;
+    }
+
+    @include break_md {
+      font-size: 4rem;
+    }
+
+    @include break_lg {
+      margin-bottom: 2rem;
+      font-size: 4.5rem;
+      line-height: 4.5rem;
+    }
+  }
+
+  p {
+    width: 90%;
+    max-width: 700px;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+
+    @include break_sm {
+      font-size: 1.4rem;
+    }
+
+    @include break_md {
+      font-size: 1.7rem;
+    }
+
+    @include break_lg {
+      margin-bottom: 2rem;
+      font-size: 2rem;
+    }
+  }
+
+  button {
+    font-family: SofiaProBlack;
+  }
+}
+
+.cloud_1,
+.cloud_2 {
+  z-index: 0;
+  width: 100px;
+  display: none;
+  position: absolute;
+  
+  @include break_md {
+    display: block;
+  }
+}
+
+.cloud_1 {
+  top: 35%;
+  left: 5%;
+}
+.cloud_2 {
+  top: 62%;
+  right: 5%;
+
+}
+

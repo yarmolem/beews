@@ -1,0 +1,64 @@
+@import '@/styles/mixins';
+@import '@/styles/variables';
+
+.primary {
+  background: $primary;
+}
+.yellow {
+  background: $yellow;
+}
+.red {
+  background: $red;
+}
+.orange {
+  background: $orange;
+}
+.cyan {
+  background: $cyan;
+}
+.gray {
+  background: $card-gray;
+
+  .card_title {
+    color: #544a41;
+  }
+}
+
+.card {
+  margin: 0 auto;
+  width: 260px;
+  gap: 1rem;
+  display: grid;
+  border-radius: 1rem;
+  grid-template-columns: 1fr;
+
+  padding: 2rem;
+
+  &_num,
+  &_title,
+  &_image,
+  button {
+    margin: 0 auto;
+  }
+
+  &_num,
+  &_title {
+    margin-block: 0;
+    font-family: SunFlower;
+    color: white;
+  }
+
+  &_num {
+    margin-bottom: -1rem;
+    font-size: 2rem;
+  }
+
+  &_title {
+    font-size: 2.5rem;
+  }
+
+  &_image {
+    width: 100px;
+    height: 100px;
+  }
+}

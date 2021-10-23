@@ -1,0 +1,26 @@
+@import '@/styles/variables';
+
+.modal {
+  z-index: 1900;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+
+  &_overlay {
+    z-index: 1901;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  &_content {
+    z-index: 1902;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+  }
+}

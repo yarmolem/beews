@@ -1,0 +1,6 @@
+export const authTypes = {
+  LOGIN: 'LOGIN',
+  LOGOUT: 'LOGOUT',
+  SET_STATE_FROM_STORAGE: 'SET_STATE_FROM_STORAGE',
+  UPDATE_USER: 'UPDATE_USER'
+}
