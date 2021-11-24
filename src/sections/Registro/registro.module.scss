@@ -81,18 +81,17 @@
     }
   }
 
-  &_input {
-    margin-bottom: 1.5rem;
-
-    @include break_xl {
-      margin-bottom: 2rem;
-    }
-  }
-
   &_btn {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
     margin-top: 1rem;
+    border-radius: 15px;
     text-align: center;
     font-family: SofiaProSemi;
+    text-transform: capitalize;
   }
 }
 

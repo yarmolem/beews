@@ -1,13 +1,13 @@
 import React from 'react'
 
+import styles from './index.module.scss'
+
 const ErrorMessage = ({ errors, touched, name = '' }) => {
   return (
     <>
       {/* eslint-disable */}
       {errors[name] && touched[name] ? (
-        <span className="text-xs w-full text-red-600 text-left alert alert-danger">
-          {errors[name]}
-        </span>
+        <span className={styles.error}>{errors[name]}</span>
       ) : null}
       {/* eslint-enable */}
     </>

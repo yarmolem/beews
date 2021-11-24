@@ -100,14 +100,14 @@ const Formulario = ({ next, prev, locale }) => {
         {/* eslint-disable */}
         {isShowForm.Login && !isAuth ? (
           <AuthBlock
-            onSuccess={showPersonalDataForm}
             onRegister={showRegisterForm}
+            onSuccess={showPersonalDataForm}
           />
         ) : null}
         {isShowForm.Register ? (
           <RegistrarDatos
-            onSuccess={showDestinationDataForm}
             goLogin={showLoginForm}
+            onSuccess={showDestinationDataForm}
           />
         ) : null}
         {isShowForm.PersonalData ? (

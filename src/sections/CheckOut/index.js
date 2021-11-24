@@ -64,9 +64,7 @@ const CheckOut = () => {
   }, [stepper])
 
   useEffect(() => {
-    return () => {
-      resetState()
-    }
+    return () => resetState()
   }, [])
 
   const next = () => {

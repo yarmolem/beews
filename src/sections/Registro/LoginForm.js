@@ -1,24 +1,25 @@
 import React, { useState } from 'react'
-import TextInput from '@/components/TextInput'
+import { useFormik } from 'formik'
+import { useMutation } from '@apollo/client'
 import { useRouter } from 'next/dist/client/router'
+
+import useAuth from '@/hooks/useAuth'
+import useToast from '@/hooks/useToast'
+import { translate } from '@/i18n/translate'
+import TextInput from '@/components/TextInput'
+import Loader from '@/components/Loader/Loader'
+import ErrorMessage from '@/components/ErrorMessage'
+import { loginSchema } from '@/validation/loginSchema'
+import { LOGIN_MUTATION } from '@/graphql/mutation/login_mutation'
 
 // Styles
 import styles from './registro.module.scss'
-import { translate } from '@/i18n/translate'
-import { useFormik } from 'formik'
-import ErrorMessage from '@/components/ErrorMessage'
-import Loader from '@/components/Loader/Loader'
-import { loginSchema } from 'src/validation/loginSchema'
-import { useMutation } from '@apollo/client'
-import { LOGIN_MUTATION } from 'src/graphql/mutation/login_mutation'
-import useAuth from '@/hooks/useAuth'
-import useToast from '@/hooks/useToast'
 
 const LoginForm = ({ onLogin = () => {}, onToggleAuth = () => {} }) => {
-  const { locale, ...router } = useRouter()
-  const { login } = translate[locale]
   const { toast } = useToast()
   const { login: loginAction } = useAuth()
+  const { locale, ...router } = useRouter()
+
   const [mensajeError, setMensajeError] = useState(null)
   const [loginUserMutation, { loading }] = useMutation(LOGIN_MUTATION, {
     onError: (err) => {
@@ -40,8 +41,8 @@ const LoginForm = ({ onLogin = () => {}, onToggleAuth = () => {} }) => {
   }
 
   const formik = useFormik({
-    enableReinitialize: true,
     initialValues,
+    enableReinitialize: true,
     validationSchema: loginSchema,
     onSubmit: async (values) => {
       console.log('login function ', loginAction)
@@ -67,45 +68,52 @@ const LoginForm = ({ onLogin = () => {}, onToggleAuth = () => {} }) => {
     }
   })
 
+  const { login } = translate[locale]
+
   return (
     <div className="d-flex flex-column items-center justify-content-center h-100">
       <h1>{login.title}</h1>
       <p>{login.subtitle}</p>
       <form onSubmit={formik.handleSubmit} className="mb-4">
-        <ErrorMessage
-          {...{
-            errors: formik?.errors,
-            touched: formik?.touched,
-            name: 'email'
-          }}
-        />
-        <TextInput
-          type="email"
-          placeholder={login.email}
-          id="auth-input-name"
-          classContainer="mb-3"
-          name="email"
-          onBlur={formik.handleBlur}
-          value={formik.values.email}
-          onChange={formik.handleChange}
-        />
-        <ErrorMessage
-          {...{
-            errors: formik?.errors,
-            touched: formik?.touched,
-            name: 'password'
-          }}
-        />
-        <TextInput
-          type="password"
-          classContainer="mb-4"
-          id="auth-input-password"
-          placeholder={login.password}
-          name="password"
-          onBlur={formik.handleBlur}
-          value={formik.values.password}
-          onChange={formik.handleChange}
-        />
+        <div className="mb-4">
+          <TextInput
+            name="email"
+            type="email"
+            id="auth-input-name"
+            placeholder={login.email}
+            onBlur={formik.handleBlur}
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            isInvalid={formik.errors.email && formik.touched.email}
+          />
+          <ErrorMessage
+            {...{
+              name: 'email',
+              errors: formik?.errors,
+              touched: formik?.touched
+            }}
+          />
+        </div>
+
+        <div className="mb-4">
+          <TextInput
+            type="password"
+            name="password"
+            id="auth-input-password"
+            placeholder={login.password}
+            onBlur={formik.handleBlur}
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            isInvalid={formik.errors.password && formik.touched.password}
+          />
+          <ErrorMessage
+            {...{
+              name: 'password',
+              errors: formik?.errors,
+              touched: formik?.touched
+            }}
+          />
+        </div>
 
         <div className="d-flex flex-column justify-content-center">
           {mensajeError && (

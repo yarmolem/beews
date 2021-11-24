@@ -1,31 +1,36 @@
 import React from 'react'
 
+import styles from './textinput.module.scss'
+
 const TextInput = ({
   id,
   type,
+  isInvalid,
+  name = '',
+  value = '',
   placeholder,
   autoComplete,
   classInput = '',
   classContainer = '',
-  name = '',
-  onBlur = '',
-  value = '',
-  onChange = '',
-  props
+  onBlur = () => {},
+  onChange = () => {},
+  ...props
 }) => {
   return (
     <div className={`form-floating ${classContainer}`}>
       <input
+        {...props}
         id={id}
         type={type}
         placeholder=" "
-        autoComplete={autoComplete}
-        className={`form-control ${classInput}`}
         name={name}
-        onBlur={onBlur}
         value={value}
+        onBlur={onBlur}
         onChange={onChange}
-        {...props}
+        autoComplete={autoComplete}
+        className={`form-control ${
+          isInvalid ? styles.error : ''
+        } ${classInput}`}
       />
       <label htmlFor={id}>{placeholder}</label>
     </div>

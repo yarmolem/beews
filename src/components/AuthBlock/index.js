@@ -76,40 +76,45 @@ const AuthBlock = ({ onSuccess = () => {}, onRegister = () => {} }) => {
       <div className={styles.authblock_content}>
         <h2>{login.title}</h2>
         <form onSubmit={formik.handleSubmit} className="mb-4">
-          <ErrorMessage
-            {...{
-              errors: formik?.errors,
-              touched: formik?.touched,
-              name: 'email'
-            }}
-          />
-          <TextInput
-            type="email"
-            placeholder={login.email}
-            id="auth-input-name"
-            classContainer="mb-3"
-            name="email"
-            onBlur={formik.handleBlur}
-            value={formik.values.email}
-            onChange={formik.handleChange}
-          />
-          <ErrorMessage
-            {...{
-              errors: formik?.errors,
-              touched: formik?.touched,
-              name: 'password'
-            }}
-          />
-          <TextInput
-            type="password"
-            classContainer="mb-4"
-            id="auth-input-password"
-            placeholder={login.password}
-            name="password"
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-            onChange={formik.handleChange}
-          />
+          <div className="mb-4">
+            <TextInput
+              type="email"
+              name="email"
+              id="auth-input-name"
+              placeholder={login.email}
+              onBlur={formik.handleBlur}
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              isInvalid={formik.errors.email && formik.touched.email}
+            />
+            <ErrorMessage
+              {...{
+                errors: formik?.errors,
+                touched: formik?.touched,
+                name: 'email'
+              }}
+            />
+          </div>
+
+          <div className="mb-4">
+            <TextInput
+              type="password"
+              name="password"
+              id="auth-input-password"
+              onBlur={formik.handleBlur}
+              placeholder={login.password}
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              isInvalid={formik.errors.password && formik.touched.password}
+            />
+            <ErrorMessage
+              {...{
+                errors: formik?.errors,
+                touched: formik?.touched,
+                name: 'password'
+              }}
+            />
+          </div>
 
           <div className="d-flex flex-column justify-content-center">
             {mensajeError && (

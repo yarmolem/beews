@@ -1,2 +1,6 @@
 @import '@/styles/mixins';
 @import '@/styles/variables';
+
+.error {
+  border: 1px solid $red-500;
+}

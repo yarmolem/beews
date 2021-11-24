@@ -103,12 +103,12 @@ export const translate = {
       subtitle: 'Completa el siguiente formulario para registrarte',
       placeholder: {
         name: 'Nombre',
-        lastName: 'Apellidos',
+        lastname: 'Apellidos',
         email: 'Correo electrónico',
-        phoneNumber: 'Celular',
+        phone: 'Celular',
         password: 'Contraseña',
         confirmPassword: 'Confirmar contraseña',
-        country: 'Selecciona un pais',
+        country: 'Pais',
         city: 'Ciudad'
       },
       errors: {
@@ -121,7 +121,7 @@ export const translate = {
       },
       terms: () => renderTerminos('es-ES'),
       newsletter: 'Acepto recibir información comercial de Beews',
-      submitBtn: 'REGÍSTRATE',
+      submitBtn: 'Regístrate',
       loginBtn: 'Ingresar'
     },
     quienesSomos: {
@@ -454,7 +454,11 @@ export const translate = {
       subtitle: 'Complete these form to sign up',
       placeholder: {
         name: 'Name',
+        city: 'City',
         email: 'Mail',
+        country: 'Country',
+        phone: 'Cel phone',
+        lastname: 'Surname',
         password: 'Password',
         confirmPassword: 'Confirm Password'
       },

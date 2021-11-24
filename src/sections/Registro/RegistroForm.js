@@ -11,7 +11,7 @@ import ErrorMessage from '@/components/ErrorMessage'
 import useYupSchema from '@/hooks/useYupSchema'
 import Loader from '@/components/Loader/Loader'
 import useToast from '@/hooks/useToast'
-import { PAISES } from '@/data/paises'
+import { countries } from '@/data/countries'
 
 const RegistroForm = ({ onToggleAuth = () => {} }) => {
   const { locale } = useRouter()
@@ -84,181 +84,213 @@ const RegistroForm = ({ onToggleAuth = () => {} }) => {
       <h1>{registro.title}</h1>
       <p>{registro.subtitle}</p>
       <form onSubmit={formik.handleSubmit}>
-        <ErrorMessage
-          {...{
-            errors: formik?.errors,
-            touched: formik?.touched,
-            name: 'nombre'
-          }}
-        />
-        <div className="form-floating">
-          <input
-            required
-            type="text"
-            id="nameFloat"
-            name="nombre"
-            onBlur={formik.handleBlur}
-            value={formik.values.nombre}
-            onChange={formik.handleChange}
-            autoComplete="off"
-            placeholder="Nombre"
-            className={`form-control ${styles.registro_input}`}
+        <div className="mb-4">
+          <div className="form-floating">
+            <input
+              required
+              type="text"
+              id="nameFloat"
+              name="nombre"
+              onBlur={formik.handleBlur}
+              value={formik.values.nombre}
+              onChange={formik.handleChange}
+              autoComplete="off"
+              placeholder="Nombre"
+              className="form-control"
+            />
+            <label htmlFor="nameFloat">{registro.placeholder.name}</label>
+          </div>
+          <ErrorMessage
+            {...{
+              name: 'nombre',
+              errors: formik?.errors,
+              touched: formik?.touched
+            }}
           />
-          <label htmlFor="nameFloat">{registro.placeholder.name}</label>
-        </div>
-        <ErrorMessage
-          {...{
-            errors: formik?.errors,
-            touched: formik?.touched,
-            name: 'apellidos'
-          }}
-        />
-        <div className="form-floating">
-          <input
-            type="text"
-            id="lastNameFloat"
-            name="apellidos"
-            onBlur={formik.handleBlur}
-            value={formik.values.apellidos}
-            onChange={formik.handleChange}
-            autoComplete="off"
-            placeholder="Apellidos"
-            className={`form-control ${styles.registro_input}`}
-          />
-          <label htmlFor="lastNameFloat">{registro.placeholder.lastName}</label>
-        </div>
-        <ErrorMessage
-          {...{
-            errors: formik?.errors,
-            touched: formik?.touched,
-            name: 'email'
-          }}
-        />
-        <div className="form-floating">
-          <input
-            type="text"
-            id="emailFloat"
-            name="email"
-            onBlur={formik.handleBlur}
-            value={formik.values.email}
-            onChange={formik.handleChange}
-            autoComplete="off"
-            placeholder="Correo electrónico"
-            className={`form-control ${styles.registro_input}`}
-          />
-          <label htmlFor="emailFloat">{registro.placeholder.email}</label>
-        </div>
-        <ErrorMessage
-          {...{
-            errors: formik?.errors,
-            touched: formik?.touched,
-            name: 'celular'
-          }}
-        />
-        <div className="form-floating">
-          <input
-            type="text"
-            id="celular"
-            name="celular"
-            onBlur={formik.handleBlur}
-            value={formik.values.celular}
-            onChange={formik.handleChange}
-            autoComplete="off"
-            placeholder="Nombre"
-            className={`form-control ${styles.registro_input}`}
-          />
-          <label htmlFor="celular">{registro.placeholder.phoneNumber}</label>
-        </div>
-        <ErrorMessage
-          {...{
-            errors: formik?.errors,
-            touched: formik?.touched,
-            name: 'password'
-          }}
-        />
-        <div className="form-floating">
-          <select
-            name="pais"
-            value={formik.values.pais}
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            aria-label="Username"
-            className={`form-control ${styles.registro_input}`}
-          >
-            <option value="default" disabled>
-              Selecciona un país
-            </option>
-            {PAISES.map((pais) => (
-              <option key={pais.id} value={pais.id}>
-                {pais.nombre}
-              </option>
-            ))}
-          </select>
-          <label htmlFor="">{registro.placeholder.country}</label>
-        </div>
-        <div className="form-floating">
-          <input
-            type="text"
-            id="ciudadFloating"
-            name="ciudad"
-            onBlur={formik.handleBlur}
-            value={formik.values.ciudad}
-            onChange={formik.handleChange}
-            autoComplete="off"
-            placeholder="Correo electrónico"
-            className={`form-control ${styles.registro_input}`}
-          />
-          <label htmlFor="ciudadFloating">{registro.placeholder.city}</label>
-        </div>
-        <div className="form-floating">
-          <input
-            id="passFloat"
-            type="password"
-            name="password"
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            autoComplete="off"
-            placeholder="Contraseña"
-            className={`form-control ${styles.registro_input}`}
-          />
-          <label htmlFor="passFloat">{registro.placeholder.password}</label>
         </div>
 
-        <ErrorMessage
-          {...{
-            errors: formik?.errors,
-            touched: formik?.touched,
-            name: 'confirmPassword'
-          }}
-        />
-        <div className="form-floating">
-          <input
-            type="password"
-            autoComplete="off"
-            id="confirmPassFloat"
-            name="confirmPassword"
-            onBlur={formik.handleBlur}
-            value={formik.values.confirmPassword}
-            onChange={formik.handleChange}
-            placeholder="Confirmar contraseña"
-            className={`form-control ${styles.registro_input}`}
+        <div className="mb-4">
+          <div className="form-floating">
+            <input
+              type="text"
+              id="lastNameFloat"
+              name="apellidos"
+              onBlur={formik.handleBlur}
+              value={formik.values.apellidos}
+              onChange={formik.handleChange}
+              autoComplete="off"
+              placeholder="Apellidos"
+              className="form-control"
+            />
+            <label htmlFor="lastNameFloat">
+              {registro.placeholder.lastname}
+            </label>
+          </div>
+          <ErrorMessage
+            {...{
+              errors: formik?.errors,
+              touched: formik?.touched,
+              name: 'apellidos'
+            }}
           />
-          <label htmlFor="confirmPassFloat">
-            {registro.placeholder.confirmPassword}
-          </label>
+        </div>
+
+        <div className="mb-4">
+          <div className="form-floating">
+            <input
+              type="text"
+              id="emailFloat"
+              name="email"
+              onBlur={formik.handleBlur}
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              autoComplete="off"
+              placeholder="Correo electrónico"
+              className="form-control"
+            />
+            <label htmlFor="emailFloat">{registro.placeholder.email}</label>
+          </div>
+          <ErrorMessage
+            {...{
+              errors: formik?.errors,
+              touched: formik?.touched,
+              name: 'email'
+            }}
+          />
+        </div>
+
+        <div className="mb-4">
+          <div className="form-floating">
+            <input
+              type="text"
+              id="celular"
+              name="celular"
+              onBlur={formik.handleBlur}
+              value={formik.values.celular}
+              onChange={formik.handleChange}
+              autoComplete="off"
+              placeholder="Nombre"
+              className="form-control"
+            />
+            <label htmlFor="celular">{registro.placeholder.phone}</label>
+          </div>
+          <ErrorMessage
+            {...{
+              errors: formik?.errors,
+              touched: formik?.touched,
+              name: 'celular'
+            }}
+          />
+        </div>
+
+        <div className="mb-4">
+          <div className="form-floating">
+            <select
+              id="pais"
+              name="pais"
+              aria-label="pais"
+              value={formik.values.pais}
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              className="form-control"
+            >
+              <option value="default" disabled>
+                Selecciona un país
+              </option>
+              {Object.keys(countries)
+                .sort()
+                .map((key) => (
+                  <option key={key} value={key}>
+                    {countries[key].name[locale]}
+                  </option>
+                ))}
+            </select>
+            <label htmlFor="pais">{registro.placeholder.country}</label>
+          </div>
+          <ErrorMessage
+            {...{
+              name: 'pais',
+              errors: formik?.errors,
+              touched: formik?.touched
+            }}
+          />
+        </div>
+
+        <div className="mb-4">
+          <div className="form-floating">
+            <input
+              type="text"
+              name="ciudad"
+              autoComplete="off"
+              id="ciudadFloating"
+              className="form-control"
+              placeholder="Correo electrónico"
+              onBlur={formik.handleBlur}
+              value={formik.values.ciudad}
+              onChange={formik.handleChange}
+            />
+            <label htmlFor="ciudadFloating">{registro.placeholder.city}</label>
+          </div>
+          <ErrorMessage
+            {...{
+              name: 'ciudad',
+              errors: formik?.errors,
+              touched: formik?.touched
+            }}
+          />
+        </div>
+
+        <div className="mb-4">
+          <div className="form-floating">
+            <input
+              id="passFloat"
+              type="password"
+              name="password"
+              onBlur={formik.handleBlur}
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              autoComplete="off"
+              placeholder="Contraseña"
+              className="form-control"
+            />
+            <label htmlFor="passFloat">{registro.placeholder.password}</label>
+          </div>
+          <ErrorMessage
+            {...{
+              errors: formik?.errors,
+              touched: formik?.touched,
+              name: 'password'
+            }}
+          />
+        </div>
+
+        <div className="mb-4">
+          <div className="form-floating">
+            <input
+              type="password"
+              autoComplete="off"
+              id="confirmPassFloat"
+              name="confirmPassword"
+              onBlur={formik.handleBlur}
+              value={formik.values.confirmPassword}
+              onChange={formik.handleChange}
+              placeholder="Confirmar contraseña"
+              className="form-control"
+            />
+            <label htmlFor="confirmPassFloat">
+              {registro.placeholder.confirmPassword}
+            </label>
+          </div>
+          <ErrorMessage
+            {...{
+              errors: formik?.errors,
+              touched: formik?.touched,
+              name: 'confirmPassword'
+            }}
+          />
         </div>
 
         <div className="form-check mb-2">
-          <div>
-            <ErrorMessage
-              {...{
-                errors: formik?.errors,
-                touched: formik?.touched,
-                name: 'terminos'
-              }}
-            />
-          </div>
           <div>
             <input
               type="checkbox"
@@ -273,6 +305,13 @@ const RegistroForm = ({ onToggleAuth = () => {} }) => {
               {registro.terms()}
             </label>
           </div>
+          <ErrorMessage
+            {...{
+              errors: formik?.errors,
+              touched: formik?.touched,
+              name: 'terminos'
+            }}
+          />
         </div>
 
         <div className="form-check mb-2">
@@ -280,20 +319,26 @@ const RegistroForm = ({ onToggleAuth = () => {} }) => {
           <label className="form-check-label" htmlFor="infoCheck">
             {registro.newsletter}
           </label>
+
+          <ErrorMessage
+            {...{
+              errors: formik?.errors,
+              touched: formik?.touched,
+              name: 'terminos'
+            }}
+          />
         </div>
 
         <div className="d-flex flex-column justify-content-center">
           {mensajeError && (
             <p className="alert alert-primary">{mensajeError}</p>
           )}
-          {loading && <Loader />}
-          {!loading && (
-            <button
-              className={`btn btn-danger btn-lg text-white ${styles.registro_btn}`}
-            >
-              {registro.submitBtn}
-            </button>
-          )}
+          <button
+            disabled={loading}
+            className={`btn btn-danger btn-lg text-white ${styles.registro_btn}`}
+          >
+            {registro.submitBtn} {loading ? <Loader size="xs" /> : null}
+          </button>
         </div>
       </form>
       <div className="d-flex justify-content-center mt-4">

@@ -1,60 +1,39 @@
-// import { useRouter } from 'next/dist/client/router'
-// import { translate } from '../i18n/translate'
 import isEmail from 'validator/lib/isEmail'
 import isEmpty from 'validator/lib/isEmpty'
-import isStrongPassword from 'validator/lib/isStrongPassword'
 
 const useYupSchema = () => {
-  //   const { locale } = useRouter()
-  //   console.log(locale)
-  //   const {
-  //     registro: { errors }
-  //   } = translate['es-ES']
-
   const registerSchema = (values) => {
-    console.log('values validation ', values)
     const errors = {}
-    if (isEmpty(values.nombre, { ignore_whitespace: false })) {
-      errors.nombre = 'Escriba un nombre válido'
-      return errors
+    if (isEmpty(values.nombre)) {
+      errors.nombre = 'Ingrese un nombre válido'
     }
-    if (isEmpty(values.apellidos, { ignore_whitespace: false })) {
-      errors.apellidos = 'Escriba al menos un apellido válido'
-      return errors
+    if (isEmpty(values.apellidos)) {
+      errors.apellidos = 'Ingrese al menos un apellido válido'
     }
     if (!isEmail(values.email)) {
       errors.email = 'Email inválido'
-      return errors
     }
-    if (isEmpty(values.celular, { ignore_whitespace: false })) {
-      errors.celular = 'Escriba celular válido'
-      return errors
+    if (isEmpty(values.celular)) {
+      errors.celular = 'Ingrese celular válido'
+    }
+    if (isEmpty(values.ciudad)) {
+      errors.ciudad = 'Ingrese una ciudad válida'
     }
     if (isEmpty(values.password)) {
-      errors.password = 'Escriba una contraseña segura'
-      return errors
+      errors.password = 'Ingrese una contraseña segura'
     }
     if (values.password !== values.confirmPassword) {
       errors.confirmPassword = 'Las contraseñas deben coincidir'
-      return errors
     }
 
     if (values.terminos === false) {
       errors.terminos = 'Debe seleccionar esta opcion'
-      console.log('ERRORS ', errors)
-      return errors
     }
+
+    return errors
   }
 
   return { registerSchema }
 }
 
 export default useYupSchema
-
-// nombre: '',
-//     apellidos: '',
-//     email: '',
-//     celular: '',
-//     password: '',
-//     confirmPassword: '',
-//     terminos: false
