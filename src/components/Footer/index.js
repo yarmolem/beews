@@ -124,7 +124,7 @@ const Footer = () => {
             className={styles.footer_socialIcon}
             target="_blank"
             rel="noopener noreferrer"
-            href="https://www.instagram.com/beews.sitenp "
+            href="https://www.instagram.com/beews.site"
           >
             <Image src="/images/instagram.svg" alt="Logo Instagram" />
           </a>
