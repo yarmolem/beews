@@ -120,12 +120,12 @@ const AuthBlock = ({ onSuccess = () => {}, onRegister = () => {} }) => {
             {mensajeError && (
               <p className="alert alert-primary">{mensajeError}</p>
             )}
-            {loading && <Loader />}
-            {!loading && (
-              <button className="btn btn-primary text-white btn-lg">
-                {login.submit}
-              </button>
-            )}
+            <button
+              disabled={loading}
+              className="btn btn-primary d-flex align-items-center text-white btn-lg"
+            >
+              {login.submit} {loading ? <Loader size="xs" /> : null}
+            </button>
           </div>
         </form>
         {/* {mensajeError && <p className="alert alert-primary">{mensajeError}</p>} */}

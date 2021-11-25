@@ -74,68 +74,75 @@ const Dudas = () => {
       <div className={styles.dudas_wrap}>
         <h1>{form.title}</h1>
         <form className={styles.dudas_form} onSubmit={formik.handleSubmit}>
-          <ErrorMessage
-            {...{
-              errors: formik?.errors,
-              touched: formik?.touched,
-              name: 'nombres'
-            }}
-          />
-          <div className="form-floating mb-1">
-            <input
-              type="text"
-              id="nameFloat"
-              name="nombres"
-              onBlur={formik.handleBlur}
-              value={formik.values.nombres}
-              onChange={formik.handleChange}
-              autoComplete="off"
-              placeholder="Nombre"
-              className={`form-control ${styles.dudas_input}`}
+          <div className="mb-4">
+            <div className="form-floating">
+              <input
+                type="text"
+                id="nameFloat"
+                name="nombres"
+                onBlur={formik.handleBlur}
+                value={formik.values.nombres}
+                onChange={formik.handleChange}
+                autoComplete="off"
+                placeholder="Nombre"
+                className={`form-control ${styles.dudas_input}`}
+              />
+              <label htmlFor="nameFloat">{form.placeholder.name}</label>
+            </div>
+            <ErrorMessage
+              {...{
+                errors: formik?.errors,
+                touched: formik?.touched,
+                name: 'nombres'
+              }}
             />
-            <label htmlFor="nameFloat">{form.placeholder.name}</label>
-          </div>
-          <ErrorMessage
-            {...{
-              errors: formik?.errors,
-              touched: formik?.touched,
-              name: 'email'
-            }}
-          />
-          <div className="form-floating mb-1">
-            <input
-              type="text"
-              id="emailFloat"
-              name="email"
-              onBlur={formik.handleBlur}
-              value={formik.values.email}
-              onChange={formik.handleChange}
-              autoComplete="off"
-              placeholder="Email"
-              className={`form-control ${styles.dudas_input}`}
-            />
-            <label htmlFor="emailFloat">{form.placeholder.email}</label>
           </div>
 
-          <ErrorMessage
-            {...{
-              errors: formik?.errors,
-              touched: formik?.touched,
-              name: 'descripcion'
-            }}
-          />
-          <div className="form-floating mb-4">
-            <textarea
-              id="commentFloat"
-              name="descripcion"
-              onBlur={formik.handleBlur}
-              value={formik.values.descripcion}
-              onChange={formik.handleChange}
-              style={{ height: '100px' }}
-              placeholder="¿Cómo de podemos ayudar?"
-              className={`form-control ${styles.dudas_input}`}
+          <div className="mb-4">
+            <div className="form-floating">
+              <input
+                type="text"
+                id="emailFloat"
+                name="email"
+                onBlur={formik.handleBlur}
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                autoComplete="off"
+                placeholder="Email"
+                className={`form-control ${styles.dudas_input}`}
+              />
+              <label htmlFor="emailFloat">{form.placeholder.email}</label>
+            </div>
+            <ErrorMessage
+              {...{
+                errors: formik?.errors,
+                touched: formik?.touched,
+                name: 'email'
+              }}
             />
-            <label htmlFor="commentFloat">{form.placeholder.textarea}</label>
+          </div>
+
+          <div className="mb-4">
+            <div className="form-floating">
+              <textarea
+                id="commentFloat"
+                name="descripcion"
+                onBlur={formik.handleBlur}
+                style={{ height: '100px' }}
+                onChange={formik.handleChange}
+                value={formik.values.descripcion}
+                placeholder="¿Cómo de podemos ayudar?"
+                className={`form-control ${styles.dudas_input}`}
+              />
+              <label htmlFor="commentFloat">{form.placeholder.textarea}</label>
+            </div>
+            <ErrorMessage
+              {...{
+                errors: formik?.errors,
+                touched: formik?.touched,
+                name: 'descripcion'
+              }}
+            />
           </div>
           {mensajeError && (
             <p className="alert alert-primary">{mensajeError}</p>

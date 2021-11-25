@@ -13,7 +13,7 @@ import { useMutation } from '@apollo/client'
 import { UPDATE_USUARIO_MUTATION } from 'src/graphql/mutation/updateUsuario_mutation'
 import Loader from '@/components/Loader/Loader'
 import useToast from '@/hooks/useToast'
-import { PAISES } from '@/data/paises'
+import { countries } from '@/data/countries'
 
 const DatosPersonales = ({ nextStep, locale, onSuccess }) => {
   const router = useRouter()
@@ -190,11 +190,13 @@ const DatosPersonales = ({ nextStep, locale, onSuccess }) => {
                   <option value="default" disabled>
                     Selecciona un país
                   </option>
-                  {PAISES.map((pais) => (
-                    <option key={pais.id} value={pais.id}>
-                      {pais.nombre}
-                    </option>
-                  ))}
+                  {Object.keys(countries)
+                    .sort()
+                    .map((key) => (
+                      <option key={key} value={key}>
+                        {countries[key].name[locale]}
+                      </option>
+                    ))}
                 </select>
               </div>
               <div className="col-12 col-md-4 mb-1">
@@ -211,12 +213,13 @@ const DatosPersonales = ({ nextStep, locale, onSuccess }) => {
                 />
               </div>
             </div>
-            {loading ? <Loader /> : null}
-            {!loading && (
-              <button className="btn btn-danger btn-lg">
-                {form.personalForm.submit}
-              </button>
-            )}
+
+            <button
+              disabled={loading}
+              className="btn d-flex align-items-center btn-danger btn-lg"
+            >
+              {form.personalForm.submit} {loading ? <Loader size="xs" /> : null}
+            </button>
           </form>
         )
       }}

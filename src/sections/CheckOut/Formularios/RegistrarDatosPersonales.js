@@ -1,17 +1,19 @@
-import ErrorMessage from '@/components/ErrorMessage'
-import Loader from '@/components/Loader/Loader'
-import { PAISES } from '@/data/paises'
-import useAuth from '@/hooks/useAuth'
-import useCheckout from '@/hooks/useCheckout'
-import useToast from '@/hooks/useToast'
-import useYupSchema from '@/hooks/useYupSchema'
-import { translate } from '@/i18n/translate'
-import { useMutation } from '@apollo/client'
+import React, { useState } from 'react'
 import { useFormik } from 'formik'
 import { useRouter } from 'next/dist/client/router'
-import React, { useState } from 'react'
-// import { useToast } from '@/hooks/useToast'
-import { CREAR_USUARIO_MUTATION } from 'src/graphql/mutation/crearUsuario_mutation'
+
+import useAuth from '@/hooks/useAuth'
+import { PAISES } from '@/data/paises'
+import useToast from '@/hooks/useToast'
+import { useMutation } from '@apollo/client'
+import { translate } from '@/i18n/translate'
+import useCheckout from '@/hooks/useCheckout'
+import Loader from '@/components/Loader/Loader'
+import useYupSchema from '@/hooks/useYupSchema'
+import ErrorMessage from '@/components/ErrorMessage'
+import { countries } from '@/data/countries'
+import { CREAR_USUARIO_MUTATION } from '../../../graphql/mutation/crearUsuario_mutation'
+
 import styles from './formulario.module.scss'
 
 const RegistrarDatosPersonales = ({
@@ -103,6 +105,18 @@ const RegistrarDatosPersonales = ({
       <form onSubmit={formik.handleSubmit} className={styles.formulario_form}>
         <div className="row mb-3">
           <div className="mb-1 col-12 col-md-6">
+            <label htmlFor="nameFloat">{registro.placeholder.name}</label>
+            <input
+              type="text"
+              name="nombre"
+              id="nameFloat"
+              autoComplete="off"
+              placeholder="Nombre"
+              onBlur={formik.handleBlur}
+              value={formik.values.nombre}
+              onChange={formik.handleChange}
+              className={`form-control ${styles.registro_input}`}
+            />
             <ErrorMessage
               {...{
                 errors: formik?.errors,
@@ -110,29 +124,10 @@ const RegistrarDatosPersonales = ({
                 name: 'nombre'
               }}
             />
-            <label htmlFor="nameFloat">{registro.placeholder.name}</label>
-            <input
-              type="text"
-              id="nameFloat"
-              name="nombre"
-              onBlur={formik.handleBlur}
-              value={formik.values.nombre}
-              onChange={formik.handleChange}
-              autoComplete="off"
-              placeholder="Nombre"
-              className={`form-control ${styles.registro_input}`}
-            />
           </div>
           <div className="mb-1 col-12 col-md-6">
-            <ErrorMessage
-              {...{
-                errors: formik?.errors,
-                touched: formik?.touched,
-                name: 'apellidos'
-              }}
-            />
             <label htmlFor="lastNameFloat">
-              {registro.placeholder.lastName}
+              {registro.placeholder.lastname}
             </label>
             <input
               type="text"
@@ -145,16 +140,16 @@ const RegistrarDatosPersonales = ({
               placeholder="Apellidos"
               className={`form-control ${styles.registro_input}`}
             />
+            <ErrorMessage
+              {...{
+                errors: formik?.errors,
+                touched: formik?.touched,
+                name: 'apellidos'
+              }}
+            />
           </div>
         </div>
         <div className="mb-1">
-          <ErrorMessage
-            {...{
-              errors: formik?.errors,
-              touched: formik?.touched,
-              name: 'email'
-            }}
-          />
           <label htmlFor="emailFloat">{registro.placeholder.email}</label>
           <input
             type="text"
@@ -167,17 +162,17 @@ const RegistrarDatosPersonales = ({
             placeholder="Correo electrónico"
             className={`form-control ${styles.registro_input}`}
           />
+          <ErrorMessage
+            {...{
+              errors: formik?.errors,
+              touched: formik?.touched,
+              name: 'email'
+            }}
+          />
         </div>
         <div className="row mb-3">
           <div className="col-12 col-md-4 mb-1">
-            <ErrorMessage
-              {...{
-                errors: formik?.errors,
-                touched: formik?.touched,
-                name: 'celular'
-              }}
-            />
-            <label htmlFor="celular">{registro.placeholder.phoneNumber}</label>
+            <label htmlFor="celular">{registro.placeholder.phone}</label>
             <input
               type="text"
               id="celular"
@@ -188,6 +183,13 @@ const RegistrarDatosPersonales = ({
               autoComplete="off"
               placeholder="Nombre"
               className={`form-control ${styles.registro_input}`}
+            />
+            <ErrorMessage
+              {...{
+                errors: formik?.errors,
+                touched: formik?.touched,
+                name: 'celular'
+              }}
             />
           </div>
           <div className="col-12 col-md-4 mb-1">
@@ -203,11 +205,13 @@ const RegistrarDatosPersonales = ({
               <option value="default" disabled>
                 Selecciona un país
               </option>
-              {PAISES.map((pais) => (
-                <option key={pais.id} value={pais.id}>
-                  {pais.nombre}
-                </option>
-              ))}
+              {Object.keys(countries)
+                .sort()
+                .map((key) => (
+                  <option key={key} value={key}>
+                    {countries[key].name[locale]}
+                  </option>
+                ))}
             </select>
           </div>
           <div className="col-12 col-md-4 mb-1">
@@ -222,17 +226,17 @@ const RegistrarDatosPersonales = ({
               onChange={formik.handleChange}
               className={`form-control ${styles.registro_input}`}
             />
-          </div>
-        </div>
-        <div className="row mb-3">
-          <div className="col-12 col-md-6 mb-1">
             <ErrorMessage
               {...{
                 errors: formik?.errors,
                 touched: formik?.touched,
-                name: 'password'
+                name: 'ciudad'
               }}
             />
+          </div>
+        </div>
+        <div className="row mb-3">
+          <div className="col-12 col-md-6 mb-1">
             <label htmlFor="passFloat">{registro.placeholder.password}</label>
             <input
               id="passFloat"
@@ -244,6 +248,13 @@ const RegistrarDatosPersonales = ({
               autoComplete="off"
               placeholder="Contraseña"
               className={`form-control ${styles.registro_input}`}
+            />
+            <ErrorMessage
+              {...{
+                errors: formik?.errors,
+                touched: formik?.touched,
+                name: 'password'
+              }}
             />
           </div>
           <div className="col-12 col-md-6 mb-1">
@@ -274,35 +285,33 @@ const RegistrarDatosPersonales = ({
         <div>
           <div className="form-check mb-2">
             <div>
-              <ErrorMessage
-                {...{
-                  errors: formik?.errors,
-                  touched: formik?.touched,
-                  name: 'terminos'
-                }}
-              />
-            </div>
-            <div>
               <input
                 type="checkbox"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                checked={formik.values.terminos}
                 id="termsCheck"
                 name="terminos"
-                className="form-check-input"
+                onBlur={formik.handleBlur}
+                className="form-check-input me-4"
+                onChange={formik.handleChange}
+                checked={formik.values.terminos}
               />
               <label className="form-check-label" htmlFor="termsCheck">
                 {registro.terms()}
               </label>
             </div>
+            <ErrorMessage
+              {...{
+                errors: formik?.errors,
+                touched: formik?.touched,
+                name: 'terminos'
+              }}
+            />
           </div>
 
           <div className="form-check mb-2">
             <input
               id="infoCheck"
               type="checkbox"
-              className="form-check-input"
+              className="form-check-input me-4"
             />
             <label className="form-check-label" htmlFor="infoCheck">
               {registro.newsletter}
@@ -314,14 +323,12 @@ const RegistrarDatosPersonales = ({
           {mensajeError && (
             <p className="alert alert-primary">{mensajeError}</p>
           )}
-          {loading && <Loader />}
-          {!loading && (
-            <button
-              className={`btn btn-danger btn-lg text-white ${styles.registro_btn}`}
-            >
-              {registro.submitBtn}
-            </button>
-          )}
+          <button
+            disabled={loading}
+            className="btn btn-danger d-flex align-items-center text-white"
+          >
+            {registro.submitBtn} {loading ? <Loader size="xs" /> : null}
+          </button>
         </div>
       </form>
       <div className="d-flex justify-content-center mt-4">

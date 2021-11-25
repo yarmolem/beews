@@ -1,4 +1,5 @@
 import ErrorMessage from '@/components/ErrorMessage'
+import { countries } from '@/data/countries'
 import { PAISES } from '@/data/paises'
 import useCheckout from '@/hooks/useCheckout'
 import { translate } from '@/i18n/translate'
@@ -60,13 +61,6 @@ const DatosDestinatario = ({ next, locale }) => {
     <form className={styles.formulario_form} onSubmit={formik.handleSubmit}>
       <div className="row">
         <div className="col-12 col-md-6 mb-1">
-          <ErrorMessage
-            {...{
-              errors: formik?.errors,
-              touched: formik?.touched,
-              name: 'name'
-            }}
-          />
           <label htmlFor="">{form.destinationForm.name}</label>
           <input
             type="text"
@@ -77,15 +71,15 @@ const DatosDestinatario = ({ next, locale }) => {
             aria-label="Username"
             className="form-control"
           />
-        </div>
-        <div className="col-12 col-md-6 mb-1">
           <ErrorMessage
             {...{
               errors: formik?.errors,
               touched: formik?.touched,
-              name: 'lastname'
+              name: 'name'
             }}
           />
+        </div>
+        <div className="col-12 col-md-6 mb-1">
           <label htmlFor="">{form.destinationForm.lastname}</label>
           <input
             type="text"
@@ -95,6 +89,13 @@ const DatosDestinatario = ({ next, locale }) => {
             onChange={formik.handleChange}
             aria-label="Username"
             className="form-control"
+          />
+          <ErrorMessage
+            {...{
+              errors: formik?.errors,
+              touched: formik?.touched,
+              name: 'lastname'
+            }}
           />
         </div>
       </div>
@@ -115,11 +116,13 @@ const DatosDestinatario = ({ next, locale }) => {
             <option value="default" disabled>
               Selecciona un país
             </option>
-            {PAISES.map((pais) => (
-              <option key={pais.id} value={pais.id}>
-                {pais.nombre}
-              </option>
-            ))}
+            {Object.keys(countries)
+              .sort()
+              .map((key) => (
+                <option key={key} value={key}>
+                  {countries[key].name[locale]}
+                </option>
+              ))}
           </select>
           <ErrorMessage
             {...{
@@ -238,10 +241,10 @@ const DatosDestinatario = ({ next, locale }) => {
           <input
             type="date"
             name="deliveryDate"
-            onBlur={formik.handleBlur}
-            value={formik.values.deliveryDate}
-            onChange={formik.handleChange}
             className="form-control"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            value={formik.values.deliveryDate}
             min={new Date().toISOString().split('T')[0]}
           />
         </div>
